@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #F0F2F5;
+  --foreground: #1F2937;
+}
+
+html, body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px; /* Base 16px minimum */
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Widescreen Desktop Container (up to 1680px) */
+.widescreen-container {
+  width: 100%;
+  max-width: 1680px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .widescreen-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Authentic DataTables style grid borders */
+.tool-table th, .tool-table td {
+  border: 1px solid #E5E7EB;
+}
+
+.tool-table tbody tr:nth-child(even) {
+  background-color: #F9FAFB;
+}
+
+.tool-table tbody tr:hover {
+  background-color: #F3F4F6;
+}
+
+/* Smooth touch scrolling for tables on mobile */
+.table-scroll-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
