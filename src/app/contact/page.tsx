@@ -42,13 +42,13 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="w-full max-w-[1700px] mx-auto px-4 sm:px-8 py-12 text-gray-800">
+    <div className="w-full max-w-[1550px] mx-auto px-4 sm:px-8 py-10 text-gray-800">
       
-      <div className="bg-white border-2 border-gray-300 rounded-xl p-8 sm:p-12 shadow-sm max-w-4xl mx-auto">
-        <h1 className="text-3xl sm:text-4xl font-black text-gray-900 mb-3 border-b border-gray-200 pb-4">
+      <div className="bg-white border border-gray-300 rounded-lg p-6 sm:p-10 shadow-sm max-w-3xl mx-auto">
+        <h1 className="text-2xl sm:text-[34px] font-bold text-gray-900 mb-2 border-b border-gray-200 pb-3 leading-tight">
           Contact DAPA Metrics
         </h1>
-        <p className="text-base sm:text-lg text-gray-600 mb-8">
+        <p className="text-[16px] text-gray-600 mb-6 leading-relaxed">
           Have feedback, discovered a bug, or need agency bulk API access? Send us a message below. Our technical team responds within 48 business hours.
         </p>
 

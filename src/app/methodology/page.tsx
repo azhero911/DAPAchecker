@@ -9,25 +9,25 @@ export const metadata: Metadata = {
 
 export default function MethodologyPage() {
   return (
-    <div className="w-full max-w-[1700px] mx-auto px-4 sm:px-8 py-12 text-gray-800">
+    <div className="w-full max-w-[1550px] mx-auto px-4 sm:px-8 py-10 text-gray-800">
       
-      <div className="bg-white border-2 border-gray-300 rounded-xl p-8 sm:p-12 shadow-sm">
-        <h1 className="text-3xl sm:text-4xl font-black text-gray-900 mb-6 border-b border-gray-200 pb-4">
+      <div className="bg-white border border-gray-300 rounded-lg p-6 sm:p-10 shadow-sm">
+        <h1 className="text-2xl sm:text-[34px] font-bold text-gray-900 mb-4 border-b border-gray-200 pb-3 leading-tight">
           Algorithm & Scoring Methodology
         </h1>
 
-        <div className="space-y-6 text-base sm:text-lg leading-relaxed text-gray-700">
+        <div className="space-y-5 text-[16px] leading-relaxed text-gray-700">
           <p>
             At DAPA Metrics, we believe webmasters and search marketers deserve complete clarity on how website metrics are calculated. Below is the technical breakdown of the algorithms utilized across our platform.
           </p>
 
-          <h2 className="text-2xl sm:text-3xl font-black text-gray-900 pt-4">
+          <h2 className="text-xl font-bold text-gray-900 pt-3">
             1. Moz Domain Authority (DA) Mathematical Model
           </h2>
           <p>
             Domain Authority is not a single calculation; it is a <strong>machine learning algorithm</strong> trained to predict how often a website appears in Google SERPs across thousands of test search queries.
           </p>
-          <ul className="list-disc list-inside space-y-2.5 pl-2">
+          <ul className="list-disc list-inside space-y-2 pl-2">
             <li>
               <strong>Input Factors</strong>: Evaluates over 40 distinct signals, including total referring domains, root domain link equity, link diversity, MozRank, and MozTrust.
             </li>
@@ -39,7 +39,7 @@ export default function MethodologyPage() {
             </li>
           </ul>
 
-          <h2 className="text-2xl sm:text-3xl font-black text-gray-900 pt-4">
+          <h2 className="text-xl font-bold text-gray-900 pt-3">
             2. Moz Spam Score (SS) Algorithm
           </h2>
           <p>
@@ -52,14 +52,14 @@ export default function MethodologyPage() {
             A Spam Score of 2% means that only 2% of sites with similar link features have been penalized by Google. A Spam Score of 70% indicates that 70% of sites sharing those patterns faced algorithmic or manual penalties.
           </p>
 
-          <h2 className="text-2xl sm:text-3xl font-black text-gray-900 pt-4">
+          <h2 className="text-xl font-bold text-gray-900 pt-3">
             3. Open PageRank & Crawl Graph
           </h2>
           <p>
             Open PageRank uses open web crawl archives (Common Crawl) to compute an open algorithmic PageRank score on a 0.0 to 10.0 scale. It serves as an independent benchmark of web-graph centrality without commercial bias.
           </p>
 
-          <h2 className="text-2xl sm:text-3xl font-black text-gray-900 pt-4">
+          <h2 className="text-xl font-bold text-gray-900 pt-3">
             4. Data Freshness & Caching Architecture
           </h2>
           <p>
