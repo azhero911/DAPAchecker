@@ -71,20 +71,20 @@ export default function CheckerTool() {
   };
 
   return (
-    <div className="w-full mb-12">
+    <div className="w-full mb-10">
       
-      {/* Main Tool Box (1700px Widescreen & Prominent Font) */}
-      <div id="tool" className="bg-white border-2 border-gray-300 rounded-xl shadow-sm mb-10 overflow-hidden">
+      {/* Main Tool Box (Modeled after authentic clean UI) */}
+      <div id="tool" className="bg-white border border-gray-300 rounded-md shadow-sm mb-8">
         
         {/* Top Tool Mode Tabs */}
-        <div className="flex items-center border-b border-gray-200 bg-gray-50 px-6 py-3 text-base font-bold text-gray-700">
-          <div className="flex items-center gap-2">
+        <div className="flex items-center border-b border-gray-200 bg-gray-50 px-4 py-2 text-sm font-bold text-gray-700">
+          <div className="flex items-center gap-1">
             <button
               type="button"
               onClick={() => setActiveTab('dapa')}
-              className={`px-5 py-2.5 border rounded-t text-base font-bold transition ${
+              className={`px-3 py-1.5 border rounded-t text-sm font-bold transition ${
                 activeTab === 'dapa'
-                  ? 'bg-white border-gray-300 border-b-white -mb-[13px] text-[#1D4ED8]'
+                  ? 'bg-white border-gray-300 border-b-white -mb-[9px] text-[#1D4ED8]'
                   : 'text-gray-600 hover:text-gray-900 border-transparent'
               }`}
             >
@@ -93,9 +93,9 @@ export default function CheckerTool() {
             <button
               type="button"
               onClick={() => setActiveTab('spam')}
-              className={`px-5 py-2.5 border rounded-t text-base font-bold transition ${
+              className={`px-3 py-1.5 border rounded-t text-sm font-bold transition ${
                 activeTab === 'spam'
-                  ? 'bg-white border-gray-300 border-b-white -mb-[13px] text-[#1D4ED8]'
+                  ? 'bg-white border-gray-300 border-b-white -mb-[9px] text-[#1D4ED8]'
                   : 'text-gray-600 hover:text-gray-900 border-transparent'
               }`}
             >
@@ -104,9 +104,9 @@ export default function CheckerTool() {
             <button
               type="button"
               onClick={() => setActiveTab('age')}
-              className={`px-5 py-2.5 border rounded-t text-base font-bold transition ${
+              className={`px-3 py-1.5 border rounded-t text-sm font-bold transition ${
                 activeTab === 'age'
-                  ? 'bg-white border-gray-300 border-b-white -mb-[13px] text-[#1D4ED8]'
+                  ? 'bg-white border-gray-300 border-b-white -mb-[9px] text-[#1D4ED8]'
                   : 'text-gray-600 hover:text-gray-900 border-transparent'
               }`}
             >
@@ -116,61 +116,61 @@ export default function CheckerTool() {
         </div>
 
         {/* Textarea Box */}
-        <div className="p-6 sm:p-8">
+        <div className="p-4 sm:p-6">
           
-          <div className="border-2 border-gray-300 rounded-lg focus-within:border-blue-600 transition bg-white">
+          <div className="border border-gray-300 rounded focus-within:border-blue-600 transition bg-white">
             <textarea
               id="domainInput"
-              rows={7}
+              rows={6}
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               placeholder={`Enter URLs or domains (one per line, up to 10):\ngoogle.com\nhttps://techcrunch.com/apps\nnytimes.com`}
-              className="w-full p-4 sm:p-5 text-base sm:text-lg font-mono text-gray-900 placeholder-gray-400 focus:outline-none resize-y"
+              className="w-full p-3.5 text-base font-mono text-gray-800 placeholder-gray-400 focus:outline-none resize-y"
             />
 
             {/* Inside Bottom Action Bar */}
-            <div className="flex flex-wrap items-center justify-between px-5 py-3.5 bg-gray-50 border-t border-gray-200 text-base text-gray-700 gap-4">
+            <div className="flex flex-wrap items-center justify-between px-3.5 py-2.5 bg-gray-50 border-t border-gray-200 text-sm text-gray-700 gap-3">
               
               {/* Counter & Checkboxes */}
-              <div className="flex flex-wrap items-center gap-6">
-                <span className="font-bold text-gray-900 text-base sm:text-lg">
-                  Total URLs: <span className="text-[#1D4ED8] font-black">{urlCount}</span> / 10
+              <div className="flex flex-wrap items-center gap-4">
+                <span className="font-bold text-gray-900 text-sm">
+                  Total URLs: <span className="text-[#1D4ED8] font-bold">{urlCount}</span> / 10
                 </span>
 
-                <label className="inline-flex items-center gap-2 cursor-pointer select-none">
+                <label className="inline-flex items-center gap-1.5 cursor-pointer select-none">
                   <input
                     type="checkbox"
                     checked={excludeDomain}
                     onChange={(e) => setExcludeDomain(e.target.checked)}
-                    className="w-4 h-4 rounded border-gray-300 text-[#1D4ED8] focus:ring-[#1D4ED8]"
+                    className="rounded border-gray-300 text-[#1D4ED8] focus:ring-[#1D4ED8]"
                   />
-                  <span className="font-medium text-base">Exclude Same Domain</span>
+                  <span>Exclude Same Domain</span>
                 </label>
 
-                <label className="hidden sm:inline-flex items-center gap-2 cursor-pointer select-none">
+                <label className="hidden sm:inline-flex items-center gap-1.5 cursor-pointer select-none">
                   <input
                     type="checkbox"
                     checked={excludeUrl}
                     onChange={(e) => setExcludeUrl(e.target.checked)}
-                    className="w-4 h-4 rounded border-gray-300 text-[#1D4ED8] focus:ring-[#1D4ED8]"
+                    className="rounded border-gray-300 text-[#1D4ED8] focus:ring-[#1D4ED8]"
                   />
-                  <span className="font-medium text-base">Exclude Same URL</span>
+                  <span>Exclude Same URL</span>
                 </label>
               </div>
 
               {/* Quick Action Links */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
                 <button
                   type="button"
                   onClick={handleLoadSample}
-                  className="px-4 py-2 text-base font-bold text-gray-700 hover:bg-gray-200 border border-gray-300 rounded bg-white transition shadow-sm"
+                  className="px-2.5 py-1 text-xs font-bold text-gray-700 hover:bg-gray-200 border border-gray-300 rounded bg-white transition"
                 >
                   Sample Data
                 </button>
                 <button
                   type="button"
                   onClick={handleClear}
-                  className="px-4 py-2 text-base font-bold text-red-700 hover:bg-red-50 border border-gray-300 rounded bg-white transition shadow-sm"
+                  className="px-2.5 py-1 text-xs font-bold text-red-700 hover:bg-red-50 border border-gray-300 rounded bg-white transition"
                 >
                   Clear
                 </button>
@@ -181,27 +181,27 @@ export default function CheckerTool() {
 
           {/* Error Message */}
           {errorMessage && (
-            <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-md text-base text-red-700 font-bold">
+            <div className="mt-3 p-3 bg-red-50 border border-red-200 rounded text-sm text-red-700 font-medium">
               {errorMessage}
             </div>
           )}
 
-          {/* Solid Primary Action Button */}
-          <div className="mt-6 text-center">
+          {/* Solid Primary Action Button (Clean, crisp, authentic) */}
+          <div className="mt-4 text-center">
             <button
               type="button"
               id="checkBtn"
               disabled={loading}
               onClick={handleCheck}
-              className="px-12 py-4 bg-[#1D4ED8] hover:bg-[#1E40AF] disabled:opacity-50 text-white font-black text-xl rounded-lg shadow-md transition inline-flex items-center justify-center gap-3 min-w-[240px]"
+              className="px-8 py-3 bg-[#1D4ED8] hover:bg-[#1E40AF] disabled:opacity-50 text-white font-bold text-base rounded shadow transition inline-flex items-center justify-center gap-2 min-w-[180px]"
             >
               {loading ? (
                 <>
-                  <svg className="w-6 h-6 animate-spin" fill="none" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                   </svg>
-                  <span>Analyzing Domains...</span>
+                  <span>Checking...</span>
                 </>
               ) : (
                 <span>Check DA PA</span>
