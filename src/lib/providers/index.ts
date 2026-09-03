@@ -12,21 +12,21 @@ export interface IMetricsProvider {
 }
 
 export class MetricsProviderFactory {
-  private static providers: Map<MetricProviderType, IMetricsProvider> = new Map([
-    ['mock', new MockProvider()],
-    ['openpagerank', new OpenPageRankProvider()],
-    ['moz', new MozProvider()],
-  ]);
+  private static providers: Record<string, IMetricsProvider> = {
+    mock: new MockProvider(),
+    openpagerank: new OpenPageRankProvider(),
+    moz: new MozProvider(),
+  };
 
   public static getProvider(type?: string): IMetricsProvider {
-    const selected = (type || process.env.METRICS_PROVIDER || 'mock').toLowerCase() as MetricProviderType;
-    const provider = this.providers.get(selected);
+    const selected = (type || process.env.METRICS_PROVIDER || 'mock').toLowerCase();
+    const provider = this.providers[selected];
 
     if (provider && provider.isConfigured()) {
       return provider;
     }
 
     // Fallback gracefully to mock provider if configured provider lacks API keys
-    return this.providers.get('mock')!;
+    return this.providers['mock'];
   }
 }
