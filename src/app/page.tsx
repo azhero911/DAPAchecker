@@ -6,14 +6,14 @@ import FaqAccordion from '@/components/FaqAccordion';
 
 export default function HomePage() {
   return (
-    <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="w-full max-w-[1550px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
       
-      {/* Page Heading (Clean, crisp, 1600px width matching authentic design) */}
+      {/* Page Heading (Exact 34px 700-weight on laptop, responsive on mobile, 1550px container) */}
       <div className="text-center mb-8">
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+        <h1 className="text-2xl sm:text-[34px] font-bold text-gray-900 mb-2.5 leading-tight">
           Bulk DA PA Checker (Free up to 10 URLs)
         </h1>
-        <p className="text-base text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-[16px] text-gray-600 max-w-3xl mx-auto leading-relaxed">
           Analyze Moz Domain Authority (DA), Page Authority (PA), Spam Score, and Domain Age in bulk without registration or CAPTCHAs.
         </p>
       </div>

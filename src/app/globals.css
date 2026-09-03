@@ -16,10 +16,10 @@ html, body {
   -webkit-text-size-adjust: 100%;
 }
 
-/* Widescreen Desktop Container (1600px) */
+/* Widescreen Desktop Container (1550px) */
 .widescreen-container {
   width: 100%;
-  max-width: 1600px;
+  max-width: 1550px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;

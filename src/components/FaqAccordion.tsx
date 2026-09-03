@@ -63,16 +63,16 @@ export default function FaqAccordion() {
   };
 
   return (
-    <div id="faq" className="bg-white border border-gray-300 rounded-md p-6 shadow-sm mb-12">
+    <div id="faq" className="bg-white border border-gray-300 rounded-md p-6 sm:p-7 shadow-sm mb-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <h2 className="text-lg font-bold text-gray-900 mb-2 border-b border-gray-200 pb-2">
+      <h2 className="text-xl font-bold text-gray-900 mb-3 border-b border-gray-200 pb-2.5">
         Frequently Asked Questions
       </h2>
-      <p className="text-xs text-gray-600 mb-6">
+      <p className="text-[16px] text-gray-600 mb-6">
         Common questions about Domain Authority, Page Authority, Spam Score, and our checking tool.
       </p>
 
@@ -81,20 +81,20 @@ export default function FaqAccordion() {
           const isOpen = openIndex === idx;
 
           return (
-            <div key={item.question} className="py-3.5">
+            <div key={item.question} className="py-4">
               <button
                 type="button"
                 onClick={() => toggle(idx)}
-                className="w-full flex items-center justify-between text-left text-sm font-bold text-gray-900 hover:text-blue-700 transition"
+                className="w-full flex items-center justify-between text-left text-[16px] font-bold text-gray-900 hover:text-blue-700 transition"
               >
                 <span>{item.question}</span>
-                <span className="text-lg text-gray-500 ml-2 font-mono">
+                <span className="text-xl text-gray-500 ml-2 font-mono">
                   {isOpen ? '−' : '+'}
                 </span>
               </button>
 
               {isOpen && (
-                <div className="mt-2 text-xs text-gray-600 leading-relaxed pr-4">
+                <div className="mt-2.5 text-[16px] text-gray-700 leading-relaxed pr-4">
                   {item.answer}
                 </div>
               )}
