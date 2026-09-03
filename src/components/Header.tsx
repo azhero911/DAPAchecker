@@ -3,10 +3,11 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 export default function Header() {
   const router = useRouter();
+  const pathname = usePathname();
   const [currentUser, setCurrentUser] = useState<{ role: string; name: string; email: string } | null>(null);
 
   const loadUser = () => {
@@ -62,19 +63,54 @@ export default function Header() {
 
         {/* Navigation Links */}
         <nav className="hidden lg:flex items-center space-x-8 text-base font-semibold text-gray-700">
-          <Link href="/" className="text-[#1D4ED8] font-bold border-b-2 border-[#1D4ED8] pb-6 pt-6">
+          <Link
+            href="/"
+            className={`pb-6 pt-6 border-b-2 transition ${
+              pathname === '/'
+                ? 'text-[#1D4ED8] font-bold border-[#1D4ED8]'
+                : 'text-gray-700 hover:text-gray-900 border-transparent'
+            }`}
+          >
             DA PA Checker
           </Link>
-          <Link href="/methodology" className="hover:text-gray-900 pb-6 pt-6 border-b-2 border-transparent transition">
+          <Link
+            href="/methodology"
+            className={`pb-6 pt-6 border-b-2 transition ${
+              pathname === '/methodology'
+                ? 'text-[#1D4ED8] font-bold border-[#1D4ED8]'
+                : 'text-gray-700 hover:text-gray-900 border-transparent'
+            }`}
+          >
             Methodology
           </Link>
-          <Link href="/about" className="hover:text-gray-900 pb-6 pt-6 border-b-2 border-transparent transition">
+          <Link
+            href="/about"
+            className={`pb-6 pt-6 border-b-2 transition ${
+              pathname === '/about'
+                ? 'text-[#1D4ED8] font-bold border-[#1D4ED8]'
+                : 'text-gray-700 hover:text-gray-900 border-transparent'
+            }`}
+          >
             About Us
           </Link>
-          <Link href="/contact" className="hover:text-gray-900 pb-6 pt-6 border-b-2 border-transparent transition">
+          <Link
+            href="/contact"
+            className={`pb-6 pt-6 border-b-2 transition ${
+              pathname === '/contact'
+                ? 'text-[#1D4ED8] font-bold border-[#1D4ED8]'
+                : 'text-gray-700 hover:text-gray-900 border-transparent'
+            }`}
+          >
             Contact
           </Link>
-          <Link href="/affiliate-disclosure" className="hover:text-gray-900 pb-6 pt-6 border-b-2 border-transparent transition">
+          <Link
+            href="/affiliate-disclosure"
+            className={`pb-6 pt-6 border-b-2 transition ${
+              pathname === '/affiliate-disclosure'
+                ? 'text-[#1D4ED8] font-bold border-[#1D4ED8]'
+                : 'text-gray-700 hover:text-gray-900 border-transparent'
+            }`}
+          >
             Affiliate Notice
           </Link>
         </nav>
