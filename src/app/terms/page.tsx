@@ -8,30 +8,30 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12 text-gray-800">
+    <div className="w-full max-w-[1700px] mx-auto px-4 sm:px-8 py-12 text-gray-800">
       
-      <div className="bg-white border border-gray-300 rounded-md p-6 sm:p-8 shadow-sm">
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 border-b border-gray-200 pb-3">
+      <div className="bg-white border-2 border-gray-300 rounded-xl p-8 sm:p-12 shadow-sm">
+        <h1 className="text-3xl sm:text-4xl font-black text-gray-900 mb-2 border-b border-gray-200 pb-4">
           Terms of Service
         </h1>
-        <p className="text-xs text-gray-500 mb-6">Last Updated: September 2026</p>
+        <p className="text-sm text-gray-500 mb-8">Last Updated: September 2026</p>
 
-        <div className="space-y-4 text-sm leading-relaxed text-gray-700">
+        <div className="space-y-6 text-base sm:text-lg leading-relaxed text-gray-700">
           <p>
             By accessing and using <strong>DAPA Metrics</strong>, you accept and agree to be bound by the terms and provisions of this agreement.
           </p>
 
-          <h2 className="text-lg font-bold text-gray-900 pt-2">1. Use License & Acceptable Use</h2>
+          <h2 className="text-2xl sm:text-3xl font-black text-gray-900 pt-4">1. Use License & Acceptable Use</h2>
           <p>
             Permission is granted to use DAPA Metrics for personal, educational, or commercial search engine optimization auditing. However, you may not:
           </p>
-          <ul className="list-disc list-inside space-y-1 pl-2">
+          <ul className="list-disc list-inside space-y-2.5 pl-2">
             <li>Attempt to bypass rate limits or compromise server infrastructure through automated denial-of-service (DoS) attacks.</li>
             <li>Submit malicious private IP addresses, loopback addresses, or SSRF attack payloads.</li>
             <li>Resell or redistribute raw programmatic scraping access to our endpoints without prior written agreement.</li>
           </ul>
 
-          <h2 className="text-lg font-bold text-gray-900 pt-2">2. Disclaimer of Warranties</h2>
+          <h2 className="text-2xl sm:text-3xl font-black text-gray-900 pt-4">2. Disclaimer of Warranties</h2>
           <p>
             The materials and metrics on DAPA Metrics are provided on an &apos;as is&apos; basis. DAPA Metrics makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property.
           </p>
@@ -39,16 +39,12 @@ export default function TermsPage() {
             Domain Authority, Page Authority, and Spam Score are proprietary estimates developed by third parties (Moz, Inc.). These metrics are algorithmic simulations and do not guarantee search rankings in Google or any other search engine.
           </p>
 
-          <h2 className="text-lg font-bold text-gray-900 pt-2">3. Limitations of Liability</h2>
+          <h2 className="text-2xl sm:text-3xl font-black text-gray-900 pt-4">3. Trademark Notice</h2>
           <p>
-            In no event shall DAPA Metrics or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the metrics provided on this website.
-          </p>
-
-          <h2 className="text-lg font-bold text-gray-900 pt-2">4. Trademark Attribution</h2>
-          <p>
-            Domain Authority (DA) and Page Authority (PA) are trademarks of Moz, Inc. Ahrefs and Domain Rating (DR) are trademarks of Ahrefs Pte. Ltd. DAPA Metrics is an independent software tool and is not affiliated, endorsed, or sponsored by Moz or Ahrefs.
+            Domain Authority, Page Authority, MozRank, and MozTrust are trademarks of Moz, Inc. DAPA Metrics is an independent analytics platform and is not officially affiliated with, endorsed by, or sponsored by Moz.
           </p>
         </div>
+
       </div>
 
     </div>

@@ -42,19 +42,19 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-12 text-gray-800">
+    <div className="w-full max-w-[1700px] mx-auto px-4 sm:px-8 py-12 text-gray-800">
       
-      <div className="bg-white border border-gray-300 rounded-md p-6 sm:p-8 shadow-sm">
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 border-b border-gray-200 pb-3">
+      <div className="bg-white border-2 border-gray-300 rounded-xl p-8 sm:p-12 shadow-sm max-w-4xl mx-auto">
+        <h1 className="text-3xl sm:text-4xl font-black text-gray-900 mb-3 border-b border-gray-200 pb-4">
           Contact DAPA Metrics
         </h1>
-        <p className="text-sm text-gray-600 mb-6">
+        <p className="text-base sm:text-lg text-gray-600 mb-8">
           Have feedback, discovered a bug, or need agency bulk API access? Send us a message below. Our technical team responds within 48 business hours.
         </p>
 
         {status && (
           <div
-            className={`p-4 rounded text-xs font-semibold mb-6 border ${
+            className={`p-5 rounded-lg text-base font-bold mb-8 border ${
               status.success
                 ? 'bg-green-50 text-green-800 border-green-200'
                 : 'bg-red-50 text-red-800 border-red-200'
@@ -64,9 +64,9 @@ export default function ContactPage() {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4 text-sm">
+        <form onSubmit={handleSubmit} className="space-y-6 text-base">
           <div>
-            <label htmlFor="name" className="block font-bold text-gray-700 mb-1">
+            <label htmlFor="name" className="block font-bold text-gray-700 mb-2">
               Your Name *
             </label>
             <input
@@ -75,13 +75,13 @@ export default function ContactPage() {
               required
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full p-2.5 border border-gray-300 rounded focus:border-blue-600 focus:outline-none"
+              className="w-full p-3.5 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none text-base"
               placeholder="e.g. Sarah Jenkins"
             />
           </div>
 
           <div>
-            <label htmlFor="email" className="block font-bold text-gray-700 mb-1">
+            <label htmlFor="email" className="block font-bold text-gray-700 mb-2">
               Email Address *
             </label>
             <input
@@ -90,20 +90,20 @@ export default function ContactPage() {
               required
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="w-full p-2.5 border border-gray-300 rounded focus:border-blue-600 focus:outline-none"
+              className="w-full p-3.5 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none text-base"
               placeholder="name@company.com"
             />
           </div>
 
           <div>
-            <label htmlFor="subject" className="block font-bold text-gray-700 mb-1">
+            <label htmlFor="subject" className="block font-bold text-gray-700 mb-2">
               Inquiry Subject
             </label>
             <select
               id="subject"
               value={formData.subject}
               onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-              className="w-full p-2.5 border border-gray-300 rounded focus:border-blue-600 focus:outline-none bg-white"
+              className="w-full p-3.5 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none bg-white text-base"
             >
               <option value="General Inquiry">General Inquiry</option>
               <option value="Bug Report / Tool Issue">Bug Report / Tool Issue</option>
@@ -113,16 +113,16 @@ export default function ContactPage() {
           </div>
 
           <div>
-            <label htmlFor="message" className="block font-bold text-gray-700 mb-1">
+            <label htmlFor="message" className="block font-bold text-gray-700 mb-2">
               Message *
             </label>
             <textarea
               id="message"
               required
-              rows={5}
+              rows={6}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className="w-full p-2.5 border border-gray-300 rounded focus:border-blue-600 focus:outline-none"
+              className="w-full p-3.5 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none text-base"
               placeholder="How can we assist you today?"
             />
           </div>
@@ -130,14 +130,14 @@ export default function ContactPage() {
           <button
             type="submit"
             disabled={loading}
-            className="px-6 py-2.5 bg-[#1D4ED8] hover:bg-[#1E40AF] disabled:opacity-50 text-white font-bold rounded shadow transition text-sm"
+            className="px-8 py-3.5 bg-[#1D4ED8] hover:bg-[#1E40AF] disabled:opacity-50 text-white font-bold rounded-lg shadow transition text-base"
           >
             {loading ? 'Sending...' : 'Send Message'}
           </button>
         </form>
 
-        <div className="mt-8 pt-6 border-t border-gray-200 text-xs text-gray-500">
-          Direct Inquiries: <span className="font-mono text-gray-700">support@dapametrics.com</span>
+        <div className="mt-10 pt-6 border-t border-gray-200 text-sm text-gray-500">
+          Direct Inquiries: <span className="font-mono font-bold text-gray-800">support@dapametrics.com</span>
         </div>
       </div>
 

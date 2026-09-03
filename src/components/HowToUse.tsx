@@ -25,22 +25,22 @@ export default function HowToUse() {
   ];
 
   return (
-    <div className="bg-white border border-gray-300 rounded-md p-6 shadow-sm mb-8">
-      <h2 className="text-lg font-bold text-gray-900 mb-2 border-b border-gray-200 pb-2">
+    <div className="bg-white border-2 border-gray-300 rounded-xl p-8 sm:p-10 shadow-sm mb-12">
+      <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-3 border-b border-gray-200 pb-3">
         How to Use the Bulk DA PA Checker?
       </h2>
-      <p className="text-xs text-gray-600 mb-6 leading-relaxed">
+      <p className="text-base sm:text-lg text-gray-600 mb-8 leading-relaxed">
         Our free online authority checker lets digital marketers and webmasters evaluate multiple domains in 4 simple steps:
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-base">
         {steps.map((step) => (
-          <div key={step.number} className="p-3.5 bg-gray-50 border border-gray-200 rounded">
-            <span className="inline-flex items-center justify-center w-6 h-6 rounded bg-[#1D4ED8] text-white font-bold text-xs mb-2">
+          <div key={step.number} className="p-6 bg-gray-50 border border-gray-200 rounded-xl hover:border-blue-300 transition">
+            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#1D4ED8] text-white font-black text-base mb-3 shadow-sm">
               {step.number}
             </span>
-            <h3 className="font-bold text-gray-900 text-sm mb-1">{step.title}</h3>
-            <p className="text-gray-600 leading-relaxed">{step.desc}</p>
+            <h3 className="font-bold text-gray-900 text-lg mb-2">{step.title}</h3>
+            <p className="text-gray-600 leading-relaxed text-base">{step.desc}</p>
           </div>
         ))}
       </div>
