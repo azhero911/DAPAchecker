@@ -9,7 +9,7 @@ interface ResultsTableProps {
   loading?: boolean;
 }
 
-// High-authority demo examples shown before user submits URLs
+// Demo examples shown before user submits URLs
 const PREVIEW_DATA: DomainMetricResult[] = [
   {
     domain: 'google.com',
@@ -18,8 +18,8 @@ const PREVIEW_DATA: DomainMetricResult[] = [
     moz: { domainAuthority: 98, pageAuthority: 95, spamScore: 1 },
     openPageRank: { pageRankDecimal: 10.0, rank: 1 },
     domainAge: { years: 26, months: 6, formatted: '26 Yrs, 6 Mos' },
-    provider: 'openpagerank',
-    freshness: { checkedAt: new Date().toISOString(), expiresAt: '', isCached: true, cachedAgoHuman: 'Live Index' },
+    provider: 'sample',
+    freshness: { checkedAt: new Date().toISOString(), expiresAt: '', isCached: true, cachedAgoHuman: 'Sample' },
   },
   {
     domain: 'wikipedia.org',
@@ -28,8 +28,8 @@ const PREVIEW_DATA: DomainMetricResult[] = [
     moz: { domainAuthority: 97, pageAuthority: 94, spamScore: 1 },
     openPageRank: { pageRankDecimal: 9.8, rank: 7 },
     domainAge: { years: 23, months: 8, formatted: '23 Yrs, 8 Mos' },
-    provider: 'openpagerank',
-    freshness: { checkedAt: new Date().toISOString(), expiresAt: '', isCached: true, cachedAgoHuman: 'Live Index' },
+    provider: 'sample',
+    freshness: { checkedAt: new Date().toISOString(), expiresAt: '', isCached: true, cachedAgoHuman: 'Sample' },
   },
   {
     domain: 'techcrunch.com',
@@ -38,8 +38,8 @@ const PREVIEW_DATA: DomainMetricResult[] = [
     moz: { domainAuthority: 92, pageAuthority: 80, spamScore: 2 },
     openPageRank: { pageRankDecimal: 8.1, rank: 184 },
     domainAge: { years: 19, months: 3, formatted: '19 Yrs, 3 Mos' },
-    provider: 'openpagerank',
-    freshness: { checkedAt: new Date().toISOString(), expiresAt: '', isCached: true, cachedAgoHuman: 'Live Index' },
+    provider: 'sample',
+    freshness: { checkedAt: new Date().toISOString(), expiresAt: '', isCached: true, cachedAgoHuman: 'Sample' },
   },
 ];
 
@@ -173,12 +173,14 @@ export default function ResultsTable({ results, loading }: ResultsTableProps) {
       {/* Top Action Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-gray-200 gap-3">
         <div>
-          <h2 className="text-base font-bold text-gray-900 flex items-center gap-2">
+          <h2 className="text-base font-bold text-gray-900 flex flex-wrap items-center gap-2">
             {isPreview ? (
               <>
-                <span>Example Output Preview</span>
-                <span className="text-xs font-semibold px-2 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200">
-                  Sample Data · Run Check Above
+                <span className="text-red-700 bg-red-50 border border-red-200 px-2 py-0.5 rounded text-xs font-black uppercase tracking-wide">
+                  DEMO PREVIEW RESULTS — NOT LIVE CHECKS
+                </span>
+                <span className="text-xs font-medium text-gray-500">
+                  Sample Data · Enter URLs Above for Live Results
                 </span>
               </>
             ) : (
@@ -216,7 +218,7 @@ export default function ResultsTable({ results, loading }: ResultsTableProps) {
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
-            Download Excel / CSV
+            Download CSV Report
           </button>
         </div>
       </div>
@@ -287,7 +289,7 @@ export default function ResultsTable({ results, loading }: ResultsTableProps) {
 
               const daColor = da >= 60 ? 'text-green-700 font-bold' : da >= 30 ? 'text-blue-700 font-bold' : 'text-gray-700 font-bold';
               const ssColor = ss >= 60 ? 'text-red-600 font-bold' : ss >= 30 ? 'text-amber-600 font-bold' : 'text-green-700 font-bold';
-              const ssRiskLabel = ss >= 60 ? 'High Risk' : ss >= 30 ? 'Moderate' : 'Safe';
+              const ssRiskLabel = ss >= 60 ? 'High' : ss >= 30 ? 'Medium' : 'Low';
               const isSelected = selectedDomains.has(item.domain);
 
               return (
@@ -336,7 +338,11 @@ export default function ResultsTable({ results, loading }: ResultsTableProps) {
                     {item.openPageRank?.pageRankDecimal?.toFixed(1) || '0.1'} / 10
                   </td>
                   <td className="py-2.5 px-3 text-center text-xs">
-                    {item.provider === 'openpagerank' ? (
+                    {isPreview ? (
+                      <span className="text-amber-800 font-semibold bg-amber-50 px-2 py-0.5 rounded border border-amber-200 inline-block">
+                        Sample Preview
+                      </span>
+                    ) : item.provider === 'openpagerank' ? (
                       <span className="text-green-700 font-bold bg-green-50 px-2 py-0.5 rounded border border-green-200 inline-block">
                         ⚡ Live OPR
                       </span>
@@ -345,8 +351,8 @@ export default function ResultsTable({ results, loading }: ResultsTableProps) {
                         ⚡ Live Moz
                       </span>
                     ) : (
-                      <span className="text-amber-700 font-medium bg-amber-50 px-2 py-0.5 rounded border border-amber-200 inline-block" title="Offline preview demo">
-                        Demo Mode
+                      <span className="text-gray-700 font-medium bg-gray-50 px-2 py-0.5 rounded border border-gray-200 inline-block">
+                        Cached
                       </span>
                     )}
                   </td>

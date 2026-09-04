@@ -12,32 +12,32 @@ const FAQ_DATA: FaqItem[] = [
   {
     question: 'What is a good Domain Authority (DA) score?',
     answer:
-      'A good DA score depends on your competitive niche. For new or local websites, a DA between 20 and 35 is considered healthy. For competitive e-commerce or national publications, a DA of 50 to 70+ is typical. Established authority leaders like Wikipedia, Google, and The New York Times have scores between 90 and 100.',
+      'A good DA score is entirely relative to your specific niche and competitors. For newly launched or local service websites, a DA between 15 and 30 is typical. For competitive industries, a DA of 45 to 65 is common, while global publications like Wikipedia or major news outlets score above 85. DA operates on a 1–100 logarithmic scale, meaning score increases become progressively more difficult at higher levels.',
   },
   {
     question: 'How often does Moz update Domain Authority?',
     answer:
-      'Moz recalculates and updates its global link index approximately once every 30 to 45 days. Because DA is a relative metric comparing your website against the entire web crawl graph, your score can fluctuate slightly during index updates even if your own backlink profile stayed constant.',
+      'Moz recalculates and updates its global link index approximately once every 30 to 45 days. Because DA is a relative metric comparing your website against the entire web crawl graph, your score can adjust slightly during index updates even if your own backlink profile stayed constant.',
   },
   {
-    question: 'What is an acceptable Spam Score on Moz?',
+    question: 'What is the Moz Spam Score and what does it mean?',
     answer:
-      'A Moz Spam Score between 1% and 30% is considered low risk and completely normal for healthy sites. Scores between 31% and 60% indicate moderate risk and warrant a backlink audit. A Spam Score above 61% indicates severe toxicity or potential manual penalties from Google.',
+      'Moz Spam Score is a third-party diagnostic metric developed by Moz that measures how closely a site\'s characteristics resemble those of sites Moz has identified as spam-like. It is not an official Google penalty score or a direct probability of receiving a Google penalty. Moz groups scores into Low (1–30%), Medium (31–60%), and High (61–100%) to help webmasters prioritize backlink audits.',
   },
   {
     question: 'How does DAPA Metrics differ from other free tools?',
     answer:
-      'DAPA Metrics delivers clean, multi-metric intelligence (Moz DA, PA, Spam Score, Domain Age, and Open PageRank) in a single fast check without CAPTCHAs, forced email sign-ups, or invasive ads. You can also export your complete batch to Excel or CSV in one click.',
+      'DAPA Metrics delivers clean, multi-metric intelligence (Moz DA, PA, Spam Score, Domain Age, and Open PageRank) in a single fast check without CAPTCHAs, forced email sign-ups, or invasive ads. You can also download your complete batch as a clean CSV report in one click.',
   },
   {
     question: 'Does Google use Domain Authority as a direct ranking factor?',
     answer:
-      'No. Google representatives have confirmed that Google does not use third-party metrics like Moz DA or Ahrefs DR in its core ranking algorithms. However, DA highly correlates with search performance because it accurately models backlink quality and root domain authority.',
+      'No. Google representatives have consistently confirmed that Google does not use third-party metrics like Moz DA in its core ranking algorithms. However, DA serves as a helpful comparative benchmark for webmasters because it models backlink quality and root domain authority across the web.',
   },
   {
     question: 'Why did my Domain Authority drop suddenly?',
     answer:
-      'The most common reasons for a DA drop include: 1) Moz updated its 30-day index with newer web data, 2) your website lost several high-authority referring domains, 3) your competitors earned more links faster, or 4) toxic spam links were detected pointing to your domain.',
+      'The most common reasons for a DA change include: 1) Moz updated its global index with newer comparative data, 2) your website lost referring domains through natural link rot, 3) competitors in your industry acquired new authority links at a faster rate, or 4) previously linking domains were re-evaluated in Moz\'s index. A DA change does not indicate a Google penalty.',
   },
 ];
 
@@ -85,6 +85,8 @@ export default function FaqAccordion() {
               <button
                 type="button"
                 onClick={() => toggle(idx)}
+                aria-expanded={isOpen}
+                aria-controls={`faq-answer-${idx}`}
                 className="w-full flex items-center justify-between text-left text-[16px] font-bold text-gray-900 hover:text-blue-700 transition"
               >
                 <span>{item.question}</span>
@@ -93,11 +95,15 @@ export default function FaqAccordion() {
                 </span>
               </button>
 
-              {isOpen && (
-                <div className="mt-2.5 text-[16px] text-gray-700 leading-relaxed pr-4">
-                  {item.answer}
-                </div>
-              )}
+              {/* Keep in DOM for search crawlers while toggling visibility */}
+              <div
+                id={`faq-answer-${idx}`}
+                className={`mt-2.5 text-[16px] text-gray-700 leading-relaxed pr-4 transition-all ${
+                  isOpen ? 'block' : 'hidden'
+                }`}
+              >
+                {item.answer}
+              </div>
             </div>
           );
         })}

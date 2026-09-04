@@ -11,6 +11,10 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+export function getCategorySlug(category: string): string {
+  return category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
 export async function generateStaticParams() {
   return BLOG_POSTS.map((post) => ({
     slug: post.slug,
@@ -49,6 +53,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: postUrl,
       type: 'article',
       publishedTime: post.publishedAt,
+      modifiedTime: post.updatedAt || post.publishedAt,
       authors: [post.author.name],
     },
     twitter: {
@@ -67,13 +72,15 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
+  const categorySlug = getCategorySlug(post.category);
+
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.excerpt,
     datePublished: post.publishedAt,
-    dateModified: post.publishedAt,
+    dateModified: post.updatedAt || post.publishedAt,
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': `${SITE_URL}/blog/${post.slug}`,
@@ -82,7 +89,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       '@type': 'Person',
       name: post.author.name,
       jobTitle: post.author.role,
-      url: `${SITE_URL}/about`,
+      url: `${SITE_URL}/blog/author/author`,
     },
     publisher: {
       '@type': 'Organization',
@@ -95,8 +102,9 @@ export default async function BlogPostPage({ params }: PageProps) {
     },
   };
 
-  // Convert markdown links [text](url) into clickable React nodes
+  // Convert markdown links [text](url) and bold text into clickable React nodes
   const renderInlineText = (text: string) => {
+    // Process markdown links [text](url)
     const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
     const parts: (string | React.ReactNode)[] = [];
     let lastIndex = 0;
@@ -150,6 +158,48 @@ export default async function BlogPostPage({ params }: PageProps) {
         if (trimmed.startsWith('---')) {
           return <hr key={i} className="my-8 border-gray-200" />;
         }
+        if (trimmed.startsWith('|')) {
+          const tableRows = trimmed.split('\n').filter((row) => row.trim().startsWith('|'));
+          if (tableRows.length >= 2) {
+            const parseRow = (row: string) =>
+              row
+                .split('|')
+                .slice(1, -1)
+                .map((cell) => cell.trim().replace(/\*\*(.*?)\*\*/g, '$1'));
+            const headerCells = parseRow(tableRows[0]);
+            const dataRows = tableRows.slice(2);
+
+            return (
+              <div key={i} className="my-6 overflow-x-auto">
+                <table className="w-full text-left text-sm border border-gray-200 rounded-lg overflow-hidden border-collapse">
+                  <thead className="bg-gray-100 text-gray-900 font-bold">
+                    <tr>
+                      {headerCells.map((cell, cIdx) => (
+                        <th key={cIdx} className="py-2.5 px-4 border-b border-gray-200">
+                          {renderInlineText(cell)}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100 bg-white">
+                    {dataRows.map((row, rIdx) => {
+                      const cells = parseRow(row);
+                      return (
+                        <tr key={rIdx} className="hover:bg-gray-50/50">
+                          {cells.map((c, cIdx) => (
+                            <td key={cIdx} className="py-2.5 px-4 text-gray-700">
+                              {renderInlineText(c)}
+                            </td>
+                          ))}
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            );
+          }
+        }
         if (trimmed.startsWith('- ') || trimmed.startsWith('1. ')) {
           const items = trimmed.split('\n');
           return (
@@ -196,6 +246,10 @@ export default async function BlogPostPage({ params }: PageProps) {
           <span>/</span>
           <Link href="/blog" className="hover:text-blue-600">Blog</Link>
           <span>/</span>
+          <Link href={`/blog/category/${categorySlug}`} className="hover:text-blue-600">
+            {post.category}
+          </Link>
+          <span>/</span>
           <span className="text-gray-800 font-medium truncate max-w-md">{post.title}</span>
         </nav>
 
@@ -206,12 +260,21 @@ export default async function BlogPostPage({ params }: PageProps) {
             
             {/* Header */}
             <div className="border-b border-gray-200 pb-6 mb-6">
-              <div className="flex items-center gap-3 text-xs text-gray-500 mb-3">
-                <span className="px-3 py-1 rounded bg-blue-50 text-[#1D4ED8] font-bold border border-blue-100">
+              <div className="flex flex-wrap items-center gap-3 text-xs text-gray-500 mb-3">
+                <Link
+                  href={`/blog/category/${categorySlug}`}
+                  className="px-3 py-1 rounded bg-blue-50 text-[#1D4ED8] font-bold border border-blue-100 hover:bg-blue-100 transition"
+                >
                   {post.category}
-                </span>
+                </Link>
                 <span>•</span>
                 <span>Published {new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                {post.updatedAt && (
+                  <>
+                    <span>•</span>
+                    <span className="text-green-700 font-semibold">Updated {new Date(post.updatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                  </>
+                )}
                 <span>•</span>
                 <span>{post.readTime}</span>
               </div>
@@ -230,8 +293,10 @@ export default async function BlogPostPage({ params }: PageProps) {
                   ✍
                 </div>
                 <div>
-                  <div className="font-bold text-gray-900 text-sm">{post.author.name}</div>
-                  <div className="text-xs text-gray-500">{post.author.role} · DAPA Metrics</div>
+                  <Link href="/blog/author/author" className="font-bold text-gray-900 text-sm hover:text-blue-700">
+                    {post.author.name}
+                  </Link>
+                  <div className="text-xs text-gray-500">{post.author.role} · DAPA Metrics Editorial Team</div>
                 </div>
               </div>
             </div>
@@ -241,19 +306,64 @@ export default async function BlogPostPage({ params }: PageProps) {
               {formatMarkdown(post.content)}
             </div>
 
+            {/* Structured Sources & References Box */}
+            {post.sources && post.sources.length > 0 && (
+              <div className="mt-10 p-6 bg-slate-50 border border-slate-200 rounded-xl">
+                <div className="flex items-center gap-2 mb-2">
+                  <svg className="w-5 h-5 text-[#1D4ED8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  <h3 className="text-base font-bold text-gray-900">Sources &amp; Authoritative References</h3>
+                </div>
+                <p className="text-xs text-gray-600 mb-4">
+                  The analysis and technical guidance in this guide are corroborated by official documentation and academic search literature:
+                </p>
+                <ul className="space-y-3">
+                  {post.sources.map((src, sIdx) => (
+                    <li key={sIdx} className="text-xs sm:text-sm text-gray-700 flex items-start gap-2">
+                      <span className="text-blue-600 font-bold mt-0.5">•</span>
+                      <div>
+                        <a
+                          href={src.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#1D4ED8] font-bold hover:underline inline-flex items-center gap-1"
+                        >
+                          {src.title} — {src.publisher}
+                          <svg className="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </a>
+                        {src.note && <p className="text-xs text-gray-500 mt-0.5">{src.note}</p>}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             {/* Author Bio Box */}
-            <div className="mt-12 p-6 bg-gray-50 border border-gray-200 rounded-xl flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <div className="mt-8 p-6 bg-gray-50 border border-gray-200 rounded-xl flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <div className="w-14 h-14 rounded-full bg-[#1D4ED8] text-white font-bold flex items-center justify-center text-xl flex-shrink-0">
                 ✍
               </div>
               <div>
-                <h3 className="font-bold text-gray-900 text-base">Written by {post.author.name}</h3>
+                <h3 className="font-bold text-gray-900 text-base">
+                  Written by{' '}
+                  <Link href="/blog/author/author" className="hover:text-blue-700 underline">
+                    {post.author.name}
+                  </Link>
+                </h3>
                 <p className="text-xs sm:text-sm text-gray-600 mt-1 leading-relaxed">
                   Senior technical SEO analyst and web engineer with the DAPA Metrics Editorial Team. DAPA Metrics was built to provide clean, fast, and accessible domain authority analysis without commercial paywalls or data scraping.
                 </p>
-                <div className="mt-2">
-                  <Link href="/about" className="text-xs font-bold text-[#1D4ED8] hover:underline">
-                    Read our editorial standards &amp; methodology →
+                <div className="mt-2 flex items-center gap-3">
+                  <Link href="/blog/author/author" className="text-xs font-bold text-[#1D4ED8] hover:underline">
+                    View Author Profile &amp; Guides →
+                  </Link>
+                  <span className="text-gray-300">•</span>
+                  <Link href="/about" className="text-xs font-bold text-gray-600 hover:underline">
+                    Editorial Standards
                   </Link>
                 </div>
               </div>
@@ -289,9 +399,12 @@ export default async function BlogPostPage({ params }: PageProps) {
               <div className="space-y-4">
                 {otherPosts.map((other) => (
                   <div key={other.slug} className="border-b border-gray-100 pb-3 last:border-b-0 last:pb-0">
-                    <span className="text-[10px] font-bold uppercase text-blue-600 tracking-wider block mb-1">
+                    <Link
+                      href={`/blog/category/${getCategorySlug(other.category)}`}
+                      className="text-[10px] font-bold uppercase text-blue-600 tracking-wider block mb-1 hover:underline"
+                    >
                       {other.category}
-                    </span>
+                    </Link>
                     <Link
                       href={`/blog/${other.slug}`}
                       className="text-sm font-bold text-gray-800 hover:text-blue-600 transition leading-snug line-clamp-2"

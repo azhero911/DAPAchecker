@@ -7,7 +7,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dapametrics.vercel
 export const metadata: Metadata = {
   title: 'About Us — Mission, Team & Engineering Standards | DAPA Metrics',
   description:
-    'Learn about the technical engineering standards, distributed edge architecture, and mission behind DAPA Metrics free SEO tools.',
+    'Learn about the technical engineering standards, data architecture, and mission behind DAPA Metrics free SEO tools.',
   keywords: [
     'about dapa metrics',
     'seo engineering team',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'About Us — DAPA Metrics Mission & Standards',
     description:
-      'Learn how DAPA Metrics provides fast, privacy-focused, paywall-free domain authority analysis using modern distributed edge infrastructure.',
+      'Learn how DAPA Metrics provides fast, privacy-focused, paywall-free domain authority analysis.',
     url: `${SITE_URL}/about`,
     type: 'website',
   },
@@ -62,7 +62,7 @@ export default function AboutPage() {
                 <span className="text-xs text-gray-500">📍 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UK</span>
               </div>
               <p className="text-sm text-gray-700 mt-2 leading-relaxed">
-                Full-stack engineers and digital marketing analysts with extensive experience designing high-throughput web applications and optimizing search engine architectures. DAPA Metrics was engineered using Next.js edge runtimes and distributed Redis caching to deliver sub-second domain authority lookups across the globe.
+                Full-stack engineers and digital marketing analysts with extensive experience designing high-throughput web applications and optimizing search engine architectures. DAPA Metrics was built using Next.js to deliver fast, reliable domain authority and link graph lookups for webmasters across the globe.
               </p>
               <div className="mt-3 flex items-center gap-4 text-xs font-bold text-[#1D4ED8]">
                 <Link href="/blog" className="hover:underline">
@@ -92,32 +92,32 @@ export default function AboutPage() {
             <li>Deliberately slowed processing times designed to upsell enterprise subscription tiers.</li>
           </ul>
           <p>
-            We built <strong>DAPA Metrics</strong> to counter this trend: a lightning-fast, desktop-grade utility where anyone can analyze up to 10 URLs in bulk simultaneously with zero registration, zero CAPTCHAs, and instant CSV/Excel export.
+            We built <strong>DAPA Metrics</strong> to counter this trend: a responsive, desktop-grade utility where anyone can analyze up to 10 URLs in bulk simultaneously with zero registration, zero CAPTCHAs, and instant CSV report export.
           </p>
 
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900 pt-3">
             Our Data &amp; Engineering Standards
           </h2>
           <p>
-            To guarantee that our metrics reflect actual search engine reality, our platform combines multiple independent link intelligence sources:
+            To provide webmasters with actionable insight, our platform brings together multi-metric link intelligence:
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
             <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
               <h3 className="font-bold text-gray-900 text-sm mb-1">Open PageRank Graph</h3>
               <p className="text-xs text-gray-600 leading-relaxed">
-                Calculated over the massive neutral Common Crawl dataset, providing an unmanipulated global web graph rank from 0 to 10.
+                Calculated over the public Common Crawl web dataset, providing an open, reproducible indicator of link graph centrality on a 0 to 10 scale.
               </p>
             </div>
             <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
-              <h3 className="font-bold text-gray-900 text-sm mb-1">Moz Machine Learning</h3>
+              <h3 className="font-bold text-gray-900 text-sm mb-1">Moz Authority Metrics</h3>
               <p className="text-xs text-gray-600 leading-relaxed">
-                Evaluates linking root domains and relative link equity on a logarithmic 1 to 100 scale, modeled to predict search ranking probability.
+                Proprietary Moz Domain Authority, Page Authority, and Spam Score metrics, retrieved via third-party SEO data providers to benchmark competitive ranking strength.
               </p>
             </div>
             <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
-              <h3 className="font-bold text-gray-900 text-sm mb-1">Multi-Tier Edge Cache</h3>
+              <h3 className="font-bold text-gray-900 text-sm mb-1">Responsive Cache Layer</h3>
               <p className="text-xs text-gray-600 leading-relaxed">
-                Redis-backed edge cache speeds up repeat queries to under 50ms while protecting upstream APIs from redundant quota consumption.
+                High-performance query caching optimizes repeat checks, reduces unnecessary network round-trips, and ensures dependable page speeds.
               </p>
             </div>
           </div>
@@ -151,7 +151,6 @@ export default function AboutPage() {
           </div>
 
         </div>
-
       </div>
 
     </div>

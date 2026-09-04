@@ -24,7 +24,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-gray-600 leading-relaxed max-w-lg mb-3 text-base">
-              Free online SEO authority engine for digital marketers, webmasters, and SEO agencies to check Moz Domain Authority, Page Authority, Spam Score, and Open PageRank metrics in bulk.
+              Free online SEO authority engine for digital marketers, webmasters, and SEO agencies to evaluate Moz Domain Authority, Page Authority, Spam Score, and Open PageRank metrics in bulk.
             </p>
             <p className="text-xs text-gray-500">
               Disclaimer: Domain Authority (DA) and Page Authority (PA) are registered trademarks of Moz, Inc. DAPA Metrics is an independent SEO utility platform.
@@ -47,7 +47,7 @@ export default function Footer() {
                 <Link href="/methodology" className="hover:text-blue-700 transition">Algorithm Methodology</Link>
               </li>
               <li>
-                <Link href="/#tool" className="hover:text-blue-700 transition">Free API Demo</Link>
+                <Link href="/blog/open-pagerank-vs-moz-da" className="hover:text-blue-700 transition">Open PageRank Guide</Link>
               </li>
             </ul>
           </div>
@@ -68,7 +68,7 @@ export default function Footer() {
                 <Link href="/affiliate-disclosure" className="hover:text-blue-700 transition">Affiliate Disclosure</Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-blue-700 transition">About Our Founder</Link>
+                <Link href="/about" className="hover:text-blue-700 transition">About Our Team</Link>
               </li>
               <li>
                 <Link href="/contact" className="hover:text-blue-700 transition">Contact &amp; Support</Link>
@@ -84,7 +84,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} DAPA Metrics. All rights reserved.
           </div>
           <div className="flex items-center space-x-4">
-            <span>Serverless Edge Architecture</span>
+            <span>Serverless Architecture</span>
             <span>•</span>
             <span>Zero Logging of Raw IPs</span>
           </div>

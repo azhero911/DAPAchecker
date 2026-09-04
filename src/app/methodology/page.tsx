@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dapametrics.vercel.app';
 
 export const metadata: Metadata = {
-  title: 'Metric Methodology — How DA, PA, and Spam Scores Are Calculated',
+  title: 'Metric Methodology — How DA, PA, and Spam Scores Are Evaluated',
   description:
     'Technical whitepaper explaining the mathematical models and graph algorithms behind Moz Domain Authority, Page Authority, Spam Score, and Open PageRank.',
   alternates: {
@@ -31,57 +31,60 @@ export default function MethodologyPage() {
       
       <div className="bg-white border border-gray-300 rounded-lg p-6 sm:p-10 shadow-sm">
         <h1 className="text-2xl sm:text-[34px] font-bold text-gray-900 mb-4 border-b border-gray-200 pb-3 leading-tight">
-          Algorithm & Scoring Methodology
+          Algorithm &amp; Scoring Methodology
         </h1>
 
         <div className="space-y-5 text-[16px] leading-relaxed text-gray-700">
           <p>
-            At DAPA Metrics, we believe webmasters and search marketers deserve complete clarity on how website metrics are calculated. Below is the technical breakdown of the algorithms utilized across our platform.
+            At DAPA Metrics, we believe webmasters and search marketers deserve complete clarity on how website metrics are calculated and interpreted. Below is the technical breakdown of the metrics and data providers utilized across our platform.
           </p>
 
           <h2 className="text-xl font-bold text-gray-900 pt-3">
             1. Moz Domain Authority (DA) Mathematical Model
           </h2>
           <p>
-            Domain Authority is not a single calculation; it is a <strong>machine learning algorithm</strong> trained to predict how often a website appears in Google SERPs across thousands of test search queries.
+            Domain Authority is a proprietary machine learning model developed by Moz. It predicts how likely a website is to rank in Google SERPs based on relative link equity across the web.
           </p>
           <ul className="list-disc list-inside space-y-2 pl-2">
             <li>
-              <strong>Input Factors</strong>: Evaluates over 40 distinct signals, including total referring domains, root domain link equity, link diversity, MozRank, and MozTrust.
+              <strong>Input Factors</strong>: Evaluates dozens of signals across Moz&apos;s link index, including total unique referring domains, root domain equity, link diversity, and link quality.
             </li>
             <li>
-              <strong>The Logarithmic Nature</strong>: Because DA uses a logarithmic scale (1 to 100), moving from DA 20 to DA 30 might require 20 high-quality root referring domains, whereas moving from DA 75 to DA 85 requires thousands of authoritative editorial links.
+              <strong>The Logarithmic Scale</strong>: DA operates on a 1–100 logarithmic scale, meaning increases at the higher end generally become significantly more difficult. However, there is no fixed formula or specific number of backlinks required to achieve a given DA score, as score calculations depend on relative comparative strength across Moz&apos;s global web index.
             </li>
             <li>
-              <strong>Relative Scaling</strong>: Your DA score is scaled against the entire global web index. If massive sites like Wikipedia or Amazon earn millions of new links faster than your site, your DA may adjust downward slightly during monthly recalculations.
+              <strong>Relative Scaling</strong>: Because DA is scaled against Moz&apos;s entire crawled web graph, a site&apos;s score may adjust during monthly index updates even if its own backlink profile remained constant, if broader comparative index distributions change.
+            </li>
+            <li>
+              <strong>Data Attribution</strong>: Moz&apos;s proprietary Domain Authority, Page Authority, and Spam Score metrics are retrieved via third-party SEO data providers.
             </li>
           </ul>
 
           <h2 className="text-xl font-bold text-gray-900 pt-3">
-            2. Moz Spam Score (SS) Algorithm
+            2. Moz Spam Score (SS) Diagnostic Model
           </h2>
           <p>
-            Moz Spam Score evaluates <strong>27 distinct correlation features</strong> identified among sites that Google has penalized or deindexed.
+            Moz Spam Score is a <strong>third-party diagnostic metric</strong> that measures how closely a website&apos;s link profile and on-page signals resemble characteristics commonly associated with websites Moz has identified as spam-like.
           </p>
           <p>
-            Key signals include: low text-to-HTML ratios, disproportionate external outbound links, lack of contact/about pages, thin content footprints, heavy reliance on non-standard TLDs, and unnatural exact-match anchor text distribution.
+            Key signals evaluated include: extreme ratios of links to text, disproportionate external outbound links, absence of verifiable contact information, thin content footprints, heavy reliance on non-standard TLDs, and unnatural exact-match anchor text distributions.
           </p>
           <p>
-            A Spam Score of 2% means that only 2% of sites with similar link features have been penalized by Google. A Spam Score of 70% indicates that 70% of sites sharing those patterns faced algorithmic or manual penalties.
+            Moz Spam Score is not an official Google penalty metric, nor does Google use it in search ranking. It serves as an investigative aid for webmasters conducting backlink audits.
           </p>
 
           <h2 className="text-xl font-bold text-gray-900 pt-3">
-            3. Open PageRank & Crawl Graph
+            3. Open PageRank &amp; Crawl Graph
           </h2>
           <p>
-            Open PageRank uses open web crawl archives (Common Crawl) to compute an open algorithmic PageRank score on a 0.0 to 10.0 scale. It serves as an independent benchmark of web-graph centrality without commercial bias.
+            Open PageRank calculates an open-source PageRank algorithm over the neutral <strong>Common Crawl</strong> dataset. Using standard eigenvector centrality on a 0.0 to 10.0 scale, Open PageRank offers an open, transparent indicator of link graph centrality across millions of crawled domains. Update frequency varies by data provider and crawl index releases.
           </p>
 
           <h2 className="text-xl font-bold text-gray-900 pt-3">
-            4. Data Freshness & Caching Architecture
+            4. Data Freshness &amp; Caching Architecture
           </h2>
           <p>
-            Because Moz updates its global index every 30 to 45 days, querying the same domain multiple times within a 24-hour period produces identical results. DAPA Metrics stores verified domain data in an encrypted cache for up to 7 days, guaranteeing sub-100ms response times while reducing unnecessary network bandwidth.
+            Because third-party authority indices update periodically (typically on 30-to-45-day crawl release cycles), querying the same domain multiple times within short intervals produces identical metric data. DAPA Metrics utilizes an in-memory cache layer to optimize repeat queries, reduce unnecessary network traffic, and ensure responsive page performance.
           </p>
         </div>
       </div>

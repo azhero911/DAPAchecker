@@ -12,14 +12,14 @@ export default function EducationalHub() {
         </h2>
         <div className="text-[16px] leading-relaxed space-y-3 text-gray-700">
           <p>
-            <strong>Domain Authority (DA)</strong> is a search engine ranking metric created by Moz that predicts how likely a website is to rank in Google search engine result pages (SERPs). Scores range on a logarithmic scale from 1 to 100, where higher numbers correspond to greater organic ranking power.
+            <strong>Domain Authority (DA)</strong> is a search engine ranking metric created by Moz that predicts how likely a website is to rank in Google search engine result pages (SERPs). Scores range on a logarithmic scale from 1 to 100, where higher numbers correspond to greater comparative ranking potential.
           </p>
           <p>
             <strong>Page Authority (PA)</strong> measures the predictive ranking ability of an individual web page rather than the whole root domain. While a brand&apos;s homepage may enjoy a DA of 60, a brand-new blog post or newly published landing page will initially start with a modest PA until it receives internal link equity and external backlinks.
           </p>
           <div className="p-4 bg-blue-50 border border-blue-200 rounded text-blue-950 text-[16px]">
             <span className="font-bold text-[#1D4ED8] block mb-1">The 1–100 Logarithmic Scale Reality:</span>
-            Growing your score from DA 15 to DA 25 requires roughly 20 to 30 quality referring domains. In contrast, climbing from DA 70 to DA 80 requires thousands of high-tier editorial backlinks from established publications.
+            DA uses a 1–100 logarithmic scale, and score increases at the higher end generally become significantly more difficult. However, there is no fixed number of backlinks or referring domains required to increase a site&apos;s DA, as score adjustments depend on the relative quality, diversity, and equity distribution of linking root domains across Moz&apos;s comparative web index.
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@ export default function EducationalHub() {
             <strong>No, Google does not use Domain Authority in its ranking algorithms.</strong> Google search representatives have repeatedly confirmed that Google assesses individual pages using PageRank and hundreds of proprietary ranking signals.
           </p>
           <p>
-            Domain Authority is an independent industry simulation. SEOs rely on DA because it heavily correlates with Google rankings. As a website earns genuine, authoritative editorial backlinks, both its Google visibility and its Moz DA naturally rise in tandem.
+            Domain Authority is an independent industry simulation. SEOs rely on DA because it correlates with search visibility. As a website earns genuine, authoritative editorial backlinks, both its organic search visibility and its Moz DA naturally rise in tandem.
           </p>
         </div>
       </div>
@@ -42,39 +42,39 @@ export default function EducationalHub() {
       {/* 3. Spam Score Risk Table */}
       <div className="bg-white border border-gray-300 rounded-md p-6 sm:p-7 shadow-sm">
         <h2 className="text-xl font-bold text-gray-900 mb-3 border-b border-gray-200 pb-2.5">
-          Moz Spam Score (SS): What Do the Risk Percentages Mean?
+          Moz Spam Score (SS): Diagnostic Bands &amp; Meaning
         </h2>
         <p className="text-[16px] text-gray-600 mb-4">
-          Moz evaluates 27 common signals found among websites that Google has penalized or de-indexed:
+          Moz Spam Score is a third-party diagnostic metric that measures how closely a site&apos;s characteristics resemble those associated with sites Moz has identified as spam-like. It is not an official Google penalty score or a direct probability of receiving a Google penalty:
         </p>
         <div className="table-scroll-container">
           <table className="w-full text-left text-[16px] tool-table border-collapse min-w-[750px]">
             <thead className="bg-gray-100 text-gray-800 font-bold uppercase text-sm">
               <tr>
                 <th className="py-3 px-3.5">Spam Score %</th>
-                <th className="py-3 px-3.5">Risk Level</th>
-                <th className="py-3 px-3.5">Backlink Impact</th>
+                <th className="py-3 px-3.5">Diagnostic Band</th>
+                <th className="py-3 px-3.5">Profile Characteristics</th>
                 <th className="py-3 px-3.5">Recommended Action</th>
               </tr>
             </thead>
             <tbody className="text-[16px]">
               <tr>
                 <td className="py-3 px-3.5 font-bold text-green-700">1% – 30%</td>
-                <td className="py-3 px-3.5 font-bold text-green-700">Low Risk (Safe)</td>
-                <td className="py-3 px-3.5 text-gray-700">Healthy link profile. Safe for guest posting, brand partnerships, and expired domain acquisition.</td>
-                <td className="py-3 px-3.5 text-gray-600">No action needed. Standard quarterly monitoring.</td>
+                <td className="py-3 px-3.5 font-bold text-green-700">Low Spam Score</td>
+                <td className="py-3 px-3.5 text-gray-700">Natural organic link profile typical of healthy, established websites.</td>
+                <td className="py-3 px-3.5 text-gray-600">Standard periodic monitoring; no remediation required.</td>
               </tr>
               <tr>
                 <td className="py-3 px-3.5 font-bold text-amber-600">31% – 60%</td>
-                <td className="py-3 px-3.5 font-bold text-amber-600">Moderate Risk</td>
-                <td className="py-3 px-3.5 text-gray-700">Exhibits link farm patterns, thin affiliate content, or unnatural sitewide footer links.</td>
-                <td className="py-3 px-3.5 text-gray-600">Audit backlink anchor texts and disavow suspicious sources.</td>
+                <td className="py-3 px-3.5 font-bold text-amber-600">Medium Spam Score</td>
+                <td className="py-3 px-3.5 text-gray-700">Exhibits patterns such as unbalanced follow/nofollow ratios, thin pages, or commercial anchor clustering.</td>
+                <td className="py-3 px-3.5 text-gray-600">Investigate referring domains and evaluate link acquisition channels.</td>
               </tr>
               <tr className="bg-red-50/50">
                 <td className="py-3 px-3.5 font-bold text-red-600">61% – 100%</td>
-                <td className="py-3 px-3.5 font-bold text-red-600">Toxic / Severe Risk</td>
-                <td className="py-3 px-3.5 text-gray-700">Strong correlation with Google manual action penalties or algorithmic suppression.</td>
-                <td className="py-3 px-3.5 text-red-700 font-bold">Immediate backlink cleanup and submit Google Disavow file.</td>
+                <td className="py-3 px-3.5 font-bold text-red-600">High Spam Score</td>
+                <td className="py-3 px-3.5 text-gray-700">Significant overlap with characteristics of known spam domains.</td>
+                <td className="py-3 px-3.5 text-red-700 font-bold">Conduct full backlink audit. Note: Google automatically ignores most spam links; consider Disavow only if you have unnatural link schemes you cannot remove.</td>
               </tr>
             </tbody>
           </table>
@@ -94,7 +94,7 @@ export default function EducationalHub() {
           </div>
           <div className="p-4 bg-gray-50 border border-gray-200 rounded">
             <span className="font-bold text-gray-900 text-lg block">DA 21 – 40</span>
-            <span className="text-green-700 font-semibold block mb-1.5 text-sm">Niche Blogs & Local SMBs</span>
+            <span className="text-green-700 font-semibold block mb-1.5 text-sm">Niche Blogs &amp; Local SMBs</span>
             <p className="text-gray-600 text-[16px] leading-relaxed">Healthy organic foundation. Competes effectively for local and medium-competition guides.</p>
           </div>
           <div className="p-4 bg-gray-50 border border-gray-200 rounded">
@@ -110,31 +110,31 @@ export default function EducationalHub() {
         </div>
       </div>
 
-      {/* 5. Actionable Ways to Increase DA (All 5 Strategies) */}
+      {/* 5. Actionable Ways to Increase DA */}
       <div className="bg-white border border-gray-300 rounded-md p-6 sm:p-7 shadow-sm">
         <h2 className="text-xl font-bold text-gray-900 mb-3 border-b border-gray-200 pb-2.5">
-          5 White-Hat Strategies to Increase Your Domain Authority
+          5 White-Hat Strategies to Strengthen Your Domain Authority
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-[16px] text-gray-700">
           <div className="p-4 border border-gray-200 rounded bg-gray-50">
             <h4 className="font-bold text-gray-900 text-[16px] mb-1.5">1. Prioritize Referring Domain Diversity</h4>
-            <p className="text-gray-600 text-[16px] leading-relaxed">Earning 10 links from 10 distinct root domains boosts DA significantly more than 100 links from a single site.</p>
+            <p className="text-gray-600 text-[16px] leading-relaxed">Earning 10 links from 10 distinct root domains builds broader domain equity than 100 links from a single source.</p>
           </div>
           <div className="p-4 border border-gray-200 rounded bg-gray-50">
             <h4 className="font-bold text-gray-900 text-[16px] mb-1.5">2. Fix Broken Inbound Links with 301s</h4>
             <p className="text-gray-600 text-[16px] leading-relaxed">Reclaim lost backlink equity by 301-redirecting 404 pages that previously acquired backlinks to relevant live pages.</p>
           </div>
           <div className="p-4 border border-gray-200 rounded bg-gray-50">
-            <h4 className="font-bold text-gray-900 text-[16px] mb-1.5">3. Optimize Internal PageRank Silos</h4>
-            <p className="text-gray-600 text-[16px] leading-relaxed">Distribute authority from your homepage to high-priority content using contextual, descriptive internal links.</p>
+            <h4 className="font-bold text-gray-900 text-[16px] mb-1.5">3. Optimize Internal Linking Silos</h4>
+            <p className="text-gray-600 text-[16px] leading-relaxed">Distribute authority from your homepage and cornerstone guides to target content using contextual, descriptive internal links.</p>
           </div>
           <div className="p-4 border border-gray-200 rounded bg-gray-50">
-            <h4 className="font-bold text-gray-900 text-[16px] mb-1.5">4. Maintain Spam Score Below 30%</h4>
-            <p className="text-gray-600 text-[16px] leading-relaxed">Perform regular backlink audits and disavow automated scraper domains and spam blog comment footprints.</p>
+            <h4 className="font-bold text-gray-900 text-[16px] mb-1.5">4. Audit Link Profile Regularly</h4>
+            <p className="text-gray-600 text-[16px] leading-relaxed">Monitor your inbound link profile periodically and ensure your acquisition practices follow search engine webmaster guidelines.</p>
           </div>
           <div className="p-4 border border-gray-200 rounded bg-gray-50 md:col-span-2">
-            <h4 className="font-bold text-gray-900 text-[16px] mb-1.5">5. Publish Original Industry Data & Tools (Digital PR)</h4>
-            <p className="text-gray-600 text-[16px] leading-relaxed">Publishing original data studies, annual surveys, or free utilities naturally earns organic editorial backlinks and press citations without paid outreach.</p>
+            <h4 className="font-bold text-gray-900 text-[16px] mb-1.5">5. Publish Original Industry Data &amp; Tools (Digital PR)</h4>
+            <p className="text-gray-600 text-[16px] leading-relaxed">Publishing original data studies, annual surveys, or free utilities naturally earns organic editorial citations without paid outreach.</p>
           </div>
         </div>
       </div>
