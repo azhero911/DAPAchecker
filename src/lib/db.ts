@@ -3,11 +3,24 @@ if (!process.env.POSTGRES_URL && process.env.DATABASE_URL) {
   process.env.POSTGRES_URL = process.env.DATABASE_URL;
 }
 
+import crypto from 'crypto';
 import { sql } from '@vercel/postgres';
 
 export const isDatabaseConfigured = (): boolean => {
   return Boolean(process.env.POSTGRES_URL || process.env.DATABASE_URL);
 };
+
+// Password hashing helper
+function hashPassword(password: string, salt?: string): { hash: string; salt: string } {
+  const userSalt = salt || crypto.randomBytes(16).toString('hex');
+  const hash = crypto.pbkdf2Sync(password, userSalt, 1000, 64, 'sha512').toString('hex');
+  return { hash, salt: userSalt };
+}
+
+function verifyPassword(password: string, hash: string, salt: string): boolean {
+  const checkHash = crypto.pbkdf2Sync(password, salt, 1000, 64, 'sha512').toString('hex');
+  return checkHash === hash;
+}
 
 // Initialize schema if not already created (uses docs/schema.sql)
 export async function initDatabaseSchema() {
@@ -23,7 +36,10 @@ export async function initDatabaseSchema() {
     await sql`
       CREATE TABLE IF NOT EXISTS users (
         id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+        name VARCHAR(100),
         email VARCHAR(255) UNIQUE NOT NULL,
+        password_hash VARCHAR(255),
+        salt VARCHAR(64),
         created_at TIMESTAMPTZ DEFAULT NOW(),
         plan VARCHAR(50) DEFAULT 'free',
         stripe_customer_id VARCHAR(100),
@@ -31,6 +47,11 @@ export async function initDatabaseSchema() {
         last_check_reset TIMESTAMPTZ DEFAULT NOW()
       );
     `;
+
+    // Ensure columns exist if table was created previously
+    await sql`ALTER TABLE users ADD COLUMN IF NOT EXISTS name VARCHAR(100);`;
+    await sql`ALTER TABLE users ADD COLUMN IF NOT EXISTS password_hash VARCHAR(255);`;
+    await sql`ALTER TABLE users ADD COLUMN IF NOT EXISTS salt VARCHAR(64);`;
 
     // 2. Domain Checks Log (History & Analytics)
     await sql`
@@ -213,3 +234,130 @@ export async function getAdminStats() {
     };
   }
 }
+
+// Register User with PostgreSQL
+export async function registerUser(data: { name?: string; email: string; password: string }) {
+  if (!isDatabaseConfigured()) {
+    return { success: false, error: 'Database is not connected.' };
+  }
+
+  const cleanEmail = data.email.trim().toLowerCase();
+  const cleanName = (data.name || '').trim() || cleanEmail.split('@')[0];
+
+  if (!cleanEmail || !cleanEmail.includes('@')) {
+    return { success: false, error: 'Please provide a valid email address.' };
+  }
+
+  if (!data.password || data.password.length < 6) {
+    return { success: false, error: 'Password must be at least 6 characters long.' };
+  }
+
+  try {
+    // Ensure columns exist
+    await sql`ALTER TABLE users ADD COLUMN IF NOT EXISTS name VARCHAR(100);`;
+    await sql`ALTER TABLE users ADD COLUMN IF NOT EXISTS password_hash VARCHAR(255);`;
+    await sql`ALTER TABLE users ADD COLUMN IF NOT EXISTS salt VARCHAR(64);`;
+
+    // Check if user already exists
+    const existing = await sql`SELECT id FROM users WHERE email = ${cleanEmail};`;
+    if (existing.rows.length > 0) {
+      return { success: false, error: 'An account with this email already exists. Please sign in instead.' };
+    }
+
+    const { hash, salt } = hashPassword(data.password);
+
+    const result = await sql`
+      INSERT INTO users (name, email, password_hash, salt, plan)
+      VALUES (${cleanName}, ${cleanEmail}, ${hash}, ${salt}, 'free')
+      RETURNING id, name, email, plan;
+    `;
+
+    return {
+      success: true,
+      user: {
+        id: result.rows[0].id,
+        name: result.rows[0].name,
+        email: result.rows[0].email,
+        role: 'user',
+        plan: result.rows[0].plan,
+      },
+    };
+  } catch (error: any) {
+    console.error('[DB Register Error]', error);
+    return { success: false, error: error.message || 'Failed to register account.' };
+  }
+}
+
+// Authenticate User with PostgreSQL
+export async function authenticateUser(data: { email: string; password: string }) {
+  const cleanEmail = data.email.trim().toLowerCase();
+
+  // Admin bypass credentials
+  if (cleanEmail === 'admin' || cleanEmail === 'admin@dapametrics.com') {
+    if (data.password === 'Admin123$@we') {
+      return {
+        success: true,
+        user: {
+          role: 'admin',
+          name: 'Master Admin',
+          email: 'admin@dapametrics.com',
+        },
+      };
+    } else {
+      return { success: false, error: 'Incorrect master admin password.' };
+    }
+  }
+
+  if (!isDatabaseConfigured()) {
+    return { success: false, error: 'Database is not connected.' };
+  }
+
+  try {
+    // Ensure columns exist
+    await sql`ALTER TABLE users ADD COLUMN IF NOT EXISTS name VARCHAR(100);`;
+    await sql`ALTER TABLE users ADD COLUMN IF NOT EXISTS password_hash VARCHAR(255);`;
+    await sql`ALTER TABLE users ADD COLUMN IF NOT EXISTS salt VARCHAR(64);`;
+
+    const result = await sql`
+      SELECT id, name, email, password_hash, salt, plan 
+      FROM users 
+      WHERE email = ${cleanEmail};
+    `;
+
+    if (result.rows.length === 0) {
+      return {
+        success: false,
+        error: 'No account found with this email. Please click "Register" to create an account first.',
+      };
+    }
+
+    const user = result.rows[0];
+
+    if (!user.password_hash || !user.salt) {
+      return {
+        success: false,
+        error: 'Account exists but has no password set. Please register a new account.',
+      };
+    }
+
+    const isValid = verifyPassword(data.password, user.password_hash, user.salt);
+    if (!isValid) {
+      return { success: false, error: 'Incorrect password. Please try again.' };
+    }
+
+    return {
+      success: true,
+      user: {
+        id: user.id,
+        name: user.name || cleanEmail.split('@')[0],
+        email: user.email,
+        role: 'user',
+        plan: user.plan || 'free',
+      },
+    };
+  } catch (error: any) {
+    console.error('[DB Authenticate Error]', error);
+    return { success: false, error: error.message || 'Authentication failed.' };
+  }
+}
+

@@ -23,46 +23,67 @@ function LoginForm() {
     }
   }, [searchParams]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     setSuccessMsg('');
 
     const cleanInput = email.trim().toLowerCase();
 
-    // Check Master Admin Credentials
-    if (cleanInput === 'admin' || cleanInput === 'admin@dapametrics.com') {
-      if (password === 'Admin123$@we') {
-        const adminUser = {
-          role: 'admin',
-          name: 'Master Admin',
-          email: 'admin@dapametrics.com',
-        };
-        localStorage.setItem('dapa_user', JSON.stringify(adminUser));
-        window.dispatchEvent(new Event('authChange'));
-        router.push('/admin');
-      } else {
-        setError('❌ Incorrect password for admin. Access denied.');
-      }
+    if (!cleanInput) {
+      setError('Please enter your email address.');
       return;
     }
 
-    // Regular User Login / Registration
     if (password.length < 6) {
       setError('Password must be at least 6 characters.');
       return;
     }
 
-    const userName = name.trim() || cleanInput.split('@')[0] || 'User';
-    const regularUser = {
-      role: 'user',
-      name: userName,
-      email: cleanInput,
-    };
+    setIsSubmitting(true);
 
-    localStorage.setItem('dapa_user', JSON.stringify(regularUser));
-    window.dispatchEvent(new Event('authChange'));
-    router.push('/dashboard');
+    try {
+      const res = await fetch('/api/v1/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: mode,
+          name: name.trim(),
+          email: cleanInput,
+          password,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        setError(data.error || 'Authentication failed. Please check your credentials.');
+        setIsSubmitting(false);
+        return;
+      }
+
+      localStorage.setItem('dapa_user', JSON.stringify(data.user));
+      window.dispatchEvent(new Event('authChange'));
+
+      if (mode === 'register') {
+        setSuccessMsg('✓ Account registered successfully! Redirecting to dashboard...');
+        setTimeout(() => {
+          router.push('/dashboard');
+        }, 1000);
+      } else {
+        if (data.user.role === 'admin') {
+          router.push('/admin');
+        } else {
+          router.push('/dashboard');
+        }
+      }
+    } catch (err: any) {
+      setError('A network error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -157,9 +178,14 @@ function LoginForm() {
 
           <button
             type="submit"
-            className="w-full py-3.5 bg-[#1D4ED8] hover:bg-[#1E40AF] text-white font-bold rounded-lg shadow transition text-base"
+            disabled={isSubmitting}
+            className="w-full py-3.5 bg-[#1D4ED8] hover:bg-[#1E40AF] text-white font-bold rounded-lg shadow transition text-base disabled:opacity-50"
           >
-            {mode === 'register' ? 'Create Free Account' : 'Sign In'}
+            {isSubmitting
+              ? 'Verifying with Database...'
+              : mode === 'register'
+              ? 'Create Free Account'
+              : 'Sign In'}
           </button>
         </form>
 
