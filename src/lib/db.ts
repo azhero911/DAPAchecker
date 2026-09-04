@@ -1,4 +1,8 @@
 // src/lib/db.ts
+if (!process.env.POSTGRES_URL && process.env.DATABASE_URL) {
+  process.env.POSTGRES_URL = process.env.DATABASE_URL;
+}
+
 import { sql } from '@vercel/postgres';
 
 export const isDatabaseConfigured = (): boolean => {
