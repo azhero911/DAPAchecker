@@ -245,7 +245,11 @@ export default function AdminPage() {
             )}
           </div>
           <div className="flex items-center gap-2 flex-shrink-0">
-            {dbConfigured && (
+            {dbConnected ? (
+              <span className="px-3.5 py-2 bg-green-100 text-green-800 border border-green-300 font-bold text-xs rounded-lg shadow-sm flex items-center gap-1.5">
+                <span>✓</span> Schema Tables Active
+              </span>
+            ) : dbConfigured ? (
               <button
                 type="button"
                 onClick={handleInitDb}
@@ -254,7 +258,7 @@ export default function AdminPage() {
               >
                 {initLoading ? 'Initializing...' : 'Initialize Schema Tables'}
               </button>
-            )}
+            ) : null}
             <button
               type="button"
               onClick={fetchDbStats}

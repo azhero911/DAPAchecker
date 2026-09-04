@@ -177,25 +177,35 @@ export async function getAdminStats() {
   }
 
   try {
-    const [todayResult, totalResult, unreadResult, inquiriesResult] = await Promise.all([
-      sql`SELECT COUNT(*) as count FROM domain_checks WHERE checked_at >= CURRENT_DATE;`,
-      sql`SELECT COUNT(*) as count FROM domain_checks;`,
-      sql`SELECT COUNT(*) as count FROM contact_submissions WHERE status = 'unread';`,
-      sql`SELECT id, name, email, subject, message, created_at, status FROM contact_submissions ORDER BY created_at DESC LIMIT 10;`,
-    ]);
+    // Run sequential queries to prevent serverless single-connection pooling conflicts
+    const countsResult = await sql`
+      SELECT 
+        (SELECT COUNT(*) FROM domain_checks WHERE checked_at >= CURRENT_DATE) AS today_checks,
+        (SELECT COUNT(*) FROM domain_checks) AS total_checks,
+        (SELECT COUNT(*) FROM contact_submissions WHERE status = 'unread') AS unread_inquiries;
+    `;
+
+    const inquiriesResult = await sql`
+      SELECT id, name, email, subject, message, created_at, status 
+      FROM contact_submissions 
+      ORDER BY created_at DESC 
+      LIMIT 10;
+    `;
+
+    const row = countsResult.rows[0] || {};
 
     return {
       connected: true,
-      todayChecks: parseInt(todayResult.rows[0]?.count || '0', 10),
-      totalChecks: parseInt(totalResult.rows[0]?.count || '0', 10),
-      unreadInquiries: parseInt(unreadResult.rows[0]?.count || '0', 10),
-      recentInquiries: inquiriesResult.rows,
+      todayChecks: parseInt(row.today_checks || '0', 10),
+      totalChecks: parseInt(row.total_checks || '0', 10),
+      unreadInquiries: parseInt(row.unread_inquiries || '0', 10),
+      recentInquiries: inquiriesResult.rows || [],
     };
-  } catch (error) {
+  } catch (error: any) {
     console.error('[DB Admin Stats Error]', error);
     return {
       connected: false,
-      error: 'Database connected, but schema tables may need initialization.',
+      error: error?.message || 'Database connected, but schema tables may need initialization.',
       todayChecks: 0,
       totalChecks: 0,
       unreadInquiries: 0,
