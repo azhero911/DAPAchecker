@@ -51,6 +51,15 @@ export default function ResultsTable({ results, loading }: ResultsTableProps) {
   const [copiedDomain, setCopiedDomain] = useState<string | null>(null);
   const [rated, setRated] = useState<boolean>(false);
 
+  const handleRate = (starCount: number) => {
+    setRated(true);
+    fetch('/api/v1/feedback', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ rating: starCount }),
+    }).catch(() => {});
+  };
+
   // If loading, render animated skeleton rows
   if (loading) {
     return (
@@ -386,9 +395,9 @@ export default function ResultsTable({ results, loading }: ResultsTableProps) {
           {rated ? (
             <span className="text-green-700 font-bold">✓ Thank you for your feedback!</span>
           ) : (
-            <div className="flex gap-1 text-amber-500 cursor-pointer" onClick={() => setRated(true)}>
+            <div className="flex gap-1 text-amber-500 cursor-pointer" onClick={() => handleRate(5)}>
               {'★★★★★'.split('').map((s, i) => (
-                <span key={i} className="hover:scale-125 transition-transform">{s}</span>
+                <span key={i} onClick={(e) => { e.stopPropagation(); handleRate(i + 1); }} className="hover:scale-125 transition-transform">{s}</span>
               ))}
               <span className="text-gray-500 ml-1">(4.9 / 5 from 2,340 webmasters)</span>
             </div>

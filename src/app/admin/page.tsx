@@ -5,6 +5,16 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
+interface InquiryItem {
+  id: string;
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  created_at: string;
+  status: string;
+}
+
 export default function AdminPage() {
   const router = useRouter();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -17,6 +27,35 @@ export default function AdminPage() {
   const [provider, setProvider] = useState('mock');
   const [saved, setSaved] = useState(false);
 
+  // Database Live Stats
+  const [dbConfigured, setDbConfigured] = useState<boolean | null>(null);
+  const [dbConnected, setDbConnected] = useState<boolean>(false);
+  const [todayChecks, setTodayChecks] = useState<number>(0);
+  const [totalChecks, setTotalChecks] = useState<number>(0);
+  const [unreadInquiries, setUnreadInquiries] = useState<number>(0);
+  const [recentInquiries, setRecentInquiries] = useState<InquiryItem[]>([]);
+  const [initMsg, setInitMsg] = useState<string>('');
+  const [initLoading, setInitLoading] = useState<boolean>(false);
+
+  const fetchDbStats = async () => {
+    try {
+      const res = await fetch('/api/v1/admin/stats');
+      const data = await res.json();
+      if (data.success) {
+        setDbConfigured(data.configured);
+        setDbConnected(data.connected);
+        setTodayChecks(data.todayChecks || 0);
+        setTotalChecks(data.totalChecks || 0);
+        setUnreadInquiries(data.unreadInquiries || 0);
+        if (data.recentInquiries && data.recentInquiries.length > 0) {
+          setRecentInquiries(data.recentInquiries);
+        }
+      }
+    } catch (e) {
+      console.error('Failed to fetch admin stats:', e);
+    }
+  };
+
   useEffect(() => {
     const checkAuth = () => {
       const stored = localStorage.getItem('dapa_user');
@@ -25,6 +64,7 @@ export default function AdminPage() {
           const user = JSON.parse(stored);
           if (user.role === 'admin') {
             setIsAuthenticated(true);
+            fetchDbStats();
           } else {
             setIsAuthenticated(false);
           }
@@ -53,6 +93,7 @@ export default function AdminPage() {
       localStorage.setItem('dapa_user', JSON.stringify(adminUser));
       window.dispatchEvent(new Event('authChange'));
       setIsAuthenticated(true);
+      fetchDbStats();
     } else {
       setAuthError('❌ Incorrect admin password. Access denied.');
     }
@@ -68,6 +109,25 @@ export default function AdminPage() {
   const handleSave = () => {
     setSaved(true);
     setTimeout(() => setSaved(false), 3000);
+  };
+
+  const handleInitDb = async () => {
+    setInitLoading(true);
+    setInitMsg('');
+    try {
+      const res = await fetch('/api/v1/admin/init-db', { method: 'POST' });
+      const data = await res.json();
+      if (data.success) {
+        setInitMsg('✓ Database schema tables created successfully!');
+        fetchDbStats();
+      } else {
+        setInitMsg(`⚠️ ${data.error || data.message || 'Database initialization failed.'}`);
+      }
+    } catch (e: any) {
+      setInitMsg('❌ Connection failed. Check POSTGRES_URL environment variable.');
+    } finally {
+      setInitLoading(false);
+    }
   };
 
   if (loading) {
@@ -140,10 +200,21 @@ export default function AdminPage() {
             </h1>
             <p className="text-base text-gray-500 mt-1">Manage tool limits, monitor cache performance, and view user inquiries</p>
           </div>
-          <div className="flex items-center gap-3">
-            <span className="px-3.5 py-1.5 rounded-lg bg-green-50 text-green-700 border border-green-200 text-sm font-bold">
-              ● System Status: Healthy
-            </span>
+          <div className="flex flex-wrap items-center gap-3">
+            {dbConnected ? (
+              <span className="px-3.5 py-1.5 rounded-lg bg-green-50 text-green-700 border border-green-200 text-sm font-bold flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                PostgreSQL: Connected
+              </span>
+            ) : dbConfigured ? (
+              <span className="px-3.5 py-1.5 rounded-lg bg-amber-50 text-amber-800 border border-amber-200 text-sm font-bold">
+                ⚠️ DB Configured (Needs Tables)
+              </span>
+            ) : (
+              <span className="px-3.5 py-1.5 rounded-lg bg-gray-100 text-gray-600 border border-gray-200 text-sm font-bold">
+                ⚪ Database: In-Memory Mode
+              </span>
+            )}
             <span className="px-3.5 py-1.5 rounded-lg bg-purple-50 text-purple-800 border border-purple-200 text-sm font-bold">
               👑 Master Admin
             </span>
@@ -156,33 +227,83 @@ export default function AdminPage() {
           </div>
         </div>
 
+        {/* Database Status Callout & Quick Setup Banner */}
+        <div className="my-6 p-5 rounded-xl border bg-slate-50 border-slate-200 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div>
+            <h3 className="font-bold text-gray-900 text-base flex items-center gap-2">
+              <span>🗄️</span> Database Engine Status
+            </h3>
+            <p className="text-xs sm:text-sm text-gray-600 mt-1">
+              {dbConnected
+                ? 'Your PostgreSQL database is connected and recording domain checks, contact inquiries, and user ratings.'
+                : dbConfigured
+                ? 'POSTGRES_URL connection string detected. Click "Initialize Schema" to generate all database tables from docs/schema.sql.'
+                : 'No PostgreSQL database is attached yet. Add POSTGRES_URL via Vercel Storage (Neon) or Supabase to persist user data and history.'}
+            </p>
+            {initMsg && (
+              <p className="text-xs font-bold mt-2 text-blue-700">{initMsg}</p>
+            )}
+          </div>
+          <div className="flex items-center gap-2 flex-shrink-0">
+            {dbConfigured && (
+              <button
+                type="button"
+                onClick={handleInitDb}
+                disabled={initLoading}
+                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-lg transition shadow-sm disabled:opacity-50"
+              >
+                {initLoading ? 'Initializing...' : 'Initialize Schema Tables'}
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={fetchDbStats}
+              className="px-3 py-2 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 text-xs font-bold rounded-lg transition"
+            >
+              ↻ Refresh
+            </button>
+          </div>
+        </div>
+
         {/* Quick KPI Stats Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-8 text-base">
           <div className="p-6 bg-gray-50 border border-gray-200 rounded-xl">
             <span className="text-gray-500 font-medium block mb-2">Checks Today</span>
-            <span className="text-3xl font-bold text-gray-900">1,420</span>
-            <span className="text-green-700 text-sm block mt-2">↑ 14% vs yesterday</span>
+            <span className="text-3xl font-bold text-gray-900">
+              {dbConnected ? todayChecks : '1,420'}
+            </span>
+            <span className="text-green-700 text-sm block mt-2">
+              {dbConnected ? 'Live DB Counter' : 'Sample Benchmark'}
+            </span>
           </div>
           <div className="p-6 bg-gray-50 border border-gray-200 rounded-xl">
-            <span className="text-gray-500 font-medium block mb-2">Cache Hit Ratio</span>
-            <span className="text-3xl font-bold text-[#1D4ED8]">78.4%</span>
-            <span className="text-gray-500 text-sm block mt-2">Saved ~$112 in API fees</span>
+            <span className="text-gray-500 font-medium block mb-2">Total Checks Logged</span>
+            <span className="text-3xl font-bold text-[#1D4ED8]">
+              {dbConnected ? totalChecks : '24,850'}
+            </span>
+            <span className="text-gray-500 text-sm block mt-2">
+              {dbConnected ? 'Database records' : 'All-time estimate'}
+            </span>
           </div>
           <div className="p-6 bg-gray-50 border border-gray-200 rounded-xl">
-            <span className="text-gray-500 font-medium block mb-2">Average Response</span>
-            <span className="text-3xl font-bold text-emerald-700">82 ms</span>
-            <span className="text-gray-500 text-sm block mt-2">Sub-second performance</span>
+            <span className="text-gray-500 font-medium block mb-2">Unread Inquiries</span>
+            <span className="text-3xl font-bold text-emerald-700">
+              {dbConnected ? unreadInquiries : '1'}
+            </span>
+            <span className="text-gray-500 text-sm block mt-2">Contact submissions</span>
           </div>
           <div className="p-6 bg-gray-50 border border-gray-200 rounded-xl">
-            <span className="text-gray-500 font-medium block mb-2">Active Quota Remaining</span>
-            <span className="text-3xl font-bold text-purple-700">85,800</span>
-            <span className="text-gray-500 text-sm block mt-2">Monthly pool healthy</span>
+            <span className="text-gray-500 font-medium block mb-2">Metrics Cache Mode</span>
+            <span className="text-3xl font-bold text-purple-700">
+              {process.env.NEXT_PUBLIC_SITE_URL?.includes('vercel.app') ? 'Edge Cache' : 'In-Memory'}
+            </span>
+            <span className="text-gray-500 text-sm block mt-2">7-day TTL active</span>
           </div>
         </div>
 
         {/* Tool Settings Manager (Editable) */}
         <div className="p-6 sm:p-8 border border-gray-200 rounded-xl bg-gray-50 mb-10">
-          <h3 className="font-bold text-gray-900 text-xl mb-4">Live Tool Limits & Engine Settings</h3>
+          <h3 className="font-bold text-gray-900 text-xl mb-4">Live Tool Limits &amp; Engine Settings</h3>
           
           {saved && (
             <div className="mb-6 p-4 bg-green-50 border border-green-200 text-green-800 text-base font-bold rounded-lg">
@@ -237,7 +358,7 @@ export default function AdminPage() {
 
         {/* Inquiries / Messages Inbox */}
         <div>
-          <h3 className="font-bold text-gray-900 text-xl mb-4">User Contact Inquiries (Recent Submissions)</h3>
+          <h3 className="font-bold text-gray-900 text-xl mb-4">User Contact Inquiries ({recentInquiries.length > 0 ? recentInquiries.length : 'Preview'})</h3>
           <div className="table-scroll-container">
             <table className="w-full text-left text-base tool-table border-collapse min-w-[850px]">
               <thead className="bg-gray-100 text-gray-900 font-bold uppercase text-sm">
@@ -250,24 +371,52 @@ export default function AdminPage() {
                 </tr>
               </thead>
               <tbody className="text-base">
-                <tr>
-                  <td className="py-4 px-4 text-gray-500 font-mono">Today, 15:20</td>
-                  <td className="py-4 px-4 font-bold text-gray-900">Sarah Jenkins (sarah@agencyseo.co)</td>
-                  <td className="py-4 px-4 text-blue-700 font-semibold">Agency API Pricing Inquiry</td>
-                  <td className="py-4 px-4 text-gray-600">Can we get custom 100-domain batch access for client reporting?</td>
-                  <td className="py-4 px-4 text-center">
-                    <span className="px-3 py-1 rounded bg-blue-50 text-blue-700 font-bold text-xs">Unread</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="py-4 px-4 text-gray-500 font-mono">Yesterday</td>
-                  <td className="py-4 px-4 font-bold text-gray-900">Michael Chang (mchang@techblog.io)</td>
-                  <td className="py-4 px-4 text-gray-800 font-semibold">Feature Suggestion</td>
-                  <td className="py-4 px-4 text-gray-600">Love the clean design without ads. Please keep it fast!</td>
-                  <td className="py-4 px-4 text-center">
-                    <span className="px-3 py-1 rounded bg-gray-100 text-gray-600 font-bold text-xs">Replied</span>
-                  </td>
-                </tr>
+                {recentInquiries.length > 0 ? (
+                  recentInquiries.map((inq) => (
+                    <tr key={inq.id} className="hover:bg-blue-50/30 transition">
+                      <td className="py-4 px-4 text-gray-500 font-mono text-xs">
+                        {new Date(inq.created_at).toLocaleString()}
+                      </td>
+                      <td className="py-4 px-4 font-bold text-gray-900">
+                        {inq.name} ({inq.email})
+                      </td>
+                      <td className="py-4 px-4 text-blue-700 font-semibold">{inq.subject}</td>
+                      <td className="py-4 px-4 text-gray-600 max-w-xs truncate">{inq.message}</td>
+                      <td className="py-4 px-4 text-center">
+                        <span
+                          className={`px-3 py-1 rounded font-bold text-xs ${
+                            inq.status === 'unread'
+                              ? 'bg-blue-50 text-blue-700'
+                              : 'bg-gray-100 text-gray-600'
+                          }`}
+                        >
+                          {inq.status}
+                        </span>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <>
+                    <tr>
+                      <td className="py-4 px-4 text-gray-500 font-mono">Sample Record</td>
+                      <td className="py-4 px-4 font-bold text-gray-900">Sarah Jenkins (sarah@agencyseo.co)</td>
+                      <td className="py-4 px-4 text-blue-700 font-semibold">Agency API Pricing Inquiry</td>
+                      <td className="py-4 px-4 text-gray-600">Can we get custom 100-domain batch access for client reporting?</td>
+                      <td className="py-4 px-4 text-center">
+                        <span className="px-3 py-1 rounded bg-blue-50 text-blue-700 font-bold text-xs">Unread</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="py-4 px-4 text-gray-500 font-mono">Sample Record</td>
+                      <td className="py-4 px-4 font-bold text-gray-900">Michael Chang (mchang@techblog.io)</td>
+                      <td className="py-4 px-4 text-gray-800 font-semibold">Feature Suggestion</td>
+                      <td className="py-4 px-4 text-gray-600">Love the clean design without ads. Please keep it fast!</td>
+                      <td className="py-4 px-4 text-center">
+                        <span className="px-3 py-1 rounded bg-gray-100 text-gray-600 font-bold text-xs">Replied</span>
+                      </td>
+                    </tr>
+                  </>
+                )}
               </tbody>
             </table>
           </div>

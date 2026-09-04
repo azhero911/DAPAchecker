@@ -1,5 +1,6 @@
 // src/app/api/v1/contact/route.ts
 import { NextRequest, NextResponse } from 'next/server';
+import { saveContactSubmission } from '@/lib/db';
 
 export async function POST(req: NextRequest) {
   try {
@@ -14,7 +15,14 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Please enter a valid email address.' }, { status: 400 });
     }
 
-    // In local / production mode without SMTP keys, log contact inquiry cleanly
+    // Persist to PostgreSQL database (if connected)
+    await saveContactSubmission({
+      name: name.trim(),
+      email: email.trim().toLowerCase(),
+      subject: subject?.trim() || 'General Inquiry',
+      message: message.trim(),
+    });
+
     console.log(`[Contact Form] From: ${name} (${email}) | Subject: ${subject || 'General'} | Message: ${message}`);
 
     return NextResponse.json({
