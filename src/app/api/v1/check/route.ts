@@ -68,11 +68,17 @@ export async function POST(req: NextRequest) {
     const uncachedDomains: string[] = [];
     let cachedHits = 0;
 
+    // Determine active provider upfront
+    const provider = MetricsProviderFactory.getProvider();
+
     for (const item of validatedDomains) {
       const cacheKey = `domain_metrics:${item.domain}`;
       const cached = await redisClient.get<DomainMetricResult>(cacheKey);
 
-      if (cached && cached.moz) {
+      // If active provider is live (not mock), never return stale mock data from previous tests
+      const isStaleMock = provider.name !== 'mock' && cached?.provider === 'mock';
+
+      if (cached && cached.moz && !isStaleMock) {
         cachedHits++;
         finalResults.push({
           ...cached,
@@ -90,7 +96,6 @@ export async function POST(req: NextRequest) {
 
     // 5. Query Active Provider for Cache Misses
     if (uncachedDomains.length > 0) {
-      const provider = MetricsProviderFactory.getProvider();
       const freshMetricsMap = await provider.fetchDomainMetrics(uncachedDomains);
 
       for (const domain of uncachedDomains) {
