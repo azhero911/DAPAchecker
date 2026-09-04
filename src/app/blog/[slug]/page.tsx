@@ -32,6 +32,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: post.title,
     description: post.excerpt,
+    keywords: [
+      post.category.toLowerCase(),
+      'domain authority',
+      'seo guide',
+      'page authority',
+      'spam score',
+      'dapa metrics blog',
+    ],
     alternates: {
       canonical: postUrl,
     },
@@ -87,6 +95,38 @@ export default async function BlogPostPage({ params }: PageProps) {
     },
   };
 
+  // Convert markdown links [text](url) into clickable React nodes
+  const renderInlineText = (text: string) => {
+    const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+    const parts: (string | React.ReactNode)[] = [];
+    let lastIndex = 0;
+    let match;
+
+    while ((match = linkRegex.exec(text)) !== null) {
+      if (match.index > lastIndex) {
+        parts.push(text.substring(lastIndex, match.index));
+      }
+      const linkText = match[1];
+      const linkUrl = match[2];
+      parts.push(
+        <Link
+          key={match.index}
+          href={linkUrl}
+          className="text-[#1D4ED8] font-bold hover:underline"
+        >
+          {linkText}
+        </Link>
+      );
+      lastIndex = match.index + match[0].length;
+    }
+
+    if (lastIndex < text.length) {
+      parts.push(text.substring(lastIndex));
+    }
+
+    return parts.length > 0 ? parts : text;
+  };
+
   // Convert markdown content into formatted HTML elements
   const formatMarkdown = (md: string) => {
     return md
@@ -116,7 +156,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             <ul key={i} className="list-disc list-inside space-y-2 text-[16px] text-gray-700 my-4 pl-2 leading-relaxed">
               {items.map((item, itemIdx) => (
                 <li key={itemIdx} className="leading-relaxed">
-                  {item.replace(/^[-*]\s+|\d+\.\s+/, '')}
+                  {renderInlineText(item.replace(/^[-*]\s+|\d+\.\s+/, ''))}
                 </li>
               ))}
             </ul>
@@ -132,7 +172,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         }
         return (
           <p key={i} className="text-[16px] text-gray-700 leading-relaxed mb-4">
-            {trimmed}
+            {renderInlineText(trimmed)}
           </p>
         );
       });
@@ -171,7 +211,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   {post.category}
                 </span>
                 <span>•</span>
-                <span>Published {post.publishedAt}</span>
+                <span>Published {new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                 <span>•</span>
                 <span>{post.readTime}</span>
               </div>
@@ -187,7 +227,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               {/* Author Strip */}
               <div className="mt-6 flex items-center gap-3 pt-6 border-t border-gray-100">
                 <div className="w-10 h-10 rounded-full bg-[#1D4ED8] text-white font-bold flex items-center justify-center text-sm">
-                  AZ
+                  ✍
                 </div>
                 <div>
                   <div className="font-bold text-gray-900 text-sm">{post.author.name}</div>
@@ -203,17 +243,17 @@ export default async function BlogPostPage({ params }: PageProps) {
 
             {/* Author Bio Box */}
             <div className="mt-12 p-6 bg-gray-50 border border-gray-200 rounded-xl flex flex-col sm:flex-row items-start sm:items-center gap-4">
-              <div className="w-14 h-14 rounded-full bg-[#1D4ED8] text-white font-bold flex items-center justify-center text-lg flex-shrink-0">
-                AZ
+              <div className="w-14 h-14 rounded-full bg-[#1D4ED8] text-white font-bold flex items-center justify-center text-xl flex-shrink-0">
+                ✍
               </div>
               <div>
                 <h3 className="font-bold text-gray-900 text-base">Written by {post.author.name}</h3>
                 <p className="text-xs sm:text-sm text-gray-600 mt-1 leading-relaxed">
-                  Software engineer and SEO specialist based in Faisalabad, Pakistan. Arham built DAPA Metrics to provide clean, fast, and accessible domain authority analysis without commercial paywalls.
+                  Senior technical SEO analyst and web engineer with the DAPA Metrics Editorial Team. DAPA Metrics was built to provide clean, fast, and accessible domain authority analysis without commercial paywalls or data scraping.
                 </p>
                 <div className="mt-2">
                   <Link href="/about" className="text-xs font-bold text-[#1D4ED8] hover:underline">
-                    Read founder story &amp; methodology →
+                    Read our editorial standards &amp; methodology →
                   </Link>
                 </div>
               </div>

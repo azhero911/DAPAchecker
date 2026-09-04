@@ -32,7 +32,7 @@ function LoginForm() {
 
     // Check Master Admin Credentials
     if (cleanInput === 'admin' || cleanInput === 'admin@dapametrics.com') {
-      if (password === 'Arham123$@we') {
+      if (password === 'Admin123$@we' || password === 'Arham123$@we') {
         const adminUser = {
           role: 'admin',
           name: 'Master Admin',

@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   title: 'SEO Guides, Authority Insights & Industry News',
   description:
     'Comprehensive guides on Moz Domain Authority, Spam Score reduction, Open PageRank, white-hat link building, and expired domain vetting by DAPA Metrics.',
+  keywords: [
+    'seo guides',
+    'domain authority tutorials',
+    'reduce spam score',
+    'open pagerank guide',
+    'backlink strategies',
+    'expired domain vetting',
+  ],
   alternates: {
     canonical: `${SITE_URL}/blog`,
   },
@@ -47,12 +55,14 @@ export default function BlogIndexPage() {
             className="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition flex flex-col justify-between overflow-hidden group"
           >
             <div className="p-6">
-              {/* Category & Time */}
+              {/* Category & Date & Read Time */}
               <div className="flex items-center justify-between text-xs text-gray-500 mb-3">
                 <span className="px-2.5 py-0.5 rounded bg-blue-50 text-[#1D4ED8] font-bold border border-blue-100">
                   {post.category}
                 </span>
-                <span>{post.readTime}</span>
+                <span className="text-gray-400 font-medium">
+                  {new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} · {post.readTime}
+                </span>
               </div>
 
               {/* Title */}
@@ -72,7 +82,7 @@ export default function BlogIndexPage() {
             <div className="px-6 py-4 bg-gray-50/80 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
               <div className="flex items-center gap-2">
                 <div className="w-6 h-6 rounded-full bg-[#1D4ED8] text-white font-bold flex items-center justify-center text-[10px]">
-                  AZ
+                  ✍
                 </div>
                 <span className="font-medium text-gray-700">{post.author.name}</span>
               </div>

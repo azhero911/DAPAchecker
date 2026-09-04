@@ -25,8 +25,8 @@ export const metadata: Metadata = {
     'open pagerank checker',
     'da pa checker online',
   ],
-  authors: [{ name: 'Arham Zahid', url: `${SITE_URL}/about` }],
-  creator: 'Arham Zahid',
+  authors: [{ name: 'Author', url: `${SITE_URL}/about` }],
+  creator: 'Author',
   publisher: 'DAPA Metrics',
   alternates: {
     canonical: SITE_URL,
@@ -60,12 +60,16 @@ export const metadata: Metadata = {
       'Analyze Domain Authority, Page Authority, and Spam Score in bulk with zero sign-up required. Free CSV export.',
     images: ['/og-image.svg'],
   },
-  verification: {
-    google: 'google-site-verification-placeholder',
-    other: {
-      'msvalidate.01': 'bing-verification-placeholder',
-    },
-  },
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? {
+        verification: {
+          google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+          ...(process.env.NEXT_PUBLIC_BING_VERIFICATION
+            ? { other: { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_VERIFICATION } }
+            : {}),
+        },
+      }
+    : {}),
 };
 
 export default function RootLayout({

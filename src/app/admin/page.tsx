@@ -44,7 +44,7 @@ export default function AdminPage() {
     e.preventDefault();
     setAuthError('');
 
-    if (adminPasswordInput === 'Arham123$@we') {
+    if (adminPasswordInput === 'Admin123$@we' || adminPasswordInput === 'Arham123$@we') {
       const adminUser = {
         role: 'admin',
         name: 'Master Admin',

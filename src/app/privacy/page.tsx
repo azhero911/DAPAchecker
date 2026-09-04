@@ -60,7 +60,7 @@ export default function PrivacyPage() {
 
           <h2 className="text-xl font-bold text-gray-900 pt-3">6. Data Controller Contact</h2>
           <p>
-            If you have questions or require further clarification regarding our privacy practices, please contact our Lead Data Controller, Arham Zahid, at <a href="mailto:support@dapametrics.com" className="text-blue-700 underline font-bold">support@dapametrics.com</a> (Faisalabad, Punjab, Pakistan).
+            If you have questions or require further clarification regarding our privacy practices, please contact our Lead Data Controller at <a href="mailto:support@dapametrics.com" className="text-blue-700 underline font-bold">support@dapametrics.com</a> (71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom).
           </p>
         </div>
 

@@ -147,13 +147,13 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
               <span className="font-semibold text-gray-800 block">Lead Controller:</span>
-              <span>Arham Zahid</span>
-              <span className="block text-xs text-gray-500">Founder &amp; Engineering Lead</span>
+              <span>Author &amp; Operations Lead</span>
+              <span className="block text-xs text-gray-500">DAPA Metrics Editorial Team</span>
             </div>
             <div>
-              <span className="font-semibold text-gray-800 block">Location:</span>
-              <span>Faisalabad, Punjab</span>
-              <span className="block text-xs text-gray-500">Pakistan</span>
+              <span className="font-semibold text-gray-800 block">Registered Office:</span>
+              <span>71-75 Shelton Street, Covent Garden</span>
+              <span className="block text-xs text-gray-500">London, WC2H 9JQ, United Kingdom</span>
             </div>
             <div>
               <span className="font-semibold text-gray-800 block">Direct Inquiries:</span>

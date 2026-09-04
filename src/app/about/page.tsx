@@ -5,16 +5,23 @@ import Link from 'next/link';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dapametrics.vercel.app';
 
 export const metadata: Metadata = {
-  title: 'About Us — Founder Story & Data Standards',
+  title: 'About Us — Mission, Team & Engineering Standards | DAPA Metrics',
   description:
-    'Meet Arham Zahid and the engineering team behind DAPA Metrics. Learn about our data standards, serverless architecture, and mission to democratize SEO metrics.',
+    'Learn about the technical engineering standards, distributed edge architecture, and mission behind DAPA Metrics free SEO tools.',
+  keywords: [
+    'about dapa metrics',
+    'seo engineering team',
+    'domain authority methodology',
+    'free seo tools mission',
+    'open pagerank data standards',
+  ],
   alternates: {
     canonical: `${SITE_URL}/about`,
   },
   openGraph: {
-    title: 'About Us — DAPA Metrics Founder Story & Mission',
+    title: 'About Us — DAPA Metrics Mission & Standards',
     description:
-      'Learn how DAPA Metrics was founded by Arham Zahid in Faisalabad, Pakistan, to provide fast, privacy-focused, paywall-free domain authority analysis.',
+      'Learn how DAPA Metrics provides fast, privacy-focused, paywall-free domain authority analysis using modern distributed edge infrastructure.',
     url: `${SITE_URL}/about`,
     type: 'website',
   },
@@ -29,7 +36,7 @@ export default function AboutPage() {
         {/* Header */}
         <div className="border-b border-gray-200 pb-4 mb-6">
           <span className="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2.5 py-1 rounded border border-blue-200">
-            About Our Platform &amp; Founder
+            About Our Platform
           </span>
           <h1 className="text-2xl sm:text-[34px] font-bold text-gray-900 mt-3 leading-tight">
             Building Fast, Paywall-Free SEO Intelligence
@@ -41,34 +48,29 @@ export default function AboutPage() {
 
         <div className="space-y-6 text-[16px] leading-relaxed text-gray-700">
           
-          {/* Founder Bio Box (E-E-A-T) */}
+          {/* Engineering Team Bio Box (E-E-A-T) */}
           <div className="p-6 bg-blue-50/60 border border-blue-200 rounded-xl flex flex-col md:flex-row items-start md:items-center gap-6">
             <div className="w-20 h-20 rounded-full bg-[#1D4ED8] text-white font-black text-2xl flex items-center justify-center flex-shrink-0 shadow-md">
-              AZ
+              ⚡
             </div>
             <div>
               <div className="flex flex-wrap items-center gap-3">
-                <h2 className="text-xl font-bold text-gray-900">Arham Zahid</h2>
+                <h2 className="text-xl font-bold text-gray-900">Author &amp; Engineering Team</h2>
                 <span className="px-2.5 py-0.5 rounded-full bg-blue-100 text-[#1D4ED8] text-xs font-bold">
-                  Founder &amp; Lead Engineer
+                  Lead Maintainer &amp; Developer
                 </span>
-                <span className="text-xs text-gray-500">📍 Faisalabad, Punjab, Pakistan</span>
+                <span className="text-xs text-gray-500">📍 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UK</span>
               </div>
               <p className="text-sm text-gray-700 mt-2 leading-relaxed">
-                Full-stack engineer and digital marketer with over 5 years of experience building modern web applications and optimizing enterprise search rankings. Arham architected DAPA Metrics using Next.js edge runtimes and distributed caching to deliver sub-second domain authority lookups across the globe.
+                Full-stack engineers and digital marketing analysts with extensive experience designing high-throughput web applications and optimizing search engine architectures. DAPA Metrics was engineered using Next.js edge runtimes and distributed Redis caching to deliver sub-second domain authority lookups across the globe.
               </p>
               <div className="mt-3 flex items-center gap-4 text-xs font-bold text-[#1D4ED8]">
-                <a
-                  href="https://github.com/azhero911"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:underline flex items-center gap-1"
-                >
-                  GitHub Profile ↗
-                </a>
+                <Link href="/blog" className="hover:underline">
+                  Browse Technical Guides →
+                </Link>
                 <span>•</span>
                 <Link href="/contact" className="hover:underline">
-                  Direct Founder Contact →
+                  Direct Team Contact →
                 </Link>
               </div>
             </div>
@@ -78,7 +80,7 @@ export default function AboutPage() {
             Why We Founded DAPA Metrics
           </h2>
           <p>
-            Checking essential website authority shouldn’t feel like navigating a minefield of spam. For years, digital marketing professionals, freelancers, and small business owners in developing markets (including South Asia, Southeast Asia, and Eastern Europe) have relied on free DA checkers to vet link building targets and evaluate client websites.
+            Checking essential website authority shouldn’t feel like navigating a minefield of spam. For years, digital marketing professionals, freelancers, and small business owners have relied on free DA checkers to vet link building targets and evaluate prospective domain investments.
           </p>
           <p>
             Unfortunately, most legacy free tools on the market are burdened with:
@@ -144,7 +146,7 @@ export default function AboutPage() {
               href="/contact"
               className="text-gray-600 hover:text-blue-700 font-bold text-[16px]"
             >
-              Get in Touch with Arham &amp; Team →
+              Get in Touch with our Team →
             </Link>
           </div>
 
