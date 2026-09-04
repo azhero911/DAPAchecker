@@ -30,6 +30,7 @@ export default function AdminPage() {
   // Database Live Stats
   const [dbConfigured, setDbConfigured] = useState<boolean | null>(null);
   const [dbConnected, setDbConnected] = useState<boolean>(false);
+  const [redisActive, setRedisActive] = useState<boolean>(false);
   const [todayChecks, setTodayChecks] = useState<number>(0);
   const [totalChecks, setTotalChecks] = useState<number>(0);
   const [unreadInquiries, setUnreadInquiries] = useState<number>(0);
@@ -44,6 +45,7 @@ export default function AdminPage() {
       if (data.success) {
         setDbConfigured(data.configured);
         setDbConnected(data.connected);
+        setRedisActive(Boolean(data.redisConfigured));
         setTodayChecks(data.todayChecks || 0);
         setTotalChecks(data.totalChecks || 0);
         setUnreadInquiries(data.unreadInquiries || 0);
@@ -299,9 +301,11 @@ export default function AdminPage() {
           <div className="p-6 bg-gray-50 border border-gray-200 rounded-xl">
             <span className="text-gray-500 font-medium block mb-2">Metrics Cache Mode</span>
             <span className="text-3xl font-bold text-purple-700">
-              {process.env.NEXT_PUBLIC_SITE_URL?.includes('vercel.app') ? 'Edge Cache' : 'In-Memory'}
+              {redisActive ? 'Upstash KV' : 'In-Memory'}
             </span>
-            <span className="text-gray-500 text-sm block mt-2">7-day TTL active</span>
+            <span className={`text-sm block mt-2 font-medium ${redisActive ? 'text-green-700' : 'text-gray-500'}`}>
+              {redisActive ? '● Distributed Cloud Active' : '7-day TTL active'}
+            </span>
           </div>
         </div>
 

@@ -50,6 +50,18 @@ class InMemoryCache {
   }
 }
 
+const restUrl =
+  process.env.UPSTASH_REDIS_REST_URL ||
+  process.env.KV_REST_API_URL;
+
+const restToken =
+  process.env.UPSTASH_REDIS_REST_TOKEN ||
+  process.env.KV_REST_API_TOKEN;
+
+export const isRedisConfigured = (): boolean => {
+  return Boolean((restUrl && restToken) || process.env.REDIS_URL);
+};
+
 let redisClient: {
   get: <T>(key: string) => Promise<T | null>;
   setex: (key: string, seconds: number, value: any) => Promise<any>;
@@ -57,14 +69,19 @@ let redisClient: {
   expire: (key: string, seconds: number) => Promise<number>;
 };
 
-if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
-  redisClient = new Redis({
-    url: process.env.UPSTASH_REDIS_REST_URL,
-    token: process.env.UPSTASH_REDIS_REST_TOKEN,
-  });
+if (restUrl && restToken) {
+  try {
+    redisClient = new Redis({
+      url: restUrl,
+      token: restToken,
+    });
+  } catch (e) {
+    redisClient = new InMemoryCache();
+  }
 } else {
   // Graceful fallback to memory cache
   redisClient = new InMemoryCache();
 }
 
 export { redisClient };
+
