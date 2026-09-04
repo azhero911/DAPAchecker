@@ -11,10 +11,10 @@ export default function HomePage() {
       {/* Page Heading (Exact 34px 700-weight on laptop, responsive on mobile, 1550px container) */}
       <div className="text-center mb-8">
         <h1 className="text-2xl sm:text-[34px] font-bold text-gray-900 mb-2.5 leading-tight">
-          Bulk DA PA Checker (Free up to 10 URLs)
+          Bulk DA PA Checker — Free Domain Authority Tool
         </h1>
         <p className="text-[16px] text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          Analyze Moz Domain Authority (DA), Page Authority (PA), Spam Score, and Domain Age in bulk without registration or CAPTCHAs.
+          Check up to 10 URLs at once, no registration required. Analyze Moz Domain Authority (DA), Page Authority (PA), Spam Score, and Open PageRank in real time with instant CSV export.
         </p>
       </div>
 

@@ -11,7 +11,13 @@ export default function Footer() {
           {/* Col 1: About Platform */}
           <div className="md:col-span-2">
             <div className="flex items-center space-x-3 mb-3">
-              <img src="/logo.jpg" alt="DAPA Metrics Logo" className="h-10 w-auto object-contain rounded" />
+              <img
+                src="/logo.svg"
+                alt="DAPA Metrics Logo"
+                width={40}
+                height={40}
+                className="h-10 w-10 object-contain"
+              />
               <div>
                 <span className="font-bold text-gray-900 text-xl block">DAPA Metrics</span>
                 <span className="text-xs text-gray-500 font-medium">Measure. Analyze. Grow.</span>
@@ -25,23 +31,23 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Col 2: SEO Tools */}
+          {/* Col 2: SEO Tools & Knowledge */}
           <div>
             <h4 className="font-bold text-gray-900 uppercase text-xs tracking-wider mb-4">
-              Available Tools
+              Tools &amp; Resources
             </h4>
             <ul className="space-y-2.5 text-base font-medium">
               <li>
                 <Link href="/" className="hover:text-blue-700 transition">Bulk DA PA Checker</Link>
               </li>
               <li>
-                <Link href="/" className="hover:text-blue-700 transition">Moz Spam Score Checker</Link>
-              </li>
-              <li>
-                <Link href="/" className="hover:text-blue-700 transition">Domain Age Lookup</Link>
+                <Link href="/blog" className="hover:text-blue-700 transition font-bold text-[#1D4ED8]">SEO Blog &amp; Guides</Link>
               </li>
               <li>
                 <Link href="/methodology" className="hover:text-blue-700 transition">Algorithm Methodology</Link>
+              </li>
+              <li>
+                <Link href="/#tool" className="hover:text-blue-700 transition">Free API Demo</Link>
               </li>
             </ul>
           </div>
@@ -49,7 +55,7 @@ export default function Footer() {
           {/* Col 3: Compliance & Legal */}
           <div>
             <h4 className="font-bold text-gray-900 uppercase text-xs tracking-wider mb-4">
-              Legal & Transparency
+              Legal &amp; Transparency
             </h4>
             <ul className="space-y-2.5 text-base font-medium">
               <li>
@@ -62,10 +68,10 @@ export default function Footer() {
                 <Link href="/affiliate-disclosure" className="hover:text-blue-700 transition">Affiliate Disclosure</Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-blue-700 transition">About Our Team</Link>
+                <Link href="/about" className="hover:text-blue-700 transition">About Our Founder</Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-blue-700 transition">Contact & Support</Link>
+                <Link href="/contact" className="hover:text-blue-700 transition">Contact &amp; Support</Link>
               </li>
             </ul>
           </div>

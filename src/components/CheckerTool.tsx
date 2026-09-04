@@ -15,7 +15,7 @@ export default function CheckerTool() {
   const [inputText, setInputText] = useState<string>('');
   const [excludeDomain, setExcludeDomain] = useState<boolean>(true);
   const [excludeUrl, setExcludeUrl] = useState<boolean>(true);
-  const [activeTab, setActiveTab] = useState<'dapa' | 'spam' | 'age'>('dapa');
+  const [activeTab, setActiveTab] = useState<'all' | 'dapa' | 'spam'>('all');
   const [loading, setLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [results, setResults] = useState<DomainMetricResult[]>([]);
@@ -39,7 +39,7 @@ export default function CheckerTool() {
 
   const handleCheck = async () => {
     if (lines.length === 0) {
-      setErrorMessage('Please enter at least one domain or URL to analyze.');
+      setErrorMessage('Please enter at least one valid domain or URL to analyze.');
       return;
     }
 
@@ -59,12 +59,14 @@ export default function CheckerTool() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to analyze domains. Please try again.');
+        throw new Error(data.error || 'Failed to analyze domains. Please verify formatting and try again.');
       }
 
       setResults(data.results || []);
     } catch (err: any) {
-      setErrorMessage(err.message || 'An unexpected error occurred. Please try again.');
+      setErrorMessage(
+        err.message || '⚠️ Server connection timeout. Please check your internet connection or try again in a moment.'
+      );
     } finally {
       setLoading(false);
     }
@@ -77,8 +79,19 @@ export default function CheckerTool() {
       <div id="tool" className="bg-white border border-gray-300 rounded-md shadow-sm mb-8">
         
         {/* Top Tool Mode Tabs */}
-        <div className="flex items-center border-b border-gray-200 bg-gray-50 px-4 py-2 text-sm font-bold text-gray-700">
+        <div className="flex flex-wrap items-center justify-between border-b border-gray-200 bg-gray-50 px-4 py-2 text-sm font-bold text-gray-700 gap-2">
           <div className="flex items-center gap-1">
+            <button
+              type="button"
+              onClick={() => setActiveTab('all')}
+              className={`px-3 py-1.5 border rounded-t text-sm font-bold transition ${
+                activeTab === 'all'
+                  ? 'bg-white border-gray-300 border-b-white -mb-[9px] text-[#1D4ED8]'
+                  : 'text-gray-600 hover:text-gray-900 border-transparent'
+              }`}
+            >
+              All Metrics (Default)
+            </button>
             <button
               type="button"
               onClick={() => setActiveTab('dapa')}
@@ -88,7 +101,7 @@ export default function CheckerTool() {
                   : 'text-gray-600 hover:text-gray-900 border-transparent'
               }`}
             >
-              DA & PA Mode
+              DA &amp; PA Focus
             </button>
             <button
               type="button"
@@ -99,19 +112,12 @@ export default function CheckerTool() {
                   : 'text-gray-600 hover:text-gray-900 border-transparent'
               }`}
             >
-              Spam Score Mode
+              Spam Score Focus
             </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab('age')}
-              className={`px-3 py-1.5 border rounded-t text-sm font-bold transition ${
-                activeTab === 'age'
-                  ? 'bg-white border-gray-300 border-b-white -mb-[9px] text-[#1D4ED8]'
-                  : 'text-gray-600 hover:text-gray-900 border-transparent'
-              }`}
-            >
-              Domain Age Mode
-            </button>
+          </div>
+
+          <div className="text-xs text-gray-500 font-normal hidden sm:block">
+            ⚡ All metrics calculated in 1 unified check
           </div>
         </div>
 
@@ -181,12 +187,22 @@ export default function CheckerTool() {
 
           {/* Error Message */}
           {errorMessage && (
-            <div className="mt-3 p-3 bg-red-50 border border-red-200 rounded text-sm text-red-700 font-medium">
-              {errorMessage}
+            <div className="mt-3 p-3 bg-red-50 border border-red-200 rounded text-sm text-red-700 font-medium flex items-center justify-between gap-2">
+              <div className="flex items-center gap-2">
+                <span>⚠️</span>
+                <span>{errorMessage}</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setErrorMessage('')}
+                className="text-red-500 hover:text-red-700 text-xs font-bold"
+              >
+                ✕
+              </button>
             </div>
           )}
 
-          {/* Solid Primary Action Button (Clean, crisp, authentic) */}
+          {/* Solid Primary Action Button */}
           <div className="mt-4 text-center">
             <button
               type="button"
@@ -201,7 +217,7 @@ export default function CheckerTool() {
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                   </svg>
-                  <span>Checking...</span>
+                  <span>Analyzing Domains...</span>
                 </>
               ) : (
                 <span>Check DA PA</span>

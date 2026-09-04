@@ -48,9 +48,15 @@ export default function Header() {
     <header className="bg-white border-b border-gray-300 shadow-[0_1px_3px_rgba(0,0,0,0.05)] sticky top-0 z-40">
       <div className="widescreen-container h-20 flex items-center justify-between">
         
-        {/* Brand Logo */}
+        {/* Brand Logo with explicit width & height (Zero CLS) */}
         <Link href="/" className="flex items-center space-x-3 cursor-pointer">
-          <img src="/logo.jpg" alt="DAPA Metrics Logo" className="h-12 w-auto object-contain rounded" />
+          <img
+            src="/logo.svg"
+            alt="DAPA Metrics Logo"
+            width={48}
+            height={48}
+            className="h-12 w-12 object-contain"
+          />
           <div>
             <span className="text-2xl font-bold text-gray-900 tracking-tight">
               DAPA Metrics
@@ -62,7 +68,7 @@ export default function Header() {
         </Link>
 
         {/* Navigation Links */}
-        <nav className="hidden lg:flex items-center space-x-8 text-base font-semibold text-gray-700">
+        <nav className="hidden lg:flex items-center space-x-7 text-base font-semibold text-gray-700">
           <Link
             href="/"
             className={`pb-6 pt-6 border-b-2 transition ${
@@ -72,6 +78,16 @@ export default function Header() {
             }`}
           >
             DA PA Checker
+          </Link>
+          <Link
+            href="/blog"
+            className={`pb-6 pt-6 border-b-2 transition ${
+              pathname?.startsWith('/blog')
+                ? 'text-[#1D4ED8] font-bold border-[#1D4ED8]'
+                : 'text-gray-700 hover:text-gray-900 border-transparent'
+            }`}
+          >
+            Blog
           </Link>
           <Link
             href="/methodology"

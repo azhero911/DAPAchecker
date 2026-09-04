@@ -1,10 +1,28 @@
 // src/app/methodology/page.tsx
 import { Metadata } from 'next';
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dapametrics.vercel.app';
+
 export const metadata: Metadata = {
-  title: 'Metric Methodology - How Domain Authority & Spam Scores Are Calculated',
+  title: 'Metric Methodology — How DA, PA, and Spam Scores Are Calculated',
   description:
-    'Scientific methodology whitepaper explaining the mathematical models behind Moz DA, PA, Spam Score, and Open PageRank algorithms.',
+    'Technical whitepaper explaining the mathematical models and graph algorithms behind Moz Domain Authority, Page Authority, Spam Score, and Open PageRank.',
+  alternates: {
+    canonical: `${SITE_URL}/methodology`,
+  },
+  openGraph: {
+    title: 'Metric Methodology — DAPA Metrics Scoring Algorithms',
+    description:
+      'Learn how Moz DA, PA, and Open PageRank calculate web authority using machine learning and eigenvector centrality.',
+    url: `${SITE_URL}/methodology`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Metric Methodology — DAPA Metrics Scoring Algorithms',
+    description:
+      'Technical explanation of how Domain Authority, Page Authority, and Spam Score are calculated.',
+  },
 };
 
 export default function MethodologyPage() {

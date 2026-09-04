@@ -1,9 +1,20 @@
 // src/app/terms/page.tsx
 import { Metadata } from 'next';
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dapametrics.vercel.app';
+
 export const metadata: Metadata = {
-  title: 'Terms of Service - DAPA Metrics User Agreement',
-  description: 'Terms of service, fair use policy, and limitations of liability for DAPA Metrics.',
+  title: 'Terms of Service — User Agreement & Acceptable Use | DAPA Metrics',
+  description: 'Terms of service, fair use API policy, and limitations of liability for DAPA Metrics.',
+  alternates: {
+    canonical: `${SITE_URL}/terms`,
+  },
+  openGraph: {
+    title: 'Terms of Service — DAPA Metrics User Agreement',
+    description: 'Fair use policies, API query guidelines, and terms of service for DAPA Metrics.',
+    url: `${SITE_URL}/terms`,
+    type: 'website',
+  },
 };
 
 export default function TermsPage() {
