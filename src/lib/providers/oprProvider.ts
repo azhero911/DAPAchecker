@@ -15,20 +15,20 @@ export class OpenPageRankProvider implements IMetricsProvider {
   name = 'openpagerank' as const;
   displayName = 'Open PageRank API';
 
-  private apiKey: string;
-
-  constructor() {
-    this.apiKey = process.env.OPR_API_KEY || '';
+  private getApiKey(): string {
+    return (process.env.OPR_API_KEY || '').trim();
   }
 
   isConfigured(): boolean {
-    return Boolean(this.apiKey && this.apiKey.length > 5);
+    const key = this.getApiKey();
+    return Boolean(key && key.length > 5);
   }
 
   async fetchDomainMetrics(domains: string[]): Promise<Map<string, Partial<DomainMetricResult>>> {
     const results = new Map<string, Partial<DomainMetricResult>>();
+    const apiKey = this.getApiKey();
 
-    if (!this.isConfigured() || domains.length === 0) {
+    if (!apiKey || domains.length === 0) {
       return results;
     }
 
@@ -39,21 +39,23 @@ export class OpenPageRankProvider implements IMetricsProvider {
       const response = await fetch(url, {
         method: 'GET',
         headers: {
-          'API-OPR': this.apiKey,
+          'API-OPR': apiKey,
         },
         // 8-second timeout
         signal: AbortSignal.timeout(8000),
       });
 
       if (!response.ok) {
-        throw new Error(`OpenPageRank HTTP ${response.status}`);
+        const errText = await response.text();
+        console.error(`[OpenPageRank] HTTP ${response.status}:`, errText);
+        throw new Error(`OpenPageRank HTTP ${response.status}: ${errText}`);
       }
 
       const data = await response.json();
 
       if (data.response && Array.isArray(data.response)) {
         for (const item of data.response as OPRResponseItem[]) {
-          const oprScore = item.page_rank_decimal || 0;
+          const oprScore = typeof item.page_rank_decimal === 'number' ? item.page_rank_decimal : parseFloat(String(item.page_rank_decimal || 0)) || 0;
           const globalRank = parseInt(item.rank || '0', 10) || 0;
 
           // Estimate DA based on OpenPageRank curve if Moz key is not yet configured
@@ -82,7 +84,7 @@ export class OpenPageRankProvider implements IMetricsProvider {
         }
       }
     } catch (err: any) {
-      console.error('OpenPageRank fetch error:', err.message);
+      console.error('[OpenPageRankProvider] Error querying metrics:', err.message);
     }
 
     return results;

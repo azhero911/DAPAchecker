@@ -12,21 +12,26 @@ export interface IMetricsProvider {
 }
 
 export class MetricsProviderFactory {
-  private static providers: Record<string, IMetricsProvider> = {
-    mock: new MockProvider(),
-    openpagerank: new OpenPageRankProvider(),
-    moz: new MozProvider(),
-  };
-
   public static getProvider(type?: string): IMetricsProvider {
-    const selected = (type || process.env.METRICS_PROVIDER || 'mock').toLowerCase();
-    const provider = this.providers[selected];
+    const requested = (type || process.env.METRICS_PROVIDER || '').toLowerCase();
 
-    if (provider && provider.isConfigured()) {
-      return provider;
+    // 1. Check Moz if explicitly requested
+    if (requested === 'moz') {
+      const moz = new MozProvider();
+      if (moz.isConfigured()) {
+        return moz;
+      }
     }
 
-    // Fallback gracefully to mock provider if configured provider lacks API keys
-    return this.providers['mock'];
+    // 2. Check OpenPageRank (Auto-activate if OPR_API_KEY is present or if explicitly requested)
+    const opr = new OpenPageRankProvider();
+    if (opr.isConfigured() || requested === 'openpagerank' || requested === 'opr') {
+      if (opr.isConfigured()) {
+        return opr;
+      }
+    }
+
+    // 3. Fallback to mock only if no valid API keys are configured
+    return new MockProvider();
   }
 }

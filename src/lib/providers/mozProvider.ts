@@ -6,16 +6,16 @@ export class MozProvider implements IMetricsProvider {
   name = 'moz' as const;
   displayName = 'Moz Links API v2';
 
-  private accessId: string;
-  private secretKey: string;
+  private getAccessId(): string {
+    return (process.env.MOZ_ACCESS_ID || '').trim();
+  }
 
-  constructor() {
-    this.accessId = process.env.MOZ_ACCESS_ID || '';
-    this.secretKey = process.env.MOZ_SECRET_KEY || '';
+  private getSecretKey(): string {
+    return (process.env.MOZ_SECRET_KEY || '').trim();
   }
 
   isConfigured(): boolean {
-    return Boolean(this.accessId && this.secretKey);
+    return Boolean(this.getAccessId() && this.getSecretKey());
   }
 
   async fetchDomainMetrics(domains: string[]): Promise<Map<string, Partial<DomainMetricResult>>> {
@@ -25,8 +25,11 @@ export class MozProvider implements IMetricsProvider {
       return results;
     }
 
+    const accessId = this.getAccessId();
+    const secretKey = this.getSecretKey();
+
     try {
-      const authHeader = 'Basic ' + Buffer.from(`${this.accessId}:${this.secretKey}`).toString('base64');
+      const authHeader = 'Basic ' + Buffer.from(`${accessId}:${secretKey}`).toString('base64');
       const response = await fetch('https://lsapi.seomoz.com/v2/url_metrics', {
         method: 'POST',
         headers: {
@@ -39,35 +42,37 @@ export class MozProvider implements IMetricsProvider {
         signal: AbortSignal.timeout(8000),
       });
 
-      if (response.ok) {
-        const data = await response.json();
-        if (data.results && Array.isArray(data.results)) {
-          for (const item of data.results) {
-            const domain = item.page || item.root_domain;
-            results.set(domain, {
-              domain,
-              status: 'success',
-              moz: {
-                domainAuthority: item.domain_authority || 1,
-                pageAuthority: item.page_authority || 1,
-                spamScore: item.spam_score || 1,
-              },
-              openPageRank: {
-                pageRankDecimal: parseFloat(((item.domain_authority || 1) / 10).toFixed(1)),
-                rank: 0,
-              },
-              domainAge: {
-                years: 1,
-                months: 0,
-                formatted: 'Moz Verified',
-              },
-              provider: 'moz',
-            });
-          }
+      if (!response.ok) {
+        throw new Error(`Moz API HTTP ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      if (data.results && Array.isArray(data.results)) {
+        for (const item of data.results) {
+          results.set(item.target, {
+            domain: item.target,
+            status: 'success',
+            moz: {
+              domainAuthority: Math.round(item.domain_authority || 1),
+              pageAuthority: Math.round(item.page_authority || 1),
+              spamScore: Math.round(item.spam_score || 1),
+            },
+            openPageRank: {
+              pageRankDecimal: parseFloat(((item.domain_authority || 1) / 10).toFixed(1)),
+              rank: 0,
+            },
+            domainAge: {
+              years: 1,
+              months: 0,
+              formatted: 'Indexed',
+            },
+            provider: 'moz',
+          });
         }
       }
     } catch (err: any) {
-      console.error('Moz API fetch error:', err.message);
+      console.error('[MozProvider] Fetch error:', err.message);
     }
 
     return results;

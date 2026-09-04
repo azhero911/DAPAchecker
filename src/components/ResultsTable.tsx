@@ -217,8 +217,20 @@ export default function ResultsTable({ results, loading }: ResultsTableProps) {
                   <td className="py-2.5 px-3 text-center font-mono text-gray-700">
                     {item.openPageRank?.pageRankDecimal?.toFixed(1) || '0.1'} / 10
                   </td>
-                  <td className="py-2.5 px-3 text-center text-gray-500">
-                    {item.freshness?.isCached ? 'Cached' : '⚡ Fresh'}
+                  <td className="py-2.5 px-3 text-center text-xs">
+                    {item.provider === 'openpagerank' ? (
+                      <span className="text-green-700 font-bold bg-green-50 px-2 py-0.5 rounded border border-green-200 inline-block">
+                        ⚡ Live OPR
+                      </span>
+                    ) : item.provider === 'moz' ? (
+                      <span className="text-purple-700 font-bold bg-purple-50 px-2 py-0.5 rounded border border-purple-200 inline-block">
+                        ⚡ Live Moz
+                      </span>
+                    ) : (
+                      <span className="text-amber-700 font-medium bg-amber-50 px-2 py-0.5 rounded border border-amber-200 inline-block" title="Using offline fallback because no API key is detected">
+                        Demo Mode
+                      </span>
+                    )}
                   </td>
                 </tr>
               );

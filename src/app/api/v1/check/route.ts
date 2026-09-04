@@ -128,6 +128,11 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({
       results: finalResults,
+      meta: {
+        provider: provider.name,
+        isLive: provider.name !== 'mock',
+        hasOprKey: Boolean(process.env.OPR_API_KEY && process.env.OPR_API_KEY.trim().length > 5),
+      },
       totalChecked: finalResults.length,
       cachedHits,
       executionTimeMs: Date.now() - startTime,
