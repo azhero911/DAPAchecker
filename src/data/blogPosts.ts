@@ -787,11 +787,12 @@ Use our [bulk DA PA tool](/) to monitor your link equity growth over time and au
   // ─── SEO ARTICLE 1 ────────────────────────────────────────────────────────
   {
     slug: 'what-is-a-good-domain-authority-score',
-    title: 'What Is a Good Domain Authority Score? Benchmarks by Industry & Site Age',
-    excerpt: 'Not all DA scores mean the same thing. Discover what constitutes a genuinely good Domain Authority score for new sites, small blogs, and enterprise domains — with real benchmarks by industry vertical.',
+    title: 'What Is a Good Domain Authority Score? Practical Reference Ranges and How to Benchmark',
+    excerpt: 'Not all DA scores mean the same thing. Learn practical reference ranges by site type and industry, and — more importantly — how to benchmark your Domain Authority against the pages that are actually ranking for your target keywords.',
     category: 'SEO Fundamentals',
     readTime: '8 min read',
     publishedAt: '2026-09-04',
+    updatedAt: '2026-09-04',
     author: {
       name: 'DAPA Metrics Editorial Team',
       role: 'SEO Research & Analysis',
@@ -820,65 +821,67 @@ Use our [bulk DA PA tool](/) to monitor your link equity growth over time and au
     content: `
 ## What Does "Good" Actually Mean for Domain Authority?
 
-Domain Authority (DA) is a 1–100 score created by Moz that models how competitive a domain's backlink profile is relative to the rest of the web. A score of 100 is reserved for sites like Wikipedia or YouTube. A score of 1 is the baseline for a brand-new domain.
+Domain Authority (DA) is a 1–100 score created by Moz that models how competitive a domain's backlink profile is relative to the rest of the web. The scale is logarithmic — scores become significantly harder to increase at higher values, because they reflect your domain's position relative to the entire web index Moz tracks.
 
 The single most common mistake webmasters make is evaluating their DA in absolute terms — "Is 35 good?" — rather than asking the more actionable question: **"Is my DA competitive within my specific niche and against my direct search competitors?"**
 
----
-
-## The Logarithmic Reality: Why Going from 20→30 Is Easier Than 50→60
-
-DA operates on a **logarithmic scale**, meaning the effort required to increase your score rises exponentially as you climb higher. Earning your first 10–20 referring domains will push a brand-new site from DA 1 to roughly DA 20–25. But pushing from DA 50 to DA 60 requires dramatically more referring domains — and from higher-authority sites.
-
-This has a practical implication: **a DA 40 site in a local services niche may rank for competitive keywords that a DA 60 site in the finance niche cannot**, because Google's actual ranking signals are not based on DA directly.
+There is no universal DA score that guarantees competitiveness in any particular industry. The only meaningful benchmark is the DA of the pages currently ranking for your target keywords.
 
 ---
 
-## Domain Authority Benchmarks by Site Type
+## The Logarithmic Reality: Why Higher DA Becomes Harder to Earn
 
-| Site Type | Typical DA Range | Notes |
+DA operates on a **logarithmic scale**, meaning the effort required to increase your score rises significantly as you climb higher. Early gains — building your first meaningful set of referring domains — tend to produce visible score movement. But at higher DA levels, incremental growth requires proportionally more diverse, high-quality linking domains.
+
+This has a practical implication: **a domain in a local services niche may rank for competitive keywords that a higher-DA domain in the finance niche cannot**, because Google's actual ranking signals are not based on DA directly. On-page relevance, content depth, and user experience are independently weighted in Google's systems.
+
+---
+
+## Illustrative Reference Ranges by Site Type
+
+> **Note**: These ranges are illustrative rather than official industry benchmarks. There is no authoritative research establishing universally agreed DA thresholds per site type. Use these as a general orientation point — your actual competitive position should always be assessed against the specific pages ranking for your target queries.
+
+| Site Type | Illustrative DA Range | What it typically suggests |
 |---|---|---|
-| Brand-new domain (0–6 months) | 1–15 | Normal — no indexed backlinks yet |
-| Small blog / local business | 10–30 | Typical range for independently operated sites |
-| Established niche site (2–5 years) | 25–45 | Solid range if content is focused and link building is consistent |
-| Regional news / industry publication | 40–60 | Active editorial links and press mentions expected |
-| National brand / major publisher | 60–80 | Sustained PR, digital outreach, earned media at scale |
-| Mega-brand / wiki-style platform | 80–100 | Ultra-competitive; requires thousands of high-authority referring domains |
+| Brand-new domain (0–6 months) | 1–15 | Few or no indexed backlinks yet; normal for new sites |
+| Small independently operated blog | 10–30 | Some referring domain diversity starting to accumulate |
+| Established niche site (2–5 years) | 25–45 | Consistent content and link-building compounding over time |
+| Regional news or industry publication | 40–60 | Active editorial coverage, press mentions, industry citations |
+| National brand or major publisher | 60–80 | Sustained earned media, PR, and digital outreach at scale |
+| Mega-platform or institutional domain | 80–100 | Thousands of high-authority referring domains across many years |
 
 ---
 
-## Domain Authority Benchmarks by Industry Vertical
+## Illustrative Reference Ranges by Industry Context
 
-Industry competition directly influences what constitutes a "good" DA within a niche. Ranking in the health supplements space (dominated by WebMD, Healthline, Mayo Clinic — all DA 90+) requires a much higher relative DA than ranking in a specialist B2B vertical like industrial packaging machinery.
+Industry competitive dynamics differ significantly. A domain competing in a niche with few authoritative publishers may rank at a lower DA than a domain in a vertical crowded with large, well-linked institutional sites.
 
-| Industry Vertical | Competitive Threshold DA |
+> **Note**: The figures below are illustrative reference points based on general industry observation, not official research statistics. Competition within any vertical varies significantly by specific keyword, geography, and content format. Always run a SERP analysis on your actual target queries to understand what DA range you are actually competing against.
+
+| Industry Context | Illustrative competitive DA range |
 |---|---|
-| Finance & Insurance | 50+ |
-| Health & Medical | 50+ |
-| Legal & Law | 45+ |
-| SaaS & Technology | 40+ |
-| E-commerce / Retail | 35+ |
-| Local Services / SMB | 20–35 |
-| Niche Hobbyist / Enthusiast | 15–30 |
-| B2B Industrial / Manufacturing | 20–35 |
+| Finance & Insurance | Often 50+ among established ranking pages |
+| Health & Medical | Often 50+ for established publishers |
+| Legal & Law | Often 45+ |
+| SaaS & Technology | Often 40+ |
+| E-commerce / Retail | Varies widely; 35–60+ depending on niche |
+| Local Services / SMB | Often 20–40 for local/regional queries |
+| Niche Hobbyist / Enthusiast | Often 15–35 |
+| B2B Industrial / Manufacturing | Often 20–40 |
 
-These thresholds are approximate. The only reliable benchmark is running a SERP analysis on your actual target keywords and checking the DA of the pages that are currently ranking on page one.
+The only reliable benchmark is running a SERP analysis on your actual target keywords and checking the DA of the pages that are currently ranking on page one.
 
 ---
 
 ## What Is a Good DA Score for a New Website?
 
-For a new website (under 12 months old):
-
-- **DA 1–10**: Normal and expected. Focus on foundational content and earning your first legitimate editorial backlinks.
-- **DA 11–20**: You have a starter backlink profile. A few directories, one or two editorial links, or social profile links may have been indexed.
-- **DA 21–30**: You have meaningful referring domain diversity. This range is achievable within 6–18 months for sites with active content production and outreach.
+For a new website (under 12 months old), a low DA is entirely normal and expected. No score is inherently "bad" in isolation — what matters is the trajectory and the competitive context.
 
 A new site should not chase DA as a primary KPI. Instead, track:
 
-1. Referring root domains (growth trend matters more than raw DA)
-2. Organic keyword rankings for your target queries
-3. Impressions and clicks from Google Search Console
+1. **Referring root domains** — growth trend over time matters more than any single DA snapshot
+2. **Organic keyword rankings** for your target queries
+3. **Impressions and clicks** from Google Search Console
 
 ---
 
@@ -886,7 +889,7 @@ A new site should not chase DA as a primary KPI. Instead, track:
 
 You can instantly audit your DA, Page Authority (PA), Spam Score, and Open PageRank using the [DAPA Metrics free bulk checker](/). Enter up to 10 domains in one batch — no login required.
 
-For ongoing link building strategy, cross-reference your DA reading with your [Open PageRank score](/), which is calculated from the independent Common Crawl dataset. This dual-metric approach gives you a more complete picture of your domain's authority than any single score alone.
+For ongoing link building strategy, cross-reference your DA reading with your Open PageRank score, which is calculated from the independent Common Crawl dataset. This dual-metric approach gives you a more complete picture of your domain's authority than any single score alone.
 
 ---
 
@@ -901,7 +904,7 @@ For ongoing link building strategy, cross-reference your DA reading with your [O
 
 ## Summary
 
-A "good" Domain Authority score is one that is **competitive against the pages already ranking for your target keywords**. Use the industry benchmarks above as context — but always validate against your actual SERP competitors using the [free DAPA Metrics checker](/). Monitor your referring domain growth trend monthly. And remember: DA is a proxy metric, not a Google ranking signal. Ranking success depends on content quality, relevance, and the full suite of on-page and off-page signals that Google's systems evaluate.
+A "good" Domain Authority score is one that is **competitive against the pages already ranking for your target keywords**. The reference ranges in this article are illustrative starting points — always validate against your actual SERP competitors. Monitor your referring domain growth trend monthly. And remember: DA is a proxy metric, not a Google ranking signal. Ranking success depends on content quality, relevance, and the full suite of on-page and off-page signals that Google's systems evaluate.
     `,
   },
 
@@ -958,7 +961,7 @@ Before going further, understand the three core metrics worth auditing together:
 | **Spam Score** | Moz | Percentage likelihood the domain shares link characteristics with penalised/spam sites |
 | **Open PageRank (OPR)** | Common Crawl | Independent algorithmic PageRank score, cross-referencing DA for a fuller picture |
 
-Checking DA alone is insufficient for serious competitor research or backlink prospecting. Always review Spam Score alongside DA — a site with DA 45 but Spam Score 72% is a risky link partner that could carry reputational risk.
+Checking DA alone is insufficient for serious competitor research or backlink prospecting. When reviewing a potential link partner, Spam Score is one signal worth examining alongside DA — a high Spam Score can be a reason to investigate the site more carefully before pursuing a link opportunity.
 
 ---
 
@@ -1001,7 +1004,7 @@ Never evaluate scores in isolation. Compare all domains in your batch to underst
 
 **For SERP competitor audits**: Copy the top 10 URLs from a Google search for your target keyword. Paste them all into DAPA Metrics to generate a complete competitive authority map in under 30 seconds.
 
-**For backlink prospecting**: Build a shortlist of 10 guest post or editorial targets in your niche. Run them through the bulk checker and filter out any with Spam Score above 40%. Prioritize candidates with DA 30+ and OPR score above 3.
+**For backlink prospecting**: Build a shortlist of guest post or editorial targets in your niche. When evaluating candidates, consider Spam Score, DA, OPR, topical relevance, organic traffic, editorial quality, and indexing status together. Avoid treating any single metric as an automatic pass/fail threshold — each signal is most useful in combination with the others.
 
 **For client reporting**: Run baseline checks at project start and monthly thereafter. The results table supports copying data for use in your reporting workflow.
 
@@ -1077,7 +1080,7 @@ Yes — completely free for any individual or agency use. The tool is ad-support
 
 Spam Score is a metric developed by Moz that estimates the likelihood that a given domain shares characteristics with websites that have been penalised by Google or manually actioned for spam. It is expressed as a **percentage from 0% to 100%**.
 
-A common misconception is that Spam Score directly reports whether Google has penalised a website. It does not. Spam Score is a **predictive signal** based on Moz's analysis of over 27 distinct on-site characteristics (called "spam flags") that statistically correlate with penalised domains in Moz's research database.
+A common misconception is that Spam Score directly reports whether Google has penalised a website. It does not. Spam Score is a **predictive signal** based on Moz's internal research — it models the degree to which a domain's characteristics resemble those of sites Moz has identified as spam-like in its index. Moz's documentation should be consulted for the most current description of how this model works.
 
 You can check any domain's Spam Score instantly using the [free DAPA Metrics checker](/), which displays the score alongside DA, PA, and Open PageRank.
 
@@ -1085,27 +1088,23 @@ You can check any domain's Spam Score instantly using the [free DAPA Metrics che
 
 ## How Spam Score Is Calculated
 
-Moz's research team identified 27 site characteristics that are significantly more common among Google-penalised websites than among healthy websites. These include signals such as:
+According to Moz, Spam Score is based on a set of site characteristics that appear statistically more often among penalised or spam-like websites in their research. Moz has described these as "spam flags" — site-level signals that their model uses to generate the score.
 
-- Thin or low-quality page content at scale
-- High percentage of exact-match anchor text in the backlink profile
-- Low ratio of unique linking domains to total backlinks (link clustering)
-- Site architecture patterns common in link farm networks
-- Absence of standard trust signals (About page, contact information, editorial policy)
+The full and current list of signals is defined and maintained by Moz. Because this is a proprietary model that may be updated over time, we recommend consulting [Moz's official Spam Score documentation](https://moz.com/blog/spam-score-a-new-metric) for the precise current methodology rather than relying on any third-party summary.
 
-Each domain earns a "flag count" from 0 to 27. Moz then maps this count to the 0–100% Spam Score scale. A domain with 0–4 flags scores in the low band; a domain with 10+ flags enters the high band.
-
-**Important**: Spam Score measures patterns, not Google's actual penalty database. A high-traffic legitimate website can theoretically receive a moderate Spam Score if it happens to share structural patterns with spam sites.
+**What is important to understand**: Spam Score measures patterns Moz associates with problematic sites — it does not confirm a Google penalty. A high-traffic, legitimate website can theoretically receive a non-zero Spam Score if it happens to share structural characteristics with spam sites in Moz's dataset.
 
 ---
 
-## The Three Spam Score Bands
+## Practical Score Bands — DAPA Metrics' Interpretation
 
-| Band | Score Range | Interpretation |
+> **Clarification**: The following band labels are DAPA Metrics' practical interpretation for helping users reason about the score. They are not Moz's official classification labels. Consult Moz's documentation for Moz's own framing.
+
+| Band | Score Range | DAPA Metrics' practical interpretation |
 |---|---|---|
-| **Low** | 1–30% | Normal; no meaningful cause for concern in most cases |
-| **Medium** | 31–60% | Warrants closer investigation, especially before acquiring a link from this domain |
-| **High** | 61–100% | Strong signal of risk; avoid accepting links from or building links on this domain without thorough vetting |
+| **Low** | 1–30% | Generally no cause for concern as a starting point; continue normal assessment |
+| **Medium** | 31–60% | Worth investigating more carefully, particularly before pursuing a link from this domain |
+| **High** | 61–100% | A strong prompt for thorough review; avoid treating this domain as a default link partner without additional due diligence |
 
 ---
 
@@ -1127,21 +1126,21 @@ A Spam Score of 80% on your own domain does **not** mean you have received a Goo
 
 ### Situation 1: Evaluating a Backlink Opportunity
 
-If you are considering a guest post, sponsored placement, or link exchange with a domain that has a Spam Score above 40%, treat it as a yellow flag. Above 60%, it is a red flag. A backlink from a high Spam Score domain is unlikely to pass meaningful authority and carries the reputational risk of association with a potentially penalised network.
+A high Spam Score on a potential link partner's domain should prompt additional review — looking at the site's content quality, editorial practices, backlink patterns, topical relevance, and organic search presence. It should not be treated as automatic proof that a link from that domain is harmful. Many factors determine whether a link passes value, and Spam Score is one signal in a broader evaluation.
 
-Check the domain's DA and OPR alongside Spam Score — a site with DA 50 but Spam Score 75% is a common pattern in Private Blog Networks (PBNs) that have artificially inflated their own authority while accumulating disqualifying spam characteristics.
+Check DA, OPR, and Spam Score together as part of that broader review. A site with a very high Spam Score alongside low DA and thin content is a pattern worth proceeding carefully with — but the combination of signals matters, not any single number in isolation.
 
 ### Situation 2: Your Own Domain Has a High Spam Score
 
 Run the [DAPA Metrics checker](/) on your own domain. If your Spam Score is elevated:
 
 1. **Audit your inbound link profile** using Moz Link Explorer or Google Search Console's Links report.
-2. **Identify toxic patterns** — clusters of low-quality exact-match anchor links, links from obvious link farm domains, or mass directory submissions.
+2. **Identify patterns of concern** — clusters of low-quality exact-match anchor links, links from obvious link farm domains, or mass directory submissions.
 3. **Disavow selectively** — Google's official guidance is to use the disavow tool only if you have a confirmed manual action or strong evidence that toxic links are causing ranking suppression. Google's SpamBrain system typically ignores low-quality links automatically.
 
 ### Situation 3: Competitor Research
 
-Checking a ranking competitor's Spam Score reveals whether their authority has been built on a healthy organic link profile or artificially inflated via link schemes. A competitor with DA 50 and Spam Score 70% is potentially vulnerable to a future algorithm update. A competitor with DA 50 and Spam Score 5% has a resilient, well-established authority base that will be significantly harder to outcompete.
+Checking a ranking competitor's Spam Score can give you a rough sense of how their link profile has been built. A competitor with a consistently low Spam Score alongside sustained DA growth typically has an earned, organic backlink profile — which tends to be more durable through algorithm updates. A very high Spam Score combined with evidence of unnatural linking patterns is worth noting as a potential fragility in their authority.
 
 ---
 
@@ -1154,7 +1153,7 @@ False. Spam Score is a Moz-proprietary predictive model. Google does not use or 
 False. Mass disavow of all moderate-Spam-Score links will likely harm your rankings by removing legitimate editorial signals. Disavow only when you have a confirmed manual action or specific evidence of ranking suppression from identifiable toxic link clusters.
 
 **Myth: "A DA 70 site with Spam Score 5% is always a better link than a DA 30 site with Spam Score 10%."**
-Not necessarily. Topical relevance and the editorial context of the linking page matter as much as authority scores. A DA 35 industry-relevant blog in your niche often passes more practical ranking signal than a DA 70 site with zero topical connection to your content.
+Not necessarily. Topical relevance and the editorial context of the linking page matter as much as authority scores. A lower-DA site with strong topical alignment often provides more practical ranking signal than a high-DA site with no content connection to your niche.
 
 ---
 
@@ -1216,10 +1215,7 @@ Domain Authority reflects the cumulative strength of a website's **entire backli
 
 ### What influences DA?
 
-- **Referring root domains**: The count and diversity of unique websites that link to any page on the domain
-- **Authority of linking domains**: A link from a DA 85 domain contributes more than 10 links from DA 20 domains
-- **Spam signals**: The presence of manipulative link patterns or low-quality external links pointing at the domain
-- **Internal link architecture**: How effectively the site distributes link equity from high-authority pages to deeper content
+According to Moz's documentation, DA is driven primarily by the quantity and quality of referring root domains pointing to the domain, assessed through their machine learning model. For the most current methodology, refer to [Moz's Domain Authority documentation](https://moz.com/learn/seo/domain-authority).
 
 ---
 
@@ -1231,10 +1227,9 @@ Page Authority applies the same fundamental methodology as DA — but scoped to 
 
 ### What influences PA?
 
-- **External backlinks to that specific URL**: Editorial links, citations, and references that point directly to the page's exact URL
-- **Internal PageRank flow**: Internal links from high-authority pages on the same site funnel link equity into the target page, boosting its PA
-- **Authority of the root domain (DA)**: High-DA sites naturally distribute more equity to individual pages through the internal link structure
-- **Page-level spam signals**: Thin content, over-optimised anchor ratios, or manipulative linking to the individual page
+According to Moz's documentation, PA is calculated using a similar machine learning approach to DA, applied at the page level rather than the domain level. The signals Moz considers are described in their [Page Authority documentation](https://moz.com/learn/seo/page-authority) and include external links pointing to the specific URL. Because Moz's methodology is proprietary and may change, consult their documentation for the most current description of what PA measures.
+
+For practical purposes, pages that receive more direct external backlinks from diverse, relevant sources tend to have higher PA than pages that receive few or none — though the exact relationship depends on Moz's current model.
 
 ---
 
@@ -1261,25 +1256,27 @@ Page Authority applies the same fundamental methodology as DA — but scoped to 
 
 ### Use PA for:
 
-1. **Keyword-level competitor analysis** — When targeting a specific keyword, the pages ranking on page one each have their own PA. A page with DA 70 but PA 22 may be easier to outrank for that specific query than a DA 50 site whose ranking page has PA 55.
-2. **Evaluating a specific backlink** — The PA of the specific page linking to you matters more than the DA of the domain it is hosted on. A link from a PA 60 deep blog post is typically more valuable than a link from a PA 15 comment in the footer of a PA 5 blog on a DA 70 domain.
+1. **Keyword-level competitor analysis** — When targeting a specific keyword, the pages ranking on page one each have their own PA. A page with very high domain DA but lower PA on a specific article may be differently positioned than a page with moderate DA whose target URL has accumulated direct links.
+2. **Evaluating a specific backlink** — The PA of the specific page linking to you is worth noting alongside the domain's DA. A deep blog post that has accumulated direct, editorial backlinks tends to be a more contextually relevant link placement than a low-PA secondary page on a high-DA domain — though topical relevance and editorial context matter too.
 3. **Internal link planning** — Identifying which pages on your site have the highest PA tells you which pages should serve as your internal link hubs, distributing equity to pages you want to rank for competitive queries.
 
 ---
 
-## A Practical Example: Reading DA and PA Together
+## A Practical Example: How DA and PA Tell Different Stories
 
-Imagine you are targeting the keyword "best project management software for agencies." You run a SERP analysis and check the top 5 ranking pages using the [DAPA Metrics bulk checker](/):
+To illustrate why checking both metrics matters, consider a hypothetical SERP for a competitive keyword. Imagine the following five pages rank on page one:
 
-| Competitor Page | DA | PA |
+> **Illustrative example — these values are hypothetical and are not current measurements of any real websites. They are shown to demonstrate the conceptual relationship between DA and PA, not to characterise any specific domain.**
+
+| Hypothetical Page | Illustrative DA | Illustrative PA |
 |---|---|---|
-| Forbes.com/article/pm-tools | 94 | 28 |
-| Capterra.com/pm-comparison | 88 | 61 |
-| Niche-blog.com/pm-guide | 42 | 45 |
-| SaaS-reviewer.net/best-pm | 38 | 39 |
-| YourSite.com/pm-guide | 31 | 31 |
+| Large general publication — main article | 90+ | ~20–30 |
+| Established SaaS comparison site | 80+ | ~55–65 |
+| Focused niche blog — comprehensive guide | 40–45 | ~40–50 |
+| Specialist industry reviewer | 35–40 | ~35–45 |
+| Your site — new guide | 25–35 | ~25–35 |
 
-Forbes has enormous DA but the specific article has low PA — suggesting it receives few direct external links to that URL. The niche blog has DA 42 but its guide has PA 45 — meaning it has earned specific, pointed backlinks to that exact resource. **Your most immediately competitive target is not Forbes — it is the niche blog and the SaaS reviewer**, because their page-level authority is in reach.
+The pattern this illustrates: a large publication can have very high DA but relatively low PA on a specific article if that article has received few direct external links. A focused niche blog with moderate DA may have comparable PA on its best resource if the community has linked directly to that guide. **The page-level competitive gap is often narrower than the domain-level gap suggests** — which is why checking PA is worth doing for any keyword you are actively targeting.
 
 ---
 
@@ -1288,10 +1285,10 @@ Forbes has enormous DA but the specific article has low PA — suggesting it rec
 Neither metric is universally more important. The answer depends on the analysis context:
 
 - For **site health and overall brand authority**: DA is the primary signal
-- For **individual keyword competitiveness**: PA of the ranking page is the more relevant predictor
-- For **evaluating an inbound link opportunity**: PA of the linking page matters most
+- For **individual keyword competitiveness**: PA of the ranking page is the more relevant data point to examine
+- For **evaluating an inbound link opportunity**: The PA of the specific linking page is worth reviewing alongside the domain's DA
 
-For the most complete picture, always check DA, PA, Spam Score, and Open PageRank together. The [DAPA Metrics free checker](/) returns all four metrics in a single query, making it practical to run this full audit in under 30 seconds per domain or URL.
+For the most complete picture, always check DA, PA, Spam Score, and Open PageRank together. The [DAPA Metrics free checker](/) returns all four metrics in a single query, making it practical to run this full audit quickly for any domain or URL.
     `,
   },
 ];
