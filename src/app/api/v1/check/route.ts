@@ -127,18 +127,24 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // Persist checks to PostgreSQL database asynchronously
-    for (const item of finalResults) {
-      logDomainCheck({
-        domain: item.domain,
-        mozDa: item.moz?.domainAuthority,
-        mozPa: item.moz?.pageAuthority,
-        mozSpamScore: item.moz?.spamScore,
-        domainAgeYears: item.domainAge?.years,
-        openPageRank: item.openPageRank?.pageRankDecimal,
-        globalRank: item.openPageRank?.rank,
-        cached: item.freshness?.isCached,
-      }).catch((e) => console.error('[DB Log Error]', e));
+    // Persist checks to PostgreSQL database
+    try {
+      await Promise.all(
+        finalResults.map((item) =>
+          logDomainCheck({
+            domain: item.domain,
+            mozDa: item.moz?.domainAuthority,
+            mozPa: item.moz?.pageAuthority,
+            mozSpamScore: item.moz?.spamScore,
+            domainAgeYears: item.domainAge?.years,
+            openPageRank: item.openPageRank?.pageRankDecimal,
+            globalRank: item.openPageRank?.rank,
+            cached: item.freshness?.isCached,
+          })
+        )
+      );
+    } catch (e) {
+      console.error('[DB Log Error]', e);
     }
 
     return NextResponse.json({
