@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   creator: 'Author',
   publisher: 'DAPA Metrics',
   verification: {
-    google: 'JbvqCYiIvIF0GJ_l8nJQJWdEUlBMRH7UwTu7n',
+    google: 'SlfwyzB-2CCD-w2QJozo4XGN8UTuGAWGHIhtfyd3DpA',
   },
   alternates: {
     canonical: SITE_URL,
