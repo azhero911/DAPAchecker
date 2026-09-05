@@ -73,8 +73,8 @@ export default function ResultsTable({ results, loading }: ResultsTableProps) {
         </div>
 
         {/* Skeleton Table */}
-        <div className="overflow-x-auto mt-4">
-          <table className="w-full text-left">
+        <div className="table-scroll-container mt-4 border border-gray-200 rounded-lg">
+          <table className="w-full text-left min-w-[780px]">
             <thead>
               <tr className="border-b border-gray-200">
                 <th className="py-2.5 px-3"><div className="h-4 w-6 bg-gray-200 rounded"></div></th>
@@ -265,12 +265,20 @@ export default function ResultsTable({ results, loading }: ResultsTableProps) {
         </div>
       </div>
 
+      {/* Mobile Horizontal Scroll Hint */}
+      <div className="sm:hidden flex items-center justify-between text-[11px] text-gray-500 py-1.5 px-2 bg-blue-50/60 rounded border border-blue-100 mb-2">
+        <span className="flex items-center gap-1 font-medium text-blue-800">
+          ↔ Swipe table to view all metrics
+        </span>
+        <span className="font-semibold text-gray-600">{filtered.length} entries</span>
+      </div>
+
       {/* Main Results Table */}
-      <div className="overflow-x-auto mt-2">
-        <table className="w-full text-left border-collapse">
+      <div className="table-scroll-container mt-1 border border-gray-200 rounded-lg shadow-sm">
+        <table className="w-full text-left border-collapse min-w-[780px]">
           <thead>
-            <tr className="border-b border-gray-200 text-[11px] font-bold text-gray-600 uppercase tracking-wider bg-gray-50/50">
-              <th className="py-2.5 px-2 text-center w-8">
+            <tr className="border-b border-gray-200 text-[11px] font-bold text-gray-600 uppercase tracking-wider bg-gray-50">
+              <th className="py-2.5 px-2 text-center w-8 whitespace-nowrap">
                 <input
                   type="checkbox"
                   checked={selectedDomains.size === filtered.length && filtered.length > 0}
@@ -279,15 +287,15 @@ export default function ResultsTable({ results, loading }: ResultsTableProps) {
                   className="rounded text-blue-600 focus:ring-blue-500"
                 />
               </th>
-              <th className="py-2.5 px-2 text-center w-8">#</th>
-              <th className="py-2.5 px-3">Web Page / URL</th>
-              <th className="py-2.5 px-3 text-center">Moz DA</th>
-              <th className="py-2.5 px-3 text-center">Moz PA</th>
-              <th className="py-2.5 px-3 text-center">Spam Score</th>
-              <th className="py-2.5 px-3 text-center">Domain Age</th>
-              <th className="py-2.5 px-3 text-center">PageRank</th>
-              <th className="py-2.5 px-3 text-center">Status</th>
-              <th className="py-2.5 px-2 text-center w-10">Copy</th>
+              <th className="py-2.5 px-2 text-center w-8 whitespace-nowrap">#</th>
+              <th className="py-2.5 px-3 min-w-[200px] whitespace-nowrap">Web Page / URL</th>
+              <th className="py-2.5 px-3 text-center whitespace-nowrap">Moz DA</th>
+              <th className="py-2.5 px-3 text-center whitespace-nowrap">Moz PA</th>
+              <th className="py-2.5 px-3 text-center whitespace-nowrap">Spam Score</th>
+              <th className="py-2.5 px-3 text-center whitespace-nowrap">Domain Age</th>
+              <th className="py-2.5 px-3 text-center whitespace-nowrap">PageRank</th>
+              <th className="py-2.5 px-3 text-center whitespace-nowrap">Status</th>
+              <th className="py-2.5 px-2 text-center w-10 whitespace-nowrap">Copy</th>
             </tr>
           </thead>
           <tbody className="text-gray-900 font-medium text-xs sm:text-sm divide-y divide-gray-100">
@@ -306,7 +314,7 @@ export default function ResultsTable({ results, loading }: ResultsTableProps) {
                   key={item.domain + idx}
                   className={`hover:bg-blue-50/40 transition ${isSelected ? 'bg-blue-50/60' : ''}`}
                 >
-                  <td className="py-2.5 px-2 text-center">
+                  <td className="py-2.5 px-2 text-center whitespace-nowrap">
                     <input
                       type="checkbox"
                       checked={isSelected}
@@ -314,15 +322,15 @@ export default function ResultsTable({ results, loading }: ResultsTableProps) {
                       className="rounded text-blue-600 focus:ring-blue-500"
                     />
                   </td>
-                  <td className="py-2.5 px-2 text-center text-gray-400 text-xs">
+                  <td className="py-2.5 px-2 text-center text-gray-400 text-xs whitespace-nowrap">
                     {idx + 1}
                   </td>
-                  <td className="py-2.5 px-3">
+                  <td className="py-2.5 px-3 whitespace-nowrap min-w-[200px]">
                     <a
                       href={`https://${item.domain}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#1D4ED8] hover:underline font-bold break-all inline-flex items-center gap-1"
+                      className="text-[#1D4ED8] hover:underline font-bold whitespace-nowrap inline-flex items-center gap-1"
                     >
                       {item.domain}
                       <svg className="w-3 h-3 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -330,23 +338,23 @@ export default function ResultsTable({ results, loading }: ResultsTableProps) {
                       </svg>
                     </a>
                   </td>
-                  <td className="py-2.5 px-3 text-center">
+                  <td className="py-2.5 px-3 text-center whitespace-nowrap">
                     <span className={`text-base ${daColor}`}>{da}</span>
                   </td>
-                  <td className="py-2.5 px-3 text-center">
+                  <td className="py-2.5 px-3 text-center whitespace-nowrap">
                     <span className="text-base text-gray-800 font-bold">{pa}</span>
                   </td>
-                  <td className="py-2.5 px-3 text-center">
+                  <td className="py-2.5 px-3 text-center whitespace-nowrap">
                     <span className={ssColor}>{ss}%</span>
                     <span className="text-gray-500 text-[10px] sm:text-xs block">{ssRiskLabel}</span>
                   </td>
-                  <td className="py-2.5 px-3 text-center text-gray-700">
+                  <td className="py-2.5 px-3 text-center text-gray-700 whitespace-nowrap">
                     {item.domainAge?.formatted || '1 Yr'}
                   </td>
-                  <td className="py-2.5 px-3 text-center font-mono text-gray-700">
+                  <td className="py-2.5 px-3 text-center font-mono text-gray-700 whitespace-nowrap">
                     {item.openPageRank?.pageRankDecimal?.toFixed(1) || '0.1'} / 10
                   </td>
-                  <td className="py-2.5 px-3 text-center text-xs">
+                  <td className="py-2.5 px-3 text-center text-xs whitespace-nowrap">
                     {isPreview ? (
                       <span className="text-amber-800 font-semibold bg-amber-50 px-2 py-0.5 rounded border border-amber-200 inline-block">
                         Sample Preview
@@ -365,7 +373,7 @@ export default function ResultsTable({ results, loading }: ResultsTableProps) {
                       </span>
                     )}
                   </td>
-                  <td className="py-2.5 px-2 text-center">
+                  <td className="py-2.5 px-2 text-center whitespace-nowrap">
                     <button
                       type="button"
                       onClick={() => handleCopyRow(item)}
