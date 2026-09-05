@@ -28,6 +28,9 @@ export const metadata: Metadata = {
   authors: [{ name: 'Author', url: `${SITE_URL}/about` }],
   creator: 'Author',
   publisher: 'DAPA Metrics',
+  verification: {
+    google: 'JbvqCYiIvIF0GJ_l8nJQJWdEUlBMRH7UwTu7n',
+  },
   alternates: {
     canonical: SITE_URL,
   },
@@ -77,35 +80,71 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // SoftwareApplication Schema for Google Rich Snippets
-  const softwareSchema = {
+  // Multi-Schema JSON-LD Graph for Google Rich Snippets
+  const jsonLdGraph = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
-    name: 'DAPA Metrics Bulk DA PA Checker',
-    url: SITE_URL,
-    applicationCategory: 'WebApplication',
-    operatingSystem: 'All Modern Web Browsers',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '2340',
-      bestRating: '5',
-      worstRating: '1',
-    },
-    featureList: [
-      'Bulk Domain Authority (DA) Calculation',
-      'Page Authority (PA) Metric Analysis',
-      'Moz Spam Score Percentage & Risk Classification',
-      'Open PageRank Decimal & Global Web Ranking',
-      'Referring Backlink Domain Count',
-      'Excel & CSV Spreadsheet Export',
-      'One-Click Metrics Copy-to-Clipboard',
-      'Duplicate Domain & URL Exclusion Filters',
+    '@graph': [
+      {
+        '@type': 'SoftwareApplication',
+        name: 'DAPA Metrics Bulk DA PA Checker',
+        url: SITE_URL,
+        applicationCategory: 'WebApplication',
+        operatingSystem: 'All Modern Web Browsers',
+        offers: {
+          '@type': 'Offer',
+          price: '0',
+          priceCurrency: 'USD',
+        },
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.9',
+          reviewCount: '2340',
+          bestRating: '5',
+          worstRating: '1',
+        },
+        featureList: [
+          'Bulk Domain Authority (DA) Calculation',
+          'Page Authority (PA) Metric Analysis',
+          'Moz Spam Score Percentage & Risk Classification',
+          'Open PageRank Decimal & Global Web Ranking',
+          'Referring Backlink Domain Count',
+          'Excel & CSV Spreadsheet Export',
+          'One-Click Metrics Copy-to-Clipboard',
+          'Duplicate Domain & URL Exclusion Filters',
+        ],
+      },
+      {
+        '@type': 'Organization',
+        name: 'DAPA Metrics',
+        url: SITE_URL,
+        logo: `${SITE_URL}/favicon.svg`,
+        description: 'Independent SEO analytics platform providing free bulk Domain Authority, Page Authority, and Spam Score diagnostics.',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: '71-75 Shelton Street, Covent Garden',
+          addressLocality: 'London',
+          postalCode: 'WC2H 9JQ',
+          addressCountry: 'GB',
+        },
+        contactPoint: {
+          '@type': 'ContactPoint',
+          contactType: 'customer support',
+          url: `${SITE_URL}/contact`,
+        },
+      },
+      {
+        '@type': 'WebSite',
+        name: 'DAPA Metrics',
+        url: SITE_URL,
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: {
+            '@type': 'EntryPoint',
+            urlTemplate: `${SITE_URL}/?domains={search_term_string}`,
+          },
+          'query-input': 'required name=search_term_string',
+        },
+      },
     ],
   };
 
@@ -114,7 +153,7 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph) }}
         />
       </head>
       <body className="bg-[#F0F2F5] text-gray-800 antialiased min-h-screen flex flex-col justify-between">
