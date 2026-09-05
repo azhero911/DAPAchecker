@@ -55,7 +55,8 @@ function getCategorySlug(categoryName: string): string {
 }
 
 export async function generateStaticParams() {
-  return Object.keys(CATEGORY_MAP).map((category) => ({
+  const activeCategories = Array.from(new Set(BLOG_POSTS.map((p) => getCategorySlug(p.category))));
+  return activeCategories.map((category) => ({
     category,
   }));
 }
@@ -104,6 +105,10 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const matchingPosts = BLOG_POSTS.filter(
     (post) => getCategorySlug(post.category) === category
   );
+
+  if (matchingPosts.length === 0) {
+    notFound();
+  }
 
   const allCategories = Object.entries(CATEGORY_MAP);
 

@@ -47,7 +47,7 @@ export default function Footer() {
                 <Link href="/methodology" className="hover:text-blue-700 transition">Algorithm Methodology</Link>
               </li>
               <li>
-                <Link href="/blog/open-pagerank-vs-moz-da" className="hover:text-blue-700 transition">Open PageRank Guide</Link>
+                <Link href="/blog/domain-authority-vs-page-authority" className="hover:text-blue-700 transition">DA vs PA Guide</Link>
               </li>
             </ul>
           </div>

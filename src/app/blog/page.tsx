@@ -35,10 +35,6 @@ const CATEGORIES = [
   { name: 'SEO Fundamentals', slug: 'seo-fundamentals' },
   { name: 'Technical SEO', slug: 'technical-seo' },
   { name: 'SEO Comparison', slug: 'seo-comparison' },
-  { name: 'Link Building', slug: 'link-building' },
-  { name: 'Troubleshooting', slug: 'troubleshooting' },
-  { name: 'Advanced SEO', slug: 'advanced-seo' },
-  { name: 'Agency Insights', slug: 'agency-insights' },
 ];
 
 function getCategorySlug(categoryName: string): string {

@@ -123,13 +123,13 @@ export default function AboutPage() {
           </div>
 
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900 pt-3">
-            Our Commitment to Privacy &amp; GDPR Compliance
+            Our Commitment to User Privacy &amp; Data Minimization
           </h2>
           <p>
             Unlike advertising-heavy tools that harvest user search patterns to sell domain scouting databases, DAPA Metrics adheres to strict privacy principles:
           </p>
           <ul className="list-disc list-inside space-y-1.5 pl-2">
-            <li><strong>Zero Raw IP Logging</strong>: All incoming IP addresses are immediately hashed via one-way cryptographic SHA-256 salts for rate limiting and discarded.</li>
+            <li><strong>Zero Raw IP Storage</strong>: In our application databases, all incoming IP addresses are hashed via one-way cryptographic SHA-256 tokens strictly for rate limiting; we do not store raw, identifiable IP addresses alongside search queries. Upstream edge networks process standard technical connection headers for routing and DDoS mitigation.</li>
             <li><strong>No User Search Reselling</strong>: The domains you audit remain your confidential workflow. We do not sell query data to domain brokers.</li>
             <li><strong>Editorial Independence</strong>: Domain Authority (DA) and Page Authority (PA) are registered trademarks of Moz, Inc. We are an independent software organization and maintain no commercial affiliation with Moz, ensuring completely unbiased metrics.</li>
           </ul>

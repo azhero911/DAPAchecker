@@ -1,4 +1,4 @@
-﻿// src/data/blogPosts.ts
+// src/data/blogPosts.ts
 
 export interface CitationSource {
   title: string;
@@ -282,7 +282,7 @@ Yes — completely free for any individual or agency use. The tool is ad-support
     slug: 'moz-spam-score-explained',
     title: 'Moz Spam Score Explained: What It Is, How It Works, and When to Worry',
     excerpt: 'A plain-English breakdown of Moz Spam Score — what the percentage actually means, which thresholds signal real risk, how it differs from a Google penalty, and the specific situations where a high Spam Score should change your SEO decisions.',
-    category: 'SEO Fundamentals',
+    category: 'Technical SEO',
     readTime: '9 min read',
     publishedAt: '2026-09-04',
     author: {
@@ -411,7 +411,7 @@ For deeper backlink-level analysis, Moz Link Explorer provides per-link Spam Sco
     slug: 'domain-authority-vs-page-authority',
     title: 'Domain Authority vs Page Authority: What\'s the Difference and Which Matters More?',
     excerpt: 'DA and PA are both Moz metrics on the same 1–100 scale, but they measure fundamentally different things. Learn exactly what each score represents, when to use DA vs PA, and why the distinction matters for competitor analysis and link building strategy.',
-    category: 'SEO Fundamentals',
+    category: 'SEO Comparison',
     readTime: '7 min read',
     publishedAt: '2026-09-04',
     author: {

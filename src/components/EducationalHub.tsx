@@ -73,8 +73,8 @@ export default function EducationalHub() {
               <tr className="bg-red-50/50">
                 <td className="py-3 px-3.5 font-bold text-red-600">61% – 100%</td>
                 <td className="py-3 px-3.5 font-bold text-red-600">High Spam Score</td>
-                <td className="py-3 px-3.5 text-gray-700">Significant overlap with characteristics of known spam domains.</td>
-                <td className="py-3 px-3.5 text-red-700 font-bold">Conduct full backlink audit. Note: Google automatically ignores most spam links; consider Disavow only if you have unnatural link schemes you cannot remove.</td>
+                <td className="py-3 px-3.5 text-gray-700">A higher score indicates stronger correlation with sites exhibiting characteristics associated with penalized or banned domains.</td>
+                <td className="py-3 px-3.5 text-red-700">Investigate the site carefully, but do not treat the score as evidence of a Google penalty. Note: Google automatically ignores most low-quality links; disavow only for verified manual actions or unnatural link schemes.</td>
               </tr>
             </tbody>
           </table>
@@ -110,7 +110,67 @@ export default function EducationalHub() {
         </div>
       </div>
 
-      {/* 5. Actionable Ways to Increase DA */}
+      {/* 5. SEO Authority Metrics Comparison Table (DA vs DR vs AS vs CF/TF) */}
+      <div className="bg-white border border-gray-300 rounded-md p-6 sm:p-7 shadow-sm">
+        <h2 className="text-xl font-bold text-gray-900 mb-3 border-b border-gray-200 pb-2.5">
+          SEO Authority Metrics Comparison: DA vs DR vs AS vs Trust Flow
+        </h2>
+        <p className="text-[16px] text-gray-600 mb-4 leading-relaxed">
+          Major SEO software providers each calculate proprietary website authority scores. While all operate on relative scales to predict search potential, their underlying math and crawl data vary:
+        </p>
+        <div className="table-scroll-container">
+          <table className="w-full text-left text-[16px] tool-table border-collapse min-w-[800px]">
+            <thead className="bg-gray-100 text-gray-800 font-bold uppercase text-sm">
+              <tr>
+                <th className="py-3 px-3.5">Metric</th>
+                <th className="py-3 px-3.5">Provider</th>
+                <th className="py-3 px-3.5">Scale</th>
+                <th className="py-3 px-3.5">Primary Focus</th>
+                <th className="py-3 px-3.5">Key Difference</th>
+              </tr>
+            </thead>
+            <tbody className="text-[16px] divide-y divide-gray-200">
+              <tr>
+                <td className="py-3.5 px-3.5 font-bold text-blue-700">Domain Authority (DA)</td>
+                <td className="py-3.5 px-3.5 font-semibold text-gray-900">Moz</td>
+                <td className="py-3.5 px-3.5 font-mono text-sm">1 – 100 Logarithmic</td>
+                <td className="py-3.5 px-3.5 text-gray-700">Predicts likelihood of ranking in Google SERPs based on comparative link equity.</td>
+                <td className="py-3.5 px-3.5 text-gray-600">Uses machine learning model calibrated against thousands of real search results.</td>
+              </tr>
+              <tr>
+                <td className="py-3.5 px-3.5 font-bold text-emerald-700">Domain Rating (DR)</td>
+                <td className="py-3.5 px-3.5 font-semibold text-gray-900">Ahrefs</td>
+                <td className="py-3.5 px-3.5 font-mono text-sm">1 – 100 Logarithmic</td>
+                <td className="py-3.5 px-3.5 text-gray-700">Measures the raw strength of a target site&apos;s backlink profile and referring domains.</td>
+                <td className="py-3.5 px-3.5 text-gray-600">Focuses strictly on link equity quantity and quality without search traffic correlation.</td>
+              </tr>
+              <tr>
+                <td className="py-3.5 px-3.5 font-bold text-purple-700">Authority Score (AS)</td>
+                <td className="py-3.5 px-3.5 font-semibold text-gray-900">Semrush</td>
+                <td className="py-3.5 px-3.5 font-mono text-sm">1 – 100 Composite</td>
+                <td className="py-3.5 px-3.5 text-gray-700">Combines backlink data, estimated organic search traffic, and spam indicators.</td>
+                <td className="py-3.5 px-3.5 text-gray-600">Accounts for organic keyword rankings and site traffic in addition to link counts.</td>
+              </tr>
+              <tr>
+                <td className="py-3.5 px-3.5 font-bold text-amber-700">Trust Flow / Citation Flow</td>
+                <td className="py-3.5 px-3.5 font-semibold text-gray-900">Majestic</td>
+                <td className="py-3.5 px-3.5 font-mono text-sm">0 – 100 Independent</td>
+                <td className="py-3.5 px-3.5 text-gray-700">Trust Flow (quality &amp; neighborhood) paired against Citation Flow (link volume).</td>
+                <td className="py-3.5 px-3.5 text-gray-600">Measures link distance from trusted seed sites to detect artificial link spam.</td>
+              </tr>
+              <tr>
+                <td className="py-3.5 px-3.5 font-bold text-indigo-700">Open PageRank (OPR)</td>
+                <td className="py-3.5 px-3.5 font-semibold text-gray-900">Open PageRank</td>
+                <td className="py-3.5 px-3.5 font-mono text-sm">0 – 10.0 Centrality</td>
+                <td className="py-3.5 px-3.5 text-gray-700">Calculates graph eigenvector centrality across millions of open web crawl nodes.</td>
+                <td className="py-3.5 px-3.5 text-gray-600">Open-data implementation of Stanford&apos;s original PageRank graph algorithm.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* 6. Actionable Ways to Increase DA */}
       <div className="bg-white border border-gray-300 rounded-md p-6 sm:p-7 shadow-sm">
         <h2 className="text-xl font-bold text-gray-900 mb-3 border-b border-gray-200 pb-2.5">
           5 White-Hat Strategies to Strengthen Your Domain Authority
@@ -118,15 +178,15 @@ export default function EducationalHub() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-[16px] text-gray-700">
           <div className="p-4 border border-gray-200 rounded bg-gray-50">
             <h4 className="font-bold text-gray-900 text-[16px] mb-1.5">1. Prioritize Referring Domain Diversity</h4>
-            <p className="text-gray-600 text-[16px] leading-relaxed">Earning 10 links from 10 distinct root domains builds broader domain equity than 100 links from a single source.</p>
+            <p className="text-gray-600 text-[16px] leading-relaxed">Earning 10 links from 10 distinct, thematic root domains builds broader domain equity than 100 repetitive links from a single site.</p>
           </div>
           <div className="p-4 border border-gray-200 rounded bg-gray-50">
             <h4 className="font-bold text-gray-900 text-[16px] mb-1.5">2. Fix Broken Inbound Links with 301s</h4>
-            <p className="text-gray-600 text-[16px] leading-relaxed">Reclaim lost backlink equity by 301-redirecting 404 pages that previously acquired backlinks to relevant live pages.</p>
+            <p className="text-gray-600 text-[16px] leading-relaxed">Reclaim lost backlink equity by 301-redirecting 404 URLs that previously acquired external backlinks to relevant, active pages.</p>
           </div>
           <div className="p-4 border border-gray-200 rounded bg-gray-50">
             <h4 className="font-bold text-gray-900 text-[16px] mb-1.5">3. Optimize Internal Linking Silos</h4>
-            <p className="text-gray-600 text-[16px] leading-relaxed">Distribute authority from your homepage and cornerstone guides to target content using contextual, descriptive internal links.</p>
+            <p className="text-gray-600 text-[16px] leading-relaxed">Distribute authority from your homepage and cornerstone guides to target sub-pages using contextual, descriptive internal links.</p>
           </div>
           <div className="p-4 border border-gray-200 rounded bg-gray-50">
             <h4 className="font-bold text-gray-900 text-[16px] mb-1.5">4. Audit Link Profile Regularly</h4>
@@ -134,8 +194,21 @@ export default function EducationalHub() {
           </div>
           <div className="p-4 border border-gray-200 rounded bg-gray-50 md:col-span-2">
             <h4 className="font-bold text-gray-900 text-[16px] mb-1.5">5. Publish Original Industry Data &amp; Tools (Digital PR)</h4>
-            <p className="text-gray-600 text-[16px] leading-relaxed">Publishing original data studies, annual surveys, or free utilities naturally earns organic editorial citations without paid outreach.</p>
+            <p className="text-gray-600 text-[16px] leading-relaxed">Publishing original research data, annual benchmarks, or free utilities naturally earns organic editorial citations without paid outreach.</p>
           </div>
+        </div>
+        <div className="mt-4 pt-3 border-t border-gray-200 flex flex-wrap gap-4 text-xs font-bold text-blue-700">
+          <Link href="/methodology" className="hover:underline">
+            Read Full Calculation Methodology →
+          </Link>
+          <span>•</span>
+          <Link href="/blog/category/technical-seo" className="hover:underline">
+            Technical SEO Guides →
+          </Link>
+          <span>•</span>
+          <Link href="/blog/category/seo-fundamentals" className="hover:underline">
+            SEO Fundamentals Guides →
+          </Link>
         </div>
       </div>
 

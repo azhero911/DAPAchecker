@@ -395,11 +395,13 @@ export default function ResultsTable({ results, loading }: ResultsTableProps) {
           {rated ? (
             <span className="text-green-700 font-bold">✓ Thank you for your feedback!</span>
           ) : (
-            <div className="flex gap-1 text-amber-500 cursor-pointer" onClick={() => handleRate(5)}>
-              {'★★★★★'.split('').map((s, i) => (
-                <span key={i} onClick={(e) => { e.stopPropagation(); handleRate(i + 1); }} className="hover:scale-125 transition-transform">{s}</span>
-              ))}
-              <span className="text-gray-500 ml-1">(4.9 / 5 from 2,340 webmasters)</span>
+            <div className="flex items-center gap-1.5">
+              <div className="flex gap-0.5 text-amber-500 cursor-pointer" onClick={() => handleRate(5)}>
+                {'★★★★★'.split('').map((s, i) => (
+                  <span key={i} onClick={(e) => { e.stopPropagation(); handleRate(i + 1); }} className="hover:scale-125 transition-transform">{s}</span>
+                ))}
+              </div>
+              <span className="text-gray-500 ml-1">Built for SEO professionals, agencies, and webmasters</span>
             </div>
           )}
         </div>

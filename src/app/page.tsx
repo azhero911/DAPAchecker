@@ -14,7 +14,7 @@ export default function HomePage() {
           Bulk DA PA Checker — Free Domain Authority Tool
         </h1>
         <p className="text-[16px] text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          Check up to 10 URLs at once, no registration required. Analyze Moz Domain Authority (DA), Page Authority (PA), Spam Score, and Open PageRank in real time with instant CSV export.
+          Check up to 10 URLs at once, no registration required. Analyze Moz Domain Authority (DA), Page Authority (PA), Spam Score, and Open PageRank quickly with instant CSV export.
         </p>
       </div>
 

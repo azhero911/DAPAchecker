@@ -95,13 +95,6 @@ export default function RootLayout({
           price: '0',
           priceCurrency: 'USD',
         },
-        aggregateRating: {
-          '@type': 'AggregateRating',
-          ratingValue: '4.9',
-          reviewCount: '2340',
-          bestRating: '5',
-          worstRating: '1',
-        },
         featureList: [
           'Bulk Domain Authority (DA) Calculation',
           'Page Authority (PA) Metric Analysis',

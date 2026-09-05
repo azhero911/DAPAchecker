@@ -37,7 +37,27 @@ const FAQ_DATA: FaqItem[] = [
   {
     question: 'Why did my Domain Authority drop suddenly?',
     answer:
-      'The most common reasons for a DA change include: 1) Moz updated its global index with newer comparative data, 2) your website lost referring domains through natural link rot, 3) competitors in your industry acquired new authority links at a faster rate, or 4) previously linking domains were re-evaluated in Moz\'s index. A DA change does not indicate a Google penalty.',
+      'The most common reasons for a DA change include: 1) Moz updated its global index with newer comparative data, 2) referring domains were removed, URLs changed, or linking websites shut down, 3) competitors in your industry acquired new authority links at a faster rate, or 4) previously linking domains were re-evaluated in Moz\'s index. A DA decrease by itself does not demonstrate that Google has demoted your website. Check Search Console performance and ranking changes separately.',
+  },
+  {
+    question: 'What is the difference between Domain Authority (DA) and Page Authority (PA)?',
+    answer:
+      'Domain Authority (DA) evaluates the predictive ranking power of the entire root domain (including subdomains and internal directories). In contrast, Page Authority (PA) measures the strength of an individual, specific URL. A homepage might have a PA of 55 and DA of 60, while a newly published blog post on the same site starts with a modest PA (e.g., 10–20) until it acquires internal link equity and external citations.',
+  },
+  {
+    question: 'How is Domain Authority calculated on a logarithmic scale?',
+    answer:
+      'Moz uses machine learning to map raw link equity onto a 1–100 logarithmic curve. Because the scale is logarithmic, growing from DA 20 to DA 30 requires significantly fewer high-quality referring domains than advancing from DA 70 to DA 80. Furthermore, there is no fixed number of backlinks required to reach any specific tier because calculations depend on comparative equity across Moz\'s entire crawled web graph.',
+  },
+  {
+    question: 'Can I check multiple domains in bulk without registering?',
+    answer:
+      'Yes. DAPA Metrics allows you to paste up to 10 URLs per submission completely free with zero registration, CAPTCHAs, or credit card requirements. You can also check the "Exclude Same Domain" option to automatically eliminate duplicate URL submissions.',
+  },
+  {
+    question: 'How do I export my bulk check results into a CSV or Excel report?',
+    answer:
+      'After running a check, simply click the "Download CSV Report" button located above the results table. The system generates a formatted, UTF-8 encoded .csv spreadsheet containing domain names, DA, PA, Spam Score percentages, Open PageRank values, and age status, ready to open in Microsoft Excel, Google Sheets, or agency reporting dashboards.',
   },
 ];
 

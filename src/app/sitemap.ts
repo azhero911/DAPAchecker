@@ -6,10 +6,6 @@ const CATEGORIES = [
   'seo-fundamentals',
   'technical-seo',
   'seo-comparison',
-  'link-building',
-  'troubleshooting',
-  'advanced-seo',
-  'agency-insights',
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
