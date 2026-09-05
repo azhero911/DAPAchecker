@@ -80,16 +80,6 @@ export default function Header() {
             DA PA Checker
           </Link>
           <Link
-            href="/blog"
-            className={`pb-6 pt-6 border-b-2 transition ${
-              pathname?.startsWith('/blog')
-                ? 'text-[#1D4ED8] font-bold border-[#1D4ED8]'
-                : 'text-gray-700 hover:text-gray-900 border-transparent'
-            }`}
-          >
-            Blog
-          </Link>
-          <Link
             href="/methodology"
             className={`pb-6 pt-6 border-b-2 transition ${
               pathname === '/methodology'
@@ -128,6 +118,16 @@ export default function Header() {
             }`}
           >
             Affiliate Notice
+          </Link>
+          <Link
+            href="/blog"
+            className={`pb-6 pt-6 border-b-2 transition ${
+              pathname?.startsWith('/blog')
+                ? 'text-[#1D4ED8] font-bold border-[#1D4ED8]'
+                : 'text-gray-700 hover:text-gray-900 border-transparent'
+            }`}
+          >
+            Blog
           </Link>
         </nav>
 
