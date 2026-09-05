@@ -10,20 +10,21 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dapametrics.vercel
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Bulk DA PA Checker — Free Domain Authority Tool | DAPA Metrics',
+    default: 'Free Bulk Domain & Page Authority Checker | DAPA Metrics',
     template: '%s | DAPA Metrics',
   },
   description:
-    'Free bulk DA PA checker tool. Check Moz Domain Authority, Page Authority, Spam Score, and Open PageRank for up to 10 websites at once without registration or CAPTCHAs.',
+    'Check up to 10 domains for Domain Authority, Page Authority, Spam Score and Open PageRank. Free bulk SEO checker with CSV export.',
   keywords: [
-    'bulk da pa checker',
-    'domain authority checker',
-    'check da pa free',
-    'page authority checker',
-    'spam score checker',
-    'bulk domain authority lookup',
-    'open pagerank checker',
-    'da pa checker online',
+    'free bulk domain authority checker',
+    'free bulk DA PA checker',
+    'bulk domain authority checker',
+    'bulk page authority checker',
+    'check multiple domains DA PA',
+    'domain authority checker no login',
+    'free DA PA checker for SEO',
+    'bulk Open PageRank checker',
+    'domain authority vs page authority',
   ],
   authors: [{ name: 'Author', url: `${SITE_URL}/about` }],
   creator: 'Author',
@@ -40,28 +41,28 @@ export const metadata: Metadata = {
     apple: '/favicon.svg',
   },
   openGraph: {
-    title: 'Bulk DA PA Checker — Free Domain Authority Tool | DAPA Metrics',
+    title: 'Free Bulk Domain & Page Authority Checker | DAPA Metrics',
     description:
-      'Check Domain Authority, Page Authority, Spam Score, and Domain Age for up to 10 URLs instantly. Free export to CSV and Excel.',
+      'Check up to 10 domains for Domain Authority, Page Authority, Spam Score and Open PageRank. Free bulk SEO checker with CSV export.',
     url: SITE_URL,
     siteName: 'DAPA Metrics',
     type: 'website',
     locale: 'en_US',
     images: [
       {
-        url: '/og-image.svg',
+        url: `${SITE_URL}/og-image.svg`,
         width: 1200,
         height: 630,
-        alt: 'DAPA Metrics - Free Bulk DA PA Checker',
+        alt: 'DAPA Metrics - Free Bulk Domain & Page Authority Checker',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Bulk DA PA Checker — Free Domain Authority Tool',
+    title: 'Free Bulk Domain & Page Authority Checker | DAPA Metrics',
     description:
-      'Analyze Domain Authority, Page Authority, and Spam Score in bulk with zero sign-up required. Free CSV export.',
-    images: ['/og-image.svg'],
+      'Check up to 10 domains for Domain Authority, Page Authority, Spam Score and Open PageRank. Free bulk SEO checker with CSV export.',
+    images: [`${SITE_URL}/og-image.svg`],
   },
   ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
     ? {

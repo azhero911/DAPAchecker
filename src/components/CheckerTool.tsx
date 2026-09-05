@@ -5,11 +5,9 @@ import React, { useState } from 'react';
 import { DomainMetricResult } from '@/types/metrics';
 import ResultsTable from './ResultsTable';
 
-const SAMPLE_DOMAINS = `google.com
-https://techcrunch.com/apps
-nytimes.com
-wikipedia.org
-spammy-free-links.xyz`;
+const SAMPLE_DOMAINS = `example.com
+example.org
+example.net`;
 
 export default function CheckerTool() {
   const [inputText, setInputText] = useState<string>('');
@@ -123,14 +121,16 @@ export default function CheckerTool() {
 
         {/* Textarea Box */}
         <div className="p-4 sm:p-6">
-          
+          <label htmlFor="domainInput" className="block text-sm font-bold text-gray-900 mb-2">
+            Enter up to 10 URLs
+          </label>
           <div className="border border-gray-300 rounded focus-within:border-blue-600 transition bg-white">
             <textarea
               id="domainInput"
               rows={6}
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
-              placeholder={`Enter URLs or domains (one per line, up to 10):\ngoogle.com\nhttps://techcrunch.com/apps\nnytimes.com`}
+              placeholder={`example.com\nexample.org\nexample.net`}
               className="w-full p-3.5 text-base font-mono text-gray-800 placeholder-gray-400 focus:outline-none resize-y"
             />
 
@@ -209,7 +209,7 @@ export default function CheckerTool() {
               id="checkBtn"
               disabled={loading}
               onClick={handleCheck}
-              className="px-8 py-3 bg-[#1D4ED8] hover:bg-[#1E40AF] disabled:opacity-50 text-white font-bold text-base rounded shadow transition inline-flex items-center justify-center gap-2 min-w-[180px]"
+              className="px-8 py-3 bg-[#1D4ED8] hover:bg-[#1E40AF] disabled:opacity-50 text-white font-bold text-base rounded shadow transition inline-flex items-center justify-center gap-2 min-w-[200px]"
             >
               {loading ? (
                 <>
@@ -220,9 +220,12 @@ export default function CheckerTool() {
                   <span>Analyzing Domains...</span>
                 </>
               ) : (
-                <span>Check DA PA</span>
+                <span>Check DA &amp; PA</span>
               )}
             </button>
+            <p className="text-xs text-gray-500 mt-2">
+              One URL per line • Up to 10 URLs per check
+            </p>
           </div>
 
         </div>

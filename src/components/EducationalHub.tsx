@@ -5,210 +5,323 @@ export default function EducationalHub() {
   return (
     <div className="space-y-6 mb-8 text-gray-800">
       
-      {/* 1. What is DA & PA */}
+      {/* 1. Check Multiple Domains at Once */}
       <div className="bg-white border border-gray-300 rounded-md p-6 sm:p-7 shadow-sm">
         <h2 className="text-xl font-bold text-gray-900 mb-3 border-b border-gray-200 pb-2.5">
-          What is Moz Domain Authority (DA) and Page Authority (PA)?
+          Check Multiple Domains at Once
         </h2>
         <div className="text-[16px] leading-relaxed space-y-3 text-gray-700">
           <p>
-            <strong>Domain Authority (DA)</strong> is a search engine ranking metric created by Moz that predicts how likely a website is to rank in Google search engine result pages (SERPs). Scores range on a logarithmic scale from 1 to 100, where higher numbers correspond to greater comparative ranking potential.
+            Checking websites individually can make a simple SEO comparison unnecessarily time-consuming.
           </p>
           <p>
-            <strong>Page Authority (PA)</strong> measures the predictive ranking ability of an individual web page rather than the whole root domain. While a brand&apos;s homepage may enjoy a DA of 60, a brand-new blog post or newly published landing page will initially start with a modest PA until it receives internal link equity and external backlinks.
+            DAPA Metrics lets you analyze multiple domains in one batch so you can compare websites, review potential link prospects, research competitors, or organize SEO reports without repeating the same lookup.
           </p>
-          <div className="p-4 bg-blue-50 border border-blue-200 rounded text-blue-950 text-[16px]">
-            <span className="font-bold text-[#1D4ED8] block mb-1">The 1–100 Logarithmic Scale Reality:</span>
-            DA uses a 1–100 logarithmic scale, and score increases at the higher end generally become significantly more difficult. However, there is no fixed number of backlinks or referring domains required to increase a site&apos;s DA, as score adjustments depend on the relative quality, diversity, and equity distribution of linking root domains across Moz&apos;s comparative web index.
+        </div>
+
+        <div className="mt-5 pt-3 border-t border-gray-100">
+          <h3 className="font-bold text-gray-900 text-[15px] mb-3">Useful for:</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
+            <div className="p-3 bg-gray-50 border border-gray-200 rounded-lg">
+              <strong className="text-gray-900 block mb-0.5">SEO audits</strong>
+              <span className="text-gray-600">Compare authority metrics across websites.</span>
+            </div>
+            <div className="p-3 bg-gray-50 border border-gray-200 rounded-lg">
+              <strong className="text-gray-900 block mb-0.5">Competitor research</strong>
+              <span className="text-gray-600">Benchmark competing domains and pages.</span>
+            </div>
+            <div className="p-3 bg-gray-50 border border-gray-200 rounded-lg">
+              <strong className="text-gray-900 block mb-0.5">Link-building research</strong>
+              <span className="text-gray-600">Review potential websites before outreach.</span>
+            </div>
+            <div className="p-3 bg-gray-50 border border-gray-200 rounded-lg">
+              <strong className="text-gray-900 block mb-0.5">Client reporting</strong>
+              <span className="text-gray-600">Collect metrics into one downloadable report.</span>
+            </div>
+            <div className="p-3 bg-gray-50 border border-gray-200 rounded-lg sm:col-span-2 lg:col-span-2">
+              <strong className="text-gray-900 block mb-0.5">Website research</strong>
+              <span className="text-gray-600">Quickly compare multiple domains side by side.</span>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* 2. Does Google Use DA? (Trust & Authority Signal) */}
+      {/* 2. What Are DA, PA and Spam Score? */}
       <div className="bg-white border border-gray-300 rounded-md p-6 sm:p-7 shadow-sm">
         <h2 className="text-xl font-bold text-gray-900 mb-3 border-b border-gray-200 pb-2.5">
-          Does Google Use Domain Authority to Rank Websites?
+          What Are DA, PA and Spam Score?
         </h2>
-        <div className="text-[16px] leading-relaxed text-gray-700 space-y-3">
+        <p className="text-[16px] text-gray-600 leading-relaxed mb-5">
+          Domain Authority, Page Authority, and Spam Score are third-party SEO metrics that can help you evaluate and compare websites. They are useful for SEO research, but they should not be treated as Google&apos;s ranking scores.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-[15px]">
+          {/* DA */}
+          <div className="p-5 bg-gray-50 border border-gray-200 rounded-lg flex flex-col justify-between">
+            <div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Domain Authority (DA)</h3>
+              <p className="text-gray-700 leading-relaxed">
+                Domain Authority (DA) is a score developed by Moz that estimates a domain&apos;s ability to rank in search engine results. DA uses a 0–100 scale, with higher scores representing greater predicted ranking strength.
+              </p>
+              <p className="text-gray-700 leading-relaxed mt-2.5">
+                DA is best used as a comparative SEO metric. For example, comparing your website with competitors targeting the same audience can give you useful context about the relative strength of their domains.
+              </p>
+            </div>
+            <div className="mt-3.5 pt-3 border-t border-gray-200 text-xs font-semibold text-blue-900 bg-blue-50/70 p-2 rounded">
+              Important: DA is not a Google ranking factor.
+            </div>
+          </div>
+
+          {/* PA */}
+          <div className="p-5 bg-gray-50 border border-gray-200 rounded-lg flex flex-col justify-between">
+            <div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Page Authority (PA)</h3>
+              <p className="text-gray-700 leading-relaxed">
+                Page Authority (PA) is a Moz metric designed to estimate the ranking strength of an individual webpage.
+              </p>
+              <p className="text-gray-700 leading-relaxed mt-2.5">
+                While DA evaluates a domain, PA focuses on a specific page. Looking at both can help you distinguish between the overall authority of a website and the relative strength of a particular URL.
+              </p>
+            </div>
+            <div className="mt-3.5 pt-3 border-t border-gray-200 text-xs text-gray-600 italic">
+              A strong domain does not automatically mean that every page on that domain has the same level of authority.
+            </div>
+          </div>
+
+          {/* Spam Score */}
+          <div className="p-5 bg-gray-50 border border-gray-200 rounded-lg flex flex-col justify-between">
+            <div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Spam Score</h3>
+              <p className="text-gray-700 leading-relaxed">
+                Spam Score is a Moz metric intended to help identify websites that share characteristics associated with sites that have been penalized or considered spammy.
+              </p>
+              <p className="text-gray-700 leading-relaxed mt-2.5">
+                It should be treated as a diagnostic signal, not a Google penalty score. A higher Spam Score does not mean that Google has penalized a website. If a domain has a high score, investigate its backlink profile, content quality, and overall SEO practices before drawing conclusions.
+              </p>
+            </div>
+            <div className="mt-3.5 pt-3 border-t border-gray-200 text-xs font-semibold text-amber-900 bg-amber-50/70 p-2 rounded">
+              Diagnostic signal only — not a Google penalty score.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 3. Why Use a Bulk DA & PA Checker? */}
+      <div className="bg-white border border-gray-300 rounded-md p-6 sm:p-7 shadow-sm">
+        <h2 className="text-xl font-bold text-gray-900 mb-3 border-b border-gray-200 pb-2.5">
+          Why Use a Bulk DA &amp; PA Checker?
+        </h2>
+        <p className="text-[16px] text-gray-600 leading-relaxed mb-5">
+          When you only need to check one website, a single-domain checker may be enough. When you have a list of websites, bulk checking is more practical.
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-[15px]">
+          <div className="p-4 border border-gray-200 rounded-lg bg-gray-50">
+            <h3 className="font-bold text-gray-900 text-base mb-1.5 flex items-center gap-2">
+              <span className="text-blue-600">📊</span> Compare competitors
+            </h3>
+            <p className="text-gray-600 leading-relaxed">
+              Enter several competing websites and compare their available authority metrics side by side.
+            </p>
+          </div>
+          <div className="p-4 border border-gray-200 rounded-lg bg-gray-50">
+            <h3 className="font-bold text-gray-900 text-base mb-1.5 flex items-center gap-2">
+              <span className="text-blue-600">🔍</span> Research link prospects
+            </h3>
+            <p className="text-gray-600 leading-relaxed">
+              Use authority metrics as one part of your evaluation when researching websites for potential outreach or link opportunities.
+            </p>
+          </div>
+          <div className="p-4 border border-gray-200 rounded-lg bg-gray-50">
+            <h3 className="font-bold text-gray-900 text-base mb-1.5 flex items-center gap-2">
+              <span className="text-blue-600">📋</span> Review client websites
+            </h3>
+            <p className="text-gray-600 leading-relaxed">
+              Collect multiple domains into a single report instead of checking each website separately.
+            </p>
+          </div>
+          <div className="p-4 border border-gray-200 rounded-lg bg-gray-50">
+            <h3 className="font-bold text-gray-900 text-base mb-1.5 flex items-center gap-2">
+              <span className="text-blue-600">📥</span> Export your results
+            </h3>
+            <p className="text-gray-600 leading-relaxed">
+              Download your results as a CSV file so you can continue analyzing or organizing the data in a spreadsheet.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* 4. What Is a Good Domain Authority Score? */}
+      <div className="bg-white border border-gray-300 rounded-md p-6 sm:p-7 shadow-sm">
+        <h2 className="text-xl font-bold text-gray-900 mb-3 border-b border-gray-200 pb-2.5">
+          What Is a Good Domain Authority Score?
+        </h2>
+        <div className="text-[16px] leading-relaxed space-y-3.5 text-gray-700">
           <p>
-            <strong>No, Google does not use Domain Authority in its ranking algorithms.</strong> Google search representatives have repeatedly confirmed that Google assesses individual pages using PageRank and hundreds of proprietary ranking signals.
+            There is no universal DA score that makes a website &ldquo;good.&rdquo;
           </p>
           <p>
-            Domain Authority is an independent industry simulation. SEOs rely on DA because it correlates with search visibility. As a website earns genuine, authoritative editorial backlinks, both its organic search visibility and its Moz DA naturally rise in tandem.
+            A DA of 30 may be competitive in one niche and relatively weak in another. The most useful benchmark is often the authority of websites competing for the same search queries.
+          </p>
+          
+          <div className="p-4 bg-slate-50 border-l-4 border-[#1D4ED8] rounded-r my-3 text-slate-800">
+            <p className="text-sm sm:text-base mb-1">
+              <strong>Instead of asking:</strong> <span className="text-gray-500 line-through">&ldquo;Is DA 40 good?&rdquo;</span>
+            </p>
+            <p className="text-sm sm:text-base font-semibold text-blue-900">
+              <strong>Ask:</strong> &ldquo;How does my DA compare with the websites I&apos;m competing against?&rdquo;
+            </p>
+          </div>
+
+          <p>
+            You can use DAPA Metrics to compare several relevant domains and build a more realistic benchmark for your own SEO research.
+          </p>
+          <p className="text-xs text-gray-500">
+            Remember: these comparisons are directional. DA is a third-party Moz metric, not a score assigned by Google.
           </p>
         </div>
       </div>
 
-      {/* 3. Spam Score Risk Table */}
+      {/* 5. DA vs PA: What's the Difference? */}
       <div className="bg-white border border-gray-300 rounded-md p-6 sm:p-7 shadow-sm">
         <h2 className="text-xl font-bold text-gray-900 mb-3 border-b border-gray-200 pb-2.5">
-          Moz Spam Score (SS): Diagnostic Bands &amp; Meaning
+          DA vs PA: What&apos;s the Difference?
         </h2>
-        <p className="text-[16px] text-gray-600 mb-4">
-          Moz Spam Score is a third-party diagnostic metric that measures how closely a site&apos;s characteristics resemble those associated with sites Moz has identified as spam-like. It is not an official Google penalty score or a direct probability of receiving a Google penalty:
-        </p>
-        <div className="table-scroll-container">
-          <table className="w-full text-left text-[16px] tool-table border-collapse min-w-[750px]">
-            <thead className="bg-gray-100 text-gray-800 font-bold uppercase text-sm">
+        <div className="table-scroll-container my-3">
+          <table className="w-full text-left text-[15px] tool-table border-collapse min-w-[600px]">
+            <thead className="bg-gray-100 text-gray-800 font-bold uppercase text-xs">
               <tr>
-                <th className="py-3 px-3.5">Spam Score %</th>
-                <th className="py-3 px-3.5">Diagnostic Band</th>
-                <th className="py-3 px-3.5">Profile Characteristics</th>
-                <th className="py-3 px-3.5">Recommended Action</th>
+                <th className="py-3 px-3.5 border-b border-gray-200">Metric</th>
+                <th className="py-3 px-3.5 border-b border-gray-200">What it measures</th>
+                <th className="py-3 px-3.5 border-b border-gray-200">Useful for</th>
               </tr>
             </thead>
-            <tbody className="text-[16px]">
+            <tbody className="divide-y divide-gray-200">
               <tr>
-                <td className="py-3 px-3.5 font-bold text-green-700">1% – 30%</td>
-                <td className="py-3 px-3.5 font-bold text-green-700">Low Spam Score</td>
-                <td className="py-3 px-3.5 text-gray-700">Natural organic link profile typical of healthy, established websites.</td>
-                <td className="py-3 px-3.5 text-gray-600">Standard periodic monitoring; no remediation required.</td>
+                <td className="py-3 px-3.5 font-bold text-blue-700">DA</td>
+                <td className="py-3 px-3.5 text-gray-700">Relative authority of a domain</td>
+                <td className="py-3 px-3.5 text-gray-600">Comparing websites</td>
               </tr>
               <tr>
-                <td className="py-3 px-3.5 font-bold text-amber-600">31% – 60%</td>
-                <td className="py-3 px-3.5 font-bold text-amber-600">Medium Spam Score</td>
-                <td className="py-3 px-3.5 text-gray-700">Exhibits patterns such as unbalanced follow/nofollow ratios, thin pages, or commercial anchor clustering.</td>
-                <td className="py-3 px-3.5 text-gray-600">Investigate referring domains and evaluate link acquisition channels.</td>
+                <td className="py-3 px-3.5 font-bold text-indigo-700">PA</td>
+                <td className="py-3 px-3.5 text-gray-700">Relative authority of an individual page</td>
+                <td className="py-3 px-3.5 text-gray-600">Comparing specific URLs</td>
               </tr>
-              <tr className="bg-red-50/50">
-                <td className="py-3 px-3.5 font-bold text-red-600">61% – 100%</td>
-                <td className="py-3 px-3.5 font-bold text-red-600">High Spam Score</td>
-                <td className="py-3 px-3.5 text-gray-700">A higher score indicates stronger correlation with sites exhibiting characteristics associated with penalized or banned domains.</td>
-                <td className="py-3 px-3.5 text-red-700">Investigate the site carefully, but do not treat the score as evidence of a Google penalty. Note: Google automatically ignores most low-quality links; disavow only for verified manual actions or unnatural link schemes.</td>
+              <tr>
+                <td className="py-3 px-3.5 font-bold text-amber-700">Spam Score</td>
+                <td className="py-3 px-3.5 text-gray-700">Spam-related risk signals</td>
+                <td className="py-3 px-3.5 text-gray-600">Investigating potentially problematic profiles</td>
+              </tr>
+              <tr>
+                <td className="py-3 px-3.5 font-bold text-emerald-700">OPR</td>
+                <td className="py-3 px-3.5 text-gray-700">Independent link-authority metric</td>
+                <td className="py-3 px-3.5 text-gray-600">Additional authority comparison</td>
               </tr>
             </tbody>
           </table>
         </div>
-      </div>
-
-      {/* 4. Benchmark Categories */}
-      <div className="bg-white border border-gray-300 rounded-md p-6 sm:p-7 shadow-sm">
-        <h2 className="text-xl font-bold text-gray-900 mb-3 border-b border-gray-200 pb-2.5">
-          What is Considered a Good Domain Authority Score?
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-[16px] mt-4">
-          <div className="p-4 bg-gray-50 border border-gray-200 rounded">
-            <span className="font-bold text-gray-900 text-lg block">DA 1 – 20</span>
-            <span className="text-blue-700 font-semibold block mb-1.5 text-sm">New / Emerging Sites</span>
-            <p className="text-gray-600 text-[16px] leading-relaxed">Standard for websites under 12 months. Ranks for low-competition long-tail keywords.</p>
-          </div>
-          <div className="p-4 bg-gray-50 border border-gray-200 rounded">
-            <span className="font-bold text-gray-900 text-lg block">DA 21 – 40</span>
-            <span className="text-green-700 font-semibold block mb-1.5 text-sm">Niche Blogs &amp; Local SMBs</span>
-            <p className="text-gray-600 text-[16px] leading-relaxed">Healthy organic foundation. Competes effectively for local and medium-competition guides.</p>
-          </div>
-          <div className="p-4 bg-gray-50 border border-gray-200 rounded">
-            <span className="font-bold text-gray-900 text-lg block">DA 41 – 65</span>
-            <span className="text-purple-700 font-semibold block mb-1.5 text-sm">Established Brands</span>
-            <p className="text-gray-600 text-[16px] leading-relaxed">Authoritative status. Regularly ranks for competitive high-volume commercial keywords.</p>
-          </div>
-          <div className="p-4 bg-gray-50 border border-gray-200 rounded">
-            <span className="font-bold text-gray-900 text-lg block">DA 66 – 100</span>
-            <span className="text-amber-700 font-semibold block mb-1.5 text-sm">Industry Giants</span>
-            <p className="text-gray-600 text-[16px] leading-relaxed">Global powerhouses (Wikipedia, Forbes, Apple) with millions of natural editorial links.</p>
-          </div>
+        <div className="mt-4 pt-3 border-t border-gray-200 text-[15px] text-gray-700 space-y-2">
+          <p className="font-semibold text-gray-900">
+            DA and PA should not be treated as interchangeable.
+          </p>
+          <p className="text-gray-600">
+            For example, a website may have a relatively strong domain while a newly published page on that domain has considerably less page-level authority.
+          </p>
         </div>
       </div>
 
-      {/* 5. SEO Authority Metrics Comparison Table (DA vs DR vs AS vs CF/TF) */}
+      {/* 6. Open PageRank */}
       <div className="bg-white border border-gray-300 rounded-md p-6 sm:p-7 shadow-sm">
-        <h2 className="text-xl font-bold text-gray-900 mb-3 border-b border-gray-200 pb-2.5">
-          SEO Authority Metrics Comparison: DA vs DR vs AS vs Trust Flow
+        <h2 className="text-xl font-bold text-gray-900 mb-1">
+          Open PageRank
         </h2>
-        <p className="text-[16px] text-gray-600 mb-4 leading-relaxed">
-          Major SEO software providers each calculate proprietary website authority scores. While all operate on relative scales to predict search potential, their underlying math and crawl data vary:
-        </p>
-        <div className="table-scroll-container">
-          <table className="w-full text-left text-[16px] tool-table border-collapse min-w-[800px]">
-            <thead className="bg-gray-100 text-gray-800 font-bold uppercase text-sm">
-              <tr>
-                <th className="py-3 px-3.5">Metric</th>
-                <th className="py-3 px-3.5">Provider</th>
-                <th className="py-3 px-3.5">Scale</th>
-                <th className="py-3 px-3.5">Primary Focus</th>
-                <th className="py-3 px-3.5">Key Difference</th>
-              </tr>
-            </thead>
-            <tbody className="text-[16px] divide-y divide-gray-200">
-              <tr>
-                <td className="py-3.5 px-3.5 font-bold text-blue-700">Domain Authority (DA)</td>
-                <td className="py-3.5 px-3.5 font-semibold text-gray-900">Moz</td>
-                <td className="py-3.5 px-3.5 font-mono text-sm">1 – 100 Logarithmic</td>
-                <td className="py-3.5 px-3.5 text-gray-700">Predicts likelihood of ranking in Google SERPs based on comparative link equity.</td>
-                <td className="py-3.5 px-3.5 text-gray-600">Uses machine learning model calibrated against thousands of real search results.</td>
-              </tr>
-              <tr>
-                <td className="py-3.5 px-3.5 font-bold text-emerald-700">Domain Rating (DR)</td>
-                <td className="py-3.5 px-3.5 font-semibold text-gray-900">Ahrefs</td>
-                <td className="py-3.5 px-3.5 font-mono text-sm">1 – 100 Logarithmic</td>
-                <td className="py-3.5 px-3.5 text-gray-700">Measures the raw strength of a target site&apos;s backlink profile and referring domains.</td>
-                <td className="py-3.5 px-3.5 text-gray-600">Focuses strictly on link equity quantity and quality without search traffic correlation.</td>
-              </tr>
-              <tr>
-                <td className="py-3.5 px-3.5 font-bold text-purple-700">Authority Score (AS)</td>
-                <td className="py-3.5 px-3.5 font-semibold text-gray-900">Semrush</td>
-                <td className="py-3.5 px-3.5 font-mono text-sm">1 – 100 Composite</td>
-                <td className="py-3.5 px-3.5 text-gray-700">Combines backlink data, estimated organic search traffic, and spam indicators.</td>
-                <td className="py-3.5 px-3.5 text-gray-600">Accounts for organic keyword rankings and site traffic in addition to link counts.</td>
-              </tr>
-              <tr>
-                <td className="py-3.5 px-3.5 font-bold text-amber-700">Trust Flow / Citation Flow</td>
-                <td className="py-3.5 px-3.5 font-semibold text-gray-900">Majestic</td>
-                <td className="py-3.5 px-3.5 font-mono text-sm">0 – 100 Independent</td>
-                <td className="py-3.5 px-3.5 text-gray-700">Trust Flow (quality &amp; neighborhood) paired against Citation Flow (link volume).</td>
-                <td className="py-3.5 px-3.5 text-gray-600">Measures link distance from trusted seed sites to detect artificial link spam.</td>
-              </tr>
-              <tr>
-                <td className="py-3.5 px-3.5 font-bold text-indigo-700">Open PageRank (OPR)</td>
-                <td className="py-3.5 px-3.5 font-semibold text-gray-900">Open PageRank</td>
-                <td className="py-3.5 px-3.5 font-mono text-sm">0 – 10.0 Centrality</td>
-                <td className="py-3.5 px-3.5 text-gray-700">Calculates graph eigenvector centrality across millions of open web crawl nodes.</td>
-                <td className="py-3.5 px-3.5 text-gray-600">Open-data implementation of Stanford&apos;s original PageRank graph algorithm.</td>
-              </tr>
-            </tbody>
-          </table>
+        <h3 className="text-base font-semibold text-gray-600 mb-3 border-b border-gray-200 pb-2.5">
+          A Different Way to Look at Link Authority
+        </h3>
+        <div className="text-[16px] leading-relaxed space-y-3 text-gray-700">
+          <p>
+            DAPA Metrics can also provide Open PageRank (OPR) as an additional authority signal.
+          </p>
+          <p>
+            Open PageRank is an independent metric based on link data and is presented on a 0–10 scale. Its methodology combines PageRank-related data with authority-weighted referring-domain information.
+          </p>
+          <p>
+            OPR is not Moz DA and should not be interpreted as a Google ranking score. It can instead be used as another data point when comparing domains.
+          </p>
+          <p className="text-sm text-gray-500 italic">
+            For newer websites, Open PageRank data may take time to reflect newly discovered links because its coverage depends on crawling and available link data.
+          </p>
         </div>
       </div>
 
-      {/* 6. Actionable Ways to Increase DA */}
+      {/* 7. How to Improve Your Domain Authority */}
       <div className="bg-white border border-gray-300 rounded-md p-6 sm:p-7 shadow-sm">
-        <h2 className="text-xl font-bold text-gray-900 mb-3 border-b border-gray-200 pb-2.5">
-          5 White-Hat Strategies to Strengthen Your Domain Authority
+        <h2 className="text-xl font-bold text-gray-900 mb-2 border-b border-gray-200 pb-2.5">
+          How to Improve Your Domain Authority
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-[16px] text-gray-700">
-          <div className="p-4 border border-gray-200 rounded bg-gray-50">
-            <h4 className="font-bold text-gray-900 text-[16px] mb-1.5">1. Prioritize Referring Domain Diversity</h4>
-            <p className="text-gray-600 text-[16px] leading-relaxed">Earning 10 links from 10 distinct, thematic root domains builds broader domain equity than 100 repetitive links from a single site.</p>
+        <div className="text-[16px] leading-relaxed mb-4 text-gray-700">
+          <p className="font-medium text-gray-900 mb-1">
+            There isn&apos;t a shortcut that guarantees a higher DA.
+          </p>
+          <p className="text-gray-600">
+            Instead, focus on building a website that deserves to be referenced.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-[15px] mb-5">
+          <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
+            <h4 className="font-bold text-gray-900 text-base mb-1">1. Create genuinely useful content</h4>
+            <p className="text-gray-600 leading-relaxed">Publish original resources that answer real questions and provide information users can actually use.</p>
           </div>
-          <div className="p-4 border border-gray-200 rounded bg-gray-50">
-            <h4 className="font-bold text-gray-900 text-[16px] mb-1.5">2. Fix Broken Inbound Links with 301s</h4>
-            <p className="text-gray-600 text-[16px] leading-relaxed">Reclaim lost backlink equity by 301-redirecting 404 URLs that previously acquired external backlinks to relevant, active pages.</p>
+          <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
+            <h4 className="font-bold text-gray-900 text-base mb-1">2. Earn relevant backlinks</h4>
+            <p className="text-gray-600 leading-relaxed">Focus on earning links because your content is useful—not simply collecting large numbers of links.</p>
           </div>
-          <div className="p-4 border border-gray-200 rounded bg-gray-50">
-            <h4 className="font-bold text-gray-900 text-[16px] mb-1.5">3. Optimize Internal Linking Silos</h4>
-            <p className="text-gray-600 text-[16px] leading-relaxed">Distribute authority from your homepage and cornerstone guides to target sub-pages using contextual, descriptive internal links.</p>
+          <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
+            <h4 className="font-bold text-gray-900 text-base mb-1">3. Build relationships in your niche</h4>
+            <p className="text-gray-600 leading-relaxed">Industry publications, communities, organizations, and relevant websites can provide opportunities for legitimate visibility and references.</p>
           </div>
-          <div className="p-4 border border-gray-200 rounded bg-gray-50">
-            <h4 className="font-bold text-gray-900 text-[16px] mb-1.5">4. Audit Link Profile Regularly</h4>
-            <p className="text-gray-600 text-[16px] leading-relaxed">Monitor your inbound link profile periodically and ensure your acquisition practices follow search engine webmaster guidelines.</p>
+          <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
+            <h4 className="font-bold text-gray-900 text-base mb-1">4. Improve your website structure</h4>
+            <p className="text-gray-600 leading-relaxed">Make important pages easy for users and search engines to discover through logical navigation and internal links.</p>
           </div>
-          <div className="p-4 border border-gray-200 rounded bg-gray-50 md:col-span-2">
-            <h4 className="font-bold text-gray-900 text-[16px] mb-1.5">5. Publish Original Industry Data &amp; Tools (Digital PR)</h4>
-            <p className="text-gray-600 text-[16px] leading-relaxed">Publishing original research data, annual benchmarks, or free utilities naturally earns organic editorial citations without paid outreach.</p>
+          <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg md:col-span-2">
+            <h4 className="font-bold text-gray-900 text-base mb-1">5. Keep evaluating your competitors</h4>
+            <p className="text-gray-600 leading-relaxed">Compare your website with relevant competitors rather than chasing an arbitrary DA target.</p>
           </div>
         </div>
-        <div className="mt-4 pt-3 border-t border-gray-200 flex flex-wrap gap-4 text-xs font-bold text-blue-700">
-          <Link href="/methodology" className="hover:underline">
-            Read Full Calculation Methodology →
-          </Link>
-          <span>•</span>
-          <Link href="/blog/category/technical-seo" className="hover:underline">
-            Technical SEO Guides →
-          </Link>
-          <span>•</span>
-          <Link href="/blog/category/seo-fundamentals" className="hover:underline">
-            SEO Fundamentals Guides →
-          </Link>
+
+        <div className="p-3.5 bg-blue-50/70 border border-blue-200 rounded text-sm text-gray-700">
+          <strong className="text-blue-900 font-semibold">Note:</strong> Google&apos;s own guidance emphasizes helpful, reliable, people-first content and warns against creating content primarily to manipulate search rankings.
+        </div>
+      </div>
+
+      {/* 8. DAPA Metrics Is Built for Practical SEO Research */}
+      <div className="bg-white border border-gray-300 rounded-md p-6 sm:p-7 shadow-sm">
+        <h2 className="text-xl font-bold text-gray-900 mb-3 border-b border-gray-200 pb-2.5">
+          DAPA Metrics Is Built for Practical SEO Research
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-[15px]">
+          <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
+            <h3 className="font-bold text-gray-900 text-base mb-1 text-blue-900">Free bulk checking</h3>
+            <p className="text-gray-600">Analyze up to 10 URLs in a single check.</p>
+          </div>
+          <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
+            <h3 className="font-bold text-gray-900 text-base mb-1 text-blue-900">Multiple SEO metrics</h3>
+            <p className="text-gray-600">Review available authority and spam-related metrics together rather than relying on a single number.</p>
+          </div>
+          <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
+            <h3 className="font-bold text-gray-900 text-base mb-1 text-blue-900">Simple workflow</h3>
+            <p className="text-gray-600">Paste your URLs, run the check, compare the results, and export your data.</p>
+          </div>
+          <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
+            <h3 className="font-bold text-gray-900 text-base mb-1 text-blue-900">CSV reporting</h3>
+            <p className="text-gray-600">Download your results for spreadsheets, research, or client reporting.</p>
+          </div>
+          <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg sm:col-span-2 lg:col-span-2">
+            <h3 className="font-bold text-gray-900 text-base mb-1 text-blue-900">No unnecessary account barrier</h3>
+            <p className="text-gray-600">Start checking without creating an account.</p>
+          </div>
         </div>
       </div>
 
