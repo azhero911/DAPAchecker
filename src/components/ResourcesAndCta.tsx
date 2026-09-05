@@ -54,6 +54,15 @@ export default function ResourcesAndCta() {
               <span>Domain Authority vs Page Authority</span>
             </Link>
           </li>
+          <li>
+            <Link
+              href="/blog/high-volume-low-competition-keywords"
+              className="flex items-center gap-2.5 p-3.5 bg-gray-50 border border-gray-200 rounded-lg hover:border-blue-500 hover:bg-blue-50/40 text-blue-800 font-bold transition group"
+            >
+              <span className="text-gray-400 group-hover:text-blue-600 transition">→</span>
+              <span>High-Volume, Low-Competition Keywords</span>
+            </Link>
+          </li>
           <li className="sm:col-span-2">
             <Link
               href="/methodology"

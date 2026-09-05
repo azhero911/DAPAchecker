@@ -147,27 +147,37 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   // Convert markdown links [text](url) and bold text into clickable React nodes
   const renderInlineText = (text: string) => {
-    // Process markdown links [text](url)
-    const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+    // Process markdown links [text](url) and bold **text**
+    const tokenRegex = /(\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*)/g;
     const parts: (string | React.ReactNode)[] = [];
     let lastIndex = 0;
     let match;
 
-    while ((match = linkRegex.exec(text)) !== null) {
+    while ((match = tokenRegex.exec(text)) !== null) {
       if (match.index > lastIndex) {
         parts.push(text.substring(lastIndex, match.index));
       }
-      const linkText = match[1];
-      const linkUrl = match[2];
-      parts.push(
-        <Link
-          key={match.index}
-          href={linkUrl}
-          className="text-[#1D4ED8] font-bold hover:underline"
-        >
-          {linkText}
-        </Link>
-      );
+      if (match[2] && match[3]) {
+        // Link [text](url)
+        const linkText = match[2];
+        const linkUrl = match[3];
+        parts.push(
+          <Link
+            key={match.index}
+            href={linkUrl}
+            className="text-[#1D4ED8] font-bold hover:underline"
+          >
+            {linkText}
+          </Link>
+        );
+      } else if (match[4]) {
+        // Bold **text**
+        parts.push(
+          <strong key={match.index} className="font-bold text-gray-900">
+            {match[4]}
+          </strong>
+        );
+      }
       lastIndex = match.index + match[0].length;
     }
 
@@ -198,8 +208,44 @@ export default async function BlogPostPage({ params }: PageProps) {
             </h3>
           );
         }
+        if (trimmed.startsWith('#### ')) {
+          return (
+            <h4 key={i} className="text-base sm:text-lg font-bold text-gray-800 mt-4 mb-2">
+              {trimmed.replace('#### ', '')}
+            </h4>
+          );
+        }
         if (trimmed.startsWith('---')) {
           return <hr key={i} className="my-8 border-gray-200" />;
+        }
+        if (trimmed.startsWith('![')) {
+          const imgMatch = trimmed.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+          if (imgMatch) {
+            const alt = imgMatch[1];
+            const src = imgMatch[2];
+            return (
+              <figure key={i} className="my-8">
+                <img
+                  src={src}
+                  alt={alt}
+                  className="w-full max-w-4xl mx-auto rounded-xl border border-gray-200 shadow-md"
+                  loading="lazy"
+                />
+                {alt && (
+                  <figcaption className="text-center text-xs text-gray-500 mt-2.5 font-medium">
+                    {alt}
+                  </figcaption>
+                )}
+              </figure>
+            );
+          }
+        }
+        if (trimmed.startsWith('> ')) {
+          return (
+            <blockquote key={i} className="p-4 bg-slate-50 border-l-4 border-[#1D4ED8] rounded-r my-5 text-slate-800 text-[15px] leading-relaxed">
+              {renderInlineText(trimmed.replace(/^>\s*/, ''))}
+            </blockquote>
+          );
         }
         if (trimmed.startsWith('|')) {
           const tableRows = trimmed.split('\n').filter((row) => row.trim().startsWith('|'));
@@ -208,13 +254,13 @@ export default async function BlogPostPage({ params }: PageProps) {
               row
                 .split('|')
                 .slice(1, -1)
-                .map((cell) => cell.trim().replace(/\*\*(.*?)\*\*/g, '$1'));
+                .map((cell) => cell.trim());
             const headerCells = parseRow(tableRows[0]);
             const dataRows = tableRows.slice(2);
 
             return (
-              <div key={i} className="my-6 overflow-x-auto">
-                <table className="w-full text-left text-sm border border-gray-200 rounded-lg overflow-hidden border-collapse">
+              <div key={i} className="my-6 table-scroll-container">
+                <table className="w-full text-left text-sm border border-gray-200 rounded-lg overflow-hidden border-collapse min-w-[600px]">
                   <thead className="bg-gray-100 text-gray-900 font-bold">
                     <tr>
                       {headerCells.map((cell, cIdx) => (
