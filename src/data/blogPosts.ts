@@ -110,7 +110,7 @@ Industry competitive dynamics differ significantly. A domain competing in a nich
 | Niche Hobbyist / Enthusiast | Often 15–35 |
 | B2B Industrial / Manufacturing | Often 20–40 |
 
-The only reliable benchmark is running a SERP analysis on your actual target keywords and checking the DA of the pages that are currently ranking on page one.
+The only reliable benchmark is running a SERP analysis on your actual target keywords and using a tool to [check your domain authority free](/) alongside the pages currently ranking on page one.
 
 ---
 
@@ -128,7 +128,7 @@ A new site should not chase DA as a primary KPI. Instead, track:
 
 ## How to Check Your Domain Authority for Free
 
-You can instantly audit your DA, Page Authority (PA), Spam Score, and Open PageRank using the [DAPA Metrics free bulk checker](/). Enter up to 10 domains in one batch — no login required.
+You can instantly audit your DA, Page Authority (PA), Spam Score, and Open PageRank using our [bulk DA PA checker](/). Enter up to 10 domains in one batch — no login required.
 
 For ongoing link building strategy, cross-reference your DA reading with your Open PageRank score, which is calculated from the independent Common Crawl dataset. This dual-metric approach gives you a more complete picture of your domain's authority than any single score alone.
 
@@ -210,7 +210,7 @@ Checking DA alone is insufficient for serious competitor research or backlink pr
 
 ### Step 1: Open DAPA Metrics
 
-Navigate to [dapametrics.vercel.app](/) — no account creation required. The checker is immediately accessible on the homepage.
+Navigate to the [bulk DA PA checker](/) — no account creation required. The tool is immediately accessible on the homepage.
 
 ### Step 2: Enter the Domains You Want to Check
 
@@ -257,7 +257,7 @@ The Moz browser extension (MozBar) provides per-page DA/PA data for free — but
 
 Paid platforms like Ahrefs and SEMrush provide their own proprietary authority metrics (Domain Rating and Authority Score respectively), but these require active subscriptions that start at roughly \$100–\$130 per month.
 
-DAPA Metrics provides Moz-sourced DA and PA data alongside independent Open PageRank scores, **completely free**, with no account requirement and support for up to 10 domains per batch. For teams and agencies that need higher volume, the [API documentation](/methodology) describes the underlying endpoint architecture.
+With DAPA Metrics, you can [check your domain authority free](/) with Moz-sourced DA and PA data alongside independent Open PageRank scores, **completely free**, with no account requirement and support for up to 10 domains per batch. For teams and agencies that need higher volume, the [API documentation](/methodology) describes the underlying endpoint architecture.
 
 ---
 
@@ -323,7 +323,7 @@ Spam Score is a metric developed by Moz that estimates the likelihood that a giv
 
 A common misconception is that Spam Score directly reports whether Google has penalised a website. It does not. Spam Score is a **predictive signal** based on Moz's internal research — it models the degree to which a domain's characteristics resemble those of sites Moz has identified as spam-like in its index. Moz's documentation should be consulted for the most current description of how this model works.
 
-You can check any domain's Spam Score instantly using the [free DAPA Metrics checker](/), which displays the score alongside DA, PA, and Open PageRank.
+You can check any domain's Spam Score instantly using our [free bulk DA PA checker](/), which displays the score alongside DA, PA, and Open PageRank.
 
 ---
 
@@ -373,7 +373,7 @@ Check DA, OPR, and Spam Score together as part of that broader review. A site wi
 
 ### Situation 2: Your Own Domain Has a High Spam Score
 
-Run the [DAPA Metrics checker](/) on your own domain. If your Spam Score is elevated:
+Run our [bulk DA PA checker](/) to [check your domain authority free](/) and evaluate your Spam Score. If your Spam Score is elevated:
 
 1. **Audit your inbound link profile** using Moz Link Explorer or Google Search Console's Links report.
 2. **Identify patterns of concern** — clusters of low-quality exact-match anchor links, links from obvious link farm domains, or mass directory submissions.
@@ -444,7 +444,7 @@ For deeper backlink-level analysis, Moz Link Explorer provides per-link Spam Sco
 
 **Domain Authority (DA)** measures the predicted ranking ability of an entire root domain, while **Page Authority (PA)** measures the predicted ranking ability of a single specific URL. Both scores use the same 1–100 logarithmic scale and are calculated by Moz using similar machine learning models — but they answer completely different questions.
 
-You can check both scores simultaneously for any domain or URL using the [free DAPA Metrics bulk checker](/).
+You can check both scores simultaneously for any domain or URL using the [bulk DA PA checker](/).
 
 ---
 
@@ -529,7 +529,7 @@ Neither metric is universally more important. The answer depends on the analysis
 - For **individual keyword competitiveness**: PA of the ranking page is the more relevant data point to examine
 - For **evaluating an inbound link opportunity**: The PA of the specific linking page is worth reviewing alongside the domain's DA
 
-For the most complete picture, always check DA, PA, Spam Score, and Open PageRank together. The [DAPA Metrics free checker](/) returns all four metrics in a single query, making it practical to run this full audit quickly for any domain or URL.
+For the most complete picture, always check DA, PA, Spam Score, and Open PageRank together. You can [check your domain authority free](/) with our [free bulk DA PA checker](/), which returns all four metrics in a single query, making it practical to run this full audit quickly for any domain or URL.
     `,
   },
   // ─── SEO ARTICLE 5 ────────────────────────────────────────────────────────
@@ -786,7 +786,7 @@ Traffic is only valuable if it serves a purpose. Consider two contrasting keywor
 - **Keyword A**: \`"free SEO tips"\`
 - **Keyword B**: \`"bulk domain authority checker"\`
 
-Keyword A might attract a broad, casual readership. But Keyword B aligns directly with what [DAPA Metrics](/) provides. For a specialized tool or publication, the second keyword carries far higher commercial and topical relevance. A smaller volume of highly targeted visitors consistently outperforms a massive volume of disinterested traffic.
+Keyword A might attract a broad, casual readership. But Keyword B aligns directly with what our [bulk DA PA checker](/) provides. For a specialized tool or publication, the second keyword carries far higher commercial and topical relevance. A smaller volume of highly targeted visitors consistently outperforms a massive volume of disinterested traffic.
 
 ---
 
@@ -971,7 +971,7 @@ A focused keyword with 400 monthly searches can be vastly more profitable than a
 
 Most importantly, don't build your SEO strategy around keywords in isolation. Build it around **problems your audience needs resolved**.
 
-Ready to evaluate your search competitors? Use the [DAPA Metrics free bulk checker](/) to compare up to 10 domains and URLs side by side using DA, PA, Spam Score, and Open PageRank before creating your next piece of content.
+Ready to evaluate your search competitors? You can [check your domain authority free](/) using our [free bulk DA PA checker](/) to compare up to 10 domains and URLs side by side using DA, PA, Spam Score, and Open PageRank before creating your next piece of content.
     `,
   },
 ];

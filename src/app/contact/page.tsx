@@ -147,7 +147,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
               <span className="font-semibold text-gray-800 block">Lead Controller:</span>
-              <span>Author &amp; Operations Lead</span>
+              <span>Operations &amp; Compliance Lead</span>
               <span className="block text-xs text-gray-500">DAPA Metrics Editorial Team</span>
             </div>
             <div>

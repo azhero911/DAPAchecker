@@ -16,7 +16,7 @@ export default function HomePage() {
           <span>No account required</span>
         </div>
         <h1 className="text-2xl sm:text-[34px] font-bold text-gray-900 mb-3 leading-tight tracking-tight">
-          Free Bulk Domain &amp; Page Authority Checker
+          Free Bulk DA &amp; PA Checker — Domain Authority Tool
         </h1>
         <p className="text-lg text-gray-700 font-medium mb-2">
           Check multiple websites at once and compare important SEO authority metrics in one place.

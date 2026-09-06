@@ -55,7 +55,7 @@ export default function AboutPage() {
             </div>
             <div>
               <div className="flex flex-wrap items-center gap-3">
-                <h2 className="text-xl font-bold text-gray-900">Author &amp; Engineering Team</h2>
+                <h2 className="text-xl font-bold text-gray-900">DAPA Metrics Editorial &amp; Engineering Team</h2>
                 <span className="px-2.5 py-0.5 rounded-full bg-blue-100 text-[#1D4ED8] text-xs font-bold">
                   Lead Maintainer &amp; Developer
                 </span>

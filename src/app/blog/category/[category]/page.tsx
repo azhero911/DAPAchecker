@@ -162,7 +162,9 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                       {post.category}
                     </span>
                     <span>•</span>
-                    <span>{new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                    <time dateTime={post.publishedAt}>
+                      {new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                    </time>
                     <span>•</span>
                     <span>{post.readTime}</span>
                   </div>

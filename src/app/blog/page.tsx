@@ -97,8 +97,12 @@ export default function BlogIndexPage() {
                   >
                     {post.category}
                   </Link>
-                  <span className="text-gray-400 font-medium">
-                    {new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} · {post.readTime}
+                  <span className="text-gray-500 font-medium flex items-center gap-1.5">
+                    <time dateTime={post.publishedAt}>
+                      {new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                    </time>
+                    <span>·</span>
+                    <span>{post.readTime}</span>
                   </span>
                 </div>
 
