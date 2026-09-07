@@ -63,6 +63,15 @@ export default function ResourcesAndCta() {
               <span>High-Volume, Low-Competition Keywords</span>
             </Link>
           </li>
+          <li>
+            <Link
+              href="/blog/why-did-my-domain-authority-drop"
+              className="flex items-center gap-2.5 p-3.5 bg-gray-50 border border-gray-200 rounded-lg hover:border-blue-500 hover:bg-blue-50/40 text-blue-800 font-bold transition group"
+            >
+              <span className="text-gray-400 group-hover:text-blue-600 transition">→</span>
+              <span>Why Did My Domain Authority Drop?</span>
+            </Link>
+          </li>
           <li className="sm:col-span-2">
             <Link
               href="/methodology"

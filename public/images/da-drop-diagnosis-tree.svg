@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" style="background:#090D16;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+  <defs>
+    <pattern id="diagGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#334155" stroke-width="0.75" opacity="0.25"/>
+    </pattern>
+    <linearGradient id="cardGradRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3F1D24"/>
+      <stop offset="100%" stop-color="#1E1B2E"/>
+    </linearGradient>
+    <linearGradient id="cardGradAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3A2A18"/>
+      <stop offset="100%" stop-color="#1A1C2E"/>
+    </linearGradient>
+    <linearGradient id="cardGradBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#172554"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#090D16"/>
+  <rect width="1200" height="630" fill="url(#diagGrid)"/>
+  <circle cx="250" cy="80" r="300" fill="#1E3A8A" opacity="0.25" filter="blur(90px)"/>
+  <circle cx="950" cy="500" r="300" fill="#881337" opacity="0.2" filter="blur(90px)"/>
+
+  <g transform="translate(60, 40)">
+    <rect x="0" y="0" width="230" height="28" rx="14" fill="#1E293B" stroke="#3B82F6" stroke-width="1.2"/>
+    <circle cx="14" cy="14" r="5" fill="#38BDF8"/>
+    <text x="28" y="18" fill="#93C5FD" font-size="12" font-weight="700" letter-spacing="0.5">DAPA METRICS · DIAGNOSTIC GUIDE</text>
+    <text x="0" y="68" fill="#FFFFFF" font-size="30" font-weight="800" letter-spacing="-0.5">Why Did My Domain Authority Drop?</text>
+    <text x="0" y="96" fill="#94A3B8" font-size="15" font-weight="400">The 7 Root Causes and Diagnostic Framework — Identifying Systemic vs Site-Level Decline</text>
+  </g>
+
+  <g transform="translate(60, 160)">
+    <rect x="0" y="0" width="340" height="420" rx="12" fill="url(#cardGradBlue)" stroke="#1D4ED8" stroke-width="1.5"/>
+    <rect x="16" y="16" width="308" height="38" rx="6" fill="#1E3A8A" opacity="0.4"/>
+    <circle cx="34" cy="35" r="8" fill="#3B82F6"/>
+    <text x="31" y="39" fill="#FFFFFF" font-size="11" font-weight="bold">1</text>
+    <text x="52" y="40" fill="#BFDBFE" font-size="14" font-weight="700">Systemic &amp; Market Shifts</text>
+
+    <rect x="16" y="70" width="308" height="150" rx="8" fill="#0B132B" stroke="#2563EB" stroke-width="0.8"/>
+    <text x="32" y="95" fill="#38BDF8" font-size="11" font-weight="700">CAUSE 01</text>
+    <text x="32" y="118" fill="#FFFFFF" font-size="15" font-weight="700">Moz Algorithm Recalibration</text>
+    <text x="32" y="142" fill="#94A3B8" font-size="12">Index-wide scale updates (DA 2.0).</text>
+    <text x="32" y="160" fill="#94A3B8" font-size="12">All competitors drop simultaneously.</text>
+    <rect x="32" y="178" width="120" height="24" rx="4" fill="#1E293B"/>
+    <text x="40" y="194" fill="#38BDF8" font-size="11" font-weight="600">Action: No panic</text>
+
+    <rect x="16" y="235" width="308" height="150" rx="8" fill="#0B132B" stroke="#2563EB" stroke-width="0.8"/>
+    <text x="32" y="260" fill="#38BDF8" font-size="11" font-weight="700">CAUSE 05</text>
+    <text x="32" y="283" fill="#FFFFFF" font-size="15" font-weight="700">Competitor Velocity Surge</text>
+    <text x="32" y="307" fill="#94A3B8" font-size="12">Competitors earn links rapidly,</text>
+    <text x="32" y="325" fill="#94A3B8" font-size="12">compressing your relative curve.</text>
+    <rect x="32" y="343" width="135" height="24" rx="4" fill="#1E293B"/>
+    <text x="40" y="359" fill="#60A5FA" font-size="11" font-weight="600">Action: Build PR links</text>
+  </g>
+
+  <g transform="translate(430, 160)">
+    <rect x="0" y="0" width="340" height="420" rx="12" fill="url(#cardGradRed)" stroke="#E11D48" stroke-width="1.5"/>
+    <rect x="16" y="16" width="308" height="38" rx="6" fill="#881337" opacity="0.4"/>
+    <circle cx="34" cy="35" r="8" fill="#F43F5E"/>
+    <text x="31" y="39" fill="#FFFFFF" font-size="11" font-weight="bold">2</text>
+    <text x="52" y="40" fill="#FECDD3" font-size="14" font-weight="700">Backlink Profile Health</text>
+
+    <rect x="16" y="70" width="308" height="96" rx="8" fill="#1A101C" stroke="#E11D48" stroke-width="0.8"/>
+    <text x="32" y="92" fill="#FB7185" font-size="11" font-weight="700">CAUSE 02 · LOST HIGH-DA LINKS</text>
+    <text x="32" y="112" fill="#FFFFFF" font-size="14" font-weight="700">Flagship Backlink Removed</text>
+    <text x="32" y="132" fill="#FDA4AF" font-size="11">Action: Reclaim via 301 or outreach</text>
+    <rect x="220" y="80" width="88" height="20" rx="4" fill="#881337"/>
+    <text x="228" y="94" fill="#FFFFFF" font-size="10" font-weight="700">PRIORITY: HIGH</text>
+
+    <rect x="16" y="180" width="308" height="96" rx="8" fill="#1A101C" stroke="#E11D48" stroke-width="0.8"/>
+    <text x="32" y="202" fill="#FB7185" font-size="11" font-weight="700">CAUSE 03 · PASSIVE LINK DECAY</text>
+    <text x="32" y="222" fill="#FFFFFF" font-size="14" font-weight="700">Referring Sites Lost Authority</text>
+    <text x="32" y="242" fill="#FDA4AF" font-size="11">Action: Diversify root domains</text>
+    <rect x="220" y="190" width="88" height="20" rx="4" fill="#4C0519"/>
+    <text x="226" y="204" fill="#FECDD3" font-size="10" font-weight="700">PRIORITY: MED</text>
+
+    <rect x="16" y="290" width="308" height="96" rx="8" fill="#1A101C" stroke="#E11D48" stroke-width="0.8"/>
+    <text x="32" y="312" fill="#FB7185" font-size="11" font-weight="700">CAUSE 04 · SPAM INFLUX</text>
+    <text x="32" y="332" fill="#FFFFFF" font-size="14" font-weight="700">Toxic Links or Scheme Penalty</text>
+    <text x="32" y="352" fill="#FDA4AF" font-size="11">Action: Stop tactics &amp; selective disavow</text>
+    <rect x="220" y="300" width="88" height="20" rx="4" fill="#881337"/>
+    <text x="228" y="314" fill="#FFFFFF" font-size="10" font-weight="700">PRIORITY: HIGH</text>
+  </g>
+
+  <g transform="translate(800, 160)">
+    <rect x="0" y="0" width="340" height="420" rx="12" fill="url(#cardGradAmber)" stroke="#D97706" stroke-width="1.5"/>
+    <rect x="16" y="16" width="308" height="38" rx="6" fill="#78350F" opacity="0.4"/>
+    <circle cx="34" cy="35" r="8" fill="#F59E0B"/>
+    <text x="31" y="39" fill="#FFFFFF" font-size="11" font-weight="bold">3</text>
+    <text x="52" y="40" fill="#FDE68A" font-size="14" font-weight="700">Technical &amp; Site Structure</text>
+
+    <rect x="16" y="70" width="308" height="150" rx="8" fill="#1C180E" stroke="#D97706" stroke-width="0.8"/>
+    <text x="32" y="95" fill="#FBBF24" font-size="11" font-weight="700">CAUSE 06</text>
+    <text x="32" y="118" fill="#FFFFFF" font-size="15" font-weight="700">Crawl Barriers &amp; 404 Errors</text>
+    <text x="32" y="142" fill="#CBD5E1" font-size="12">robots.txt blocks, server 5xx errors,</text>
+    <text x="32" y="160" fill="#CBD5E1" font-size="12">or broken redirects hide link equity.</text>
+    <rect x="32" y="178" width="145" height="24" rx="4" fill="#292524"/>
+    <text x="40" y="194" fill="#FBBF24" font-size="11" font-weight="600">Action: Fix 404s &amp; sitemap</text>
+
+    <rect x="16" y="235" width="308" height="150" rx="8" fill="#1C180E" stroke="#D97706" stroke-width="0.8"/>
+    <text x="32" y="260" fill="#FBBF24" font-size="11" font-weight="700">CAUSE 07</text>
+    <text x="32" y="283" fill="#FFFFFF" font-size="15" font-weight="700">Poor Internal Link Silos</text>
+    <text x="32" y="307" fill="#CBD5E1" font-size="12">External equity trapped in orphan pages</text>
+    <text x="32" y="325" fill="#CBD5E1" font-size="12">with zero connections to core pages.</text>
+    <rect x="32" y="343" width="150" height="24" rx="4" fill="#292524"/>
+    <text x="40" y="359" fill="#FBBF24" font-size="11" font-weight="600">Action: Re-architect links</text>
+  </g>
+
+  <text x="60" y="605" fill="#475569" font-size="12" font-weight="500">DAPA Metrics Diagnostic Framework · Independent Moz DA &amp; Open PageRank Research</text>
+</svg>

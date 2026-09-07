@@ -973,5 +973,253 @@ Most importantly, don't build your SEO strategy around keywords in isolation. Bu
 
 Ready to evaluate your search competitors? You can [check your domain authority free](/) using our [free bulk DA PA checker](/) to compare up to 10 domains and URLs side by side using DA, PA, Spam Score, and Open PageRank before creating your next piece of content.
     `,
+  },,
+
+  // ─── SEO ARTICLE 6 ────────────────────────────────────────────────────────
+  {
+    slug: 'why-did-my-domain-authority-drop',
+    title: 'Why Did My Domain Authority Drop? 7 Root Causes & Recovery Checklist',
+    excerpt: 'A sudden drop in Domain Authority is usually caused by Moz index recalibrations, lost high-authority backlinks, or crawl issues — not a Google penalty. Learn how to diagnose and recover your DA.',
+    category: 'SEO Fundamentals',
+    readTime: '8 min read',
+    publishedAt: '2026-09-07',
+    updatedAt: '2026-09-07',
+    author: {
+      name: 'DAPA Metrics Editorial Team',
+      role: 'SEO Research & Analysis',
+      avatar: '/favicon.svg',
+    },
+    sources: [
+      {
+        title: 'Domain Authority: What It Is and How It Works',
+        url: 'https://moz.com/learn/seo/domain-authority',
+        publisher: 'Moz',
+        note: 'Official Moz documentation explaining machine learning recalibrations, 1–100 logarithmic scoring, and whole-index shifts.',
+      },
+      {
+        title: 'Google Search Central — Disavow Links Tool Guidance',
+        url: 'https://support.google.com/webmasters/answer/2648487',
+        publisher: 'Google Search Central',
+        note: 'Authoritative guidance on managing artificial links and why disavow should only be used in rare cases involving manual actions.',
+      },
+      {
+        title: 'Google Search Central — Crawling and Indexing Troubleshooting',
+        url: 'https://developers.google.com/search/docs/crawling-indexing/large-site-managing-crawl-budget',
+        publisher: 'Google Search Central',
+        note: 'Best practices for resolving robots.txt disallows, broken redirects, and server error spikes that prevent link discovery.',
+      },
+      {
+        title: 'Open PageRank Initiative',
+        url: 'https://www.domcop.com/openpagerank/',
+        publisher: 'Open PageRank',
+        note: 'Independent web-graph dataset based on Common Crawl, used to cross-reference whether an authority drop is Moz-specific.',
+      },
+    ],
+    content: `
+![Why Did My Domain Authority Drop? 7 Root Causes Diagnostic Tree](/images/da-drop-diagnosis-tree.svg)
+
+## Executive Summary
+
+A sudden drop in Domain Authority (DA) can be alarming, but it usually reflects changes in Moz's web index or natural shifts in your backlink profile — **not a Google manual penalty**. Domain Authority is a third-party metric developed by Moz, not an official Google ranking factor.
+
+Common causes include Moz's periodic algorithm and index recalibrations, losing high-equity referring domains, technical crawl barriers, or competitors outpacing your link acquisition velocity.
+
+Each root cause has distinct diagnostic indicators and specific recovery steps. Below, we break down the **7 primary root causes of Domain Authority decline**, how to identify which one affected your site using our [bulk DA PA checker](/), and a prioritized action checklist to recover and protect your authority.
+
+---
+
+## 1. Moz Algorithm Updates (DA Recalibration)
+
+### Explanation
+Moz periodically recalibrates its Domain Authority algorithm and refreshes its web-wide link index. Because DA is calculated on a 1–100 logarithmic scale relative to every other domain Moz indexes, an index update can shift your score even if your backlink count remained completely identical.
+
+When Moz updates its machine learning model (such as the major "Domain Authority 2.0" recalibration), it frequently reweights spam flags and recalibrates how link equity flows across the graph. If thousands of websites in your industry experience a simultaneous 3–5 point dip on the same date, you are witnessing an index-wide recalibration rather than an issue specific to your site.
+
+### How to Diagnose
+- **Compare Against Competitors**: Use our [free bulk DA PA checker](/) to check 5–10 competitor domains in your niche simultaneously. If all domains saw a proportional score decrease over the same timeframe, the shift is systemic.
+- **Check Official Moz Updates**: Check Moz's official announcements or community discussions around the date of your score change to verify whether an index refresh occurred.
+
+### Recovery Actions
+- **No Emergency Action Needed**: Systemic scale adjustments cannot be "fixed" on your end.
+- **Verify Real Rankings**: Check Google Search Console. If your actual organic impressions, clicks, and keyword positions remain stable, your search performance is unaffected.
+- **Maintain Quality Focus**: Continue consistent, white-hat content publishing and earned outreach rather than panic-building low-quality links.
+
+> **Priority**: Low • **ETA**: None required for algorithm updates.
+
+---
+
+## 2. Lost High-Quality Backlinks
+
+### Explanation
+Domain Authority is heavily weighted toward high-authority referring root domains. Losing a single backlink from an established, high-DA publication (e.g., DA 70+) often causes a far greater score drop than gaining ten links from low-authority websites.
+
+Common reasons high-value backlinks disappear:
+- The linking website redesigned its layout or deleted an outdated article.
+- A URL on your website changed or was removed without a proper 301 redirect, turning the incoming backlink into a broken 404.
+- An editorial team updated their guide and replaced older reference links.
+
+### How to Diagnose
+- **Backlink Loss Audit**: Check your backlink profile in Moz Link Explorer, Ahrefs, or Google Search Console's Links report for the 30–90 days preceding the drop.
+- **Filter by Dofollow & Authority**: Sort lost links by domain authority to identify whether any flagship referring domains dropped off.
+- **Check Target URL Status**: Verify that the destination page on your site returns a valid \`200 OK\` status and has not accidentally become a \`404 Not Found\`.
+
+### Recovery Actions
+- **Reclaim Broken Links**: If you moved, renamed, or restructured pages, immediately implement permanent **301 redirects** to route inbound link equity to the new live URL.
+- **Polite Editorial Outreach**: If a webmaster accidentally broke an editorial link during a redesign, reach out with a helpful message providing the correct live link.
+- **Republish Essential Linkable Assets**: If a previously popular resource was unpublished, restore or update the content to retain its referring value.
+
+> **Priority**: High • **ETA**: 1–3 months as web crawlers re-index reinstated links.
+
+---
+
+## 3. Referring Sites Losing Authority (Passive Equity Decay)
+
+### Explanation
+Even if you haven't lost a single backlink, your Domain Authority can decline if the **websites linking to you lose authority themselves**.
+
+Link equity is dynamic: if a partner blog or news portal (previously DA 55) gets deindexed, sold, neglected, or penalized, the value passed through its outbound links diminishes. In SEO analysis, this is known as **passive equity drag** — your link count stays unchanged, but the cumulative strength of your backlink foundation has weakened.
+
+### How to Diagnose
+- **Audit Top Referring Domains**: Review the current DA and Spam Score of your top 10–20 referring domains using a [bulk DA PA checker](/).
+- **Check for Drastic Drops**: Look for referring domains that experienced steep authority declines or high spam spikes over recent months.
+
+### Recovery Actions
+- **Diversify Referring Root Domains**: Offset natural link decay by consistently earning new backlinks across diverse, independent industry publications.
+- **Replace Stale Sources**: If an old partner site has gone dark, seek fresh editorial citations and resource mentions in your current niche.
+- **Regular Monitoring**: Audit your top linking domains every quarter to maintain a clean, resilient link profile.
+
+> **Priority**: Medium • **ETA**: Ongoing (2–4 months of steady link acquisition).
+
+---
+
+## 4. Influx of Spammy or Low-Quality Links
+
+### Explanation
+A sudden influx of low-quality, automated, or paid links can depress your Domain Authority. Moz's Spam Score algorithm actively monitors link-scheme footprints, including:
+- Sitewide footer and sidebar links from unrelated websites.
+- Low-quality automated directory and bookmark submissions.
+- Comment spam, guest post farm networks, or PBN footprints.
+
+When Moz's algorithm detects unnatural link clusters, it dampens your domain's trust score and downweights the associated link equity.
+
+### How to Diagnose
+- **Export New Referring Domains**: Audit recent incoming links in Moz or Google Search Console.
+- **Check Spam Scores**: Check whether newly acquired referring domains carry high Moz Spam Scores (above 30–60%) or originate from scraper and spam domains.
+- **Correlate with Recent Outreach**: Check if the drop coincided with third-party link packages or aggressive automated campaigns.
+
+### Recovery Actions
+- **Cease Risky Tactics Immediately**: Stop all automated link generation, forum blasts, or paid link networks.
+- **Request Manual Removal**: Contact site owners of spammy linking sites to request link removal where feasible.
+- **Selective Disavow**: Google's official guidance cautions that most websites do not need to disavow links because search algorithms ignore spam automatically. However, if your domain was targeted by a severe negative SEO link attack or faces a Google manual action, submit a clean disavow file in Google Search Console.
+- **Dilute with Quality**: The most effective long-term defense is publishing comprehensive, citation-worthy content that attracts genuine editorial references.
+
+> **Priority**: High • **ETA**: 3–6 weeks for disavow processing and crawl updates.
+
+---
+
+## 5. Competitors Gaining Link Authority (Relative Scale Compression)
+
+### Explanation
+Domain Authority is **not an absolute test score** — it is a **comparative ranking model**. Because Moz's 1–100 scale is relative, your score can drop even if your website did everything right, simply because your direct competitors accelerated their link acquisition faster than you.
+
+If multiple competitors in your niche jump from DA 35 to DA 48 through aggressive PR, original data studies, or product launches, the logarithmic curve shifts. Your site's relative position on that curve compresses downward, resulting in a minor score drop (e.g., from 42 to 40).
+
+### How to Diagnose
+- **Competitor Velocity Tracking**: Compare your monthly score trajectory against 5–10 close search rivals.
+- **Content & PR Analysis**: Inspect what high-performing competitors recently published. Did they release an industry benchmark report, launch a viral free tool, or earn major media coverage?
+
+### Recovery Actions
+- **Publish Original Research & Data**: Create assets that earn links passively, such as industry surveys, benchmark studies, and free web utilities.
+- **Benchmark Link Velocity**: Monitor your monthly referring domain growth rate to ensure you keep pace with your vertical's average velocity.
+- **Optimize Content Depth**: Refresh and expand existing guides to outperform competitor resources on quality and practical utility.
+
+> **Priority**: Medium • **ETA**: 3–6 months of sustained link building.
+
+---
+
+## 6. Technical & Indexing Issues (Crawl Barriers)
+
+### Explanation
+If search engine crawlers or Moz's web spider (Dotbot) cannot properly crawl your website, your Domain Authority will drop because the spider simply **cannot discover your content or verify your internal links**.
+
+Common technical causes include:
+- A misconfigured \`robots.txt\` file disallowing critical site sections.
+- HTTP-to-HTTPS migration mistakes without proper 301 redirect rules.
+- Widespread 4xx or 5xx server errors returning for important pages.
+- Cloudflare or CDN bot-protection settings aggressively blocking legitimate search bot user agents.
+
+### How to Diagnose
+- **Check robots.txt**: Visit \`yourdomain.com/robots.txt\` and verify that spiders are not blocked from your core content paths.
+- **Google Search Console Coverage**: Inspect the **Pages** report in Google Search Console for unexpected spikes in "Crawled - currently not indexed", server errors (5xx), or 404 errors.
+- **Site Crawl Audit**: Run a crawler tool (like Screaming Frog or Sitebulb) to verify response codes across all pages receiving external backlinks.
+
+### Recovery Actions
+- **Clear robots.txt Disallows**: Ensure \`robots.txt\` permits crawling of all content and public resources.
+- **Fix Broken Redirects & 404s**: Implement 301 redirects for any altered or moved URLs with incoming links.
+- **Ensure Server Stability**: Resolve hosting timeouts and review firewall bot rules to prevent legitimate crawler blocking.
+- **Resubmit Sitemap**: Resubmit your \`sitemap.xml\` in Google Search Console and Bing Webmaster Tools to trigger fresh re-crawling.
+
+> **Priority**: High (urgent technical blocker) • **ETA**: 1–2 weeks to resolve, with recrawl taking 2–4 weeks.
+
+---
+
+## 7. Poor Internal Linking Structure (Equity Leakage)
+
+### Explanation
+Domain Authority evaluates whole-domain link equity. When external backlinks point to deep, isolated pages that have no internal links connecting them back to the rest of your site, that link equity remains **trapped in an orphan silo**.
+
+If an old blog post earns 20 strong backlinks but contains zero links to your homepage, category hubs, or core tool pages, the domain-level authority boost is largely wasted.
+
+### How to Diagnose
+- **Internal Link Mapping**: Identify your pages with the highest number of external referring domains. Check how many internal outlinks each page provides to other sections of your site.
+- **Click-Depth Audit**: Check if key pages require more than 3 clicks from your homepage to reach.
+
+### Recovery Actions
+- **Contextual In-Content Linking**: Add natural internal links from your highest-authority articles to your core tool, product, and category pages.
+- **Flatten Site Architecture**: Ensure every valuable page is accessible within 2–3 clicks of the homepage.
+- **Create Pillar Hubs**: Connect related articles into organized topical clusters with prominent cross-linking.
+- **Optimize Breadcrumb Navigation**: Maintain clear breadcrumb trails and accessible navigation menus across mobile and desktop.
+
+> **Priority**: Medium • **ETA**: 2–4 weeks to implement and see internal equity redistribution.
+
+---
+
+## Domain Authority Recovery Checklist
+
+Use this actionable checklist to methodically diagnose and recover your domain authority:
+
+| Step | Action Item | Responsible | Priority | Typical ETA |
+|---|---|---|---|---|
+| **1** | Check Moz announcement feeds for scheduled index recalibrations | SEO Team | 🔴 High | 1–2 Days |
+| **2** | Audit recent lost backlinks and filter by referring domain authority | SEO Analyst | 🔴 High | 1 Week |
+| **3** | Reclaim lost links via 301 redirects or outreach to webmasters | Outreach / Dev | 🔴 High | 1–3 Months |
+| **4** | Inspect robots.txt and fix any 4xx / 5xx crawl errors in Search Console | Web Dev | 🔴 High | 1–2 Weeks |
+| **5** | Audit top referring domains to identify passive link decay | SEO Team | 🟡 Medium | 2 Weeks |
+| **6** | Stop automated link schemes and review spammy inbound link clusters | SEO Lead | 🔴 High | 2–3 Weeks |
+| **7** | Benchmark competitor DA velocity using a bulk authority checker | SEO Analyst | 🟡 Medium | 1 Week |
+| **8** | Strengthen internal linking from top-linked pages to core pages | Content Team | 🟡 Medium | 2–4 Weeks |
+| **9** | Resubmit XML sitemap to prompt search engine and crawler re-indexing | Webmaster | 🟢 Low | Immediate |
+
+---
+
+## Related SEO Guides
+
+To build and maintain a strong, resilient link profile, explore our companion research guides:
+- [What Is a Good Domain Authority Score?](/blog/what-is-a-good-domain-authority-score) — Practical benchmarks by niche and site age.
+- [How to Check Domain Authority for Free](/blog/how-to-check-domain-authority-free) — Step-by-step auditing without subscription costs.
+- [Moz Spam Score Explained](/blog/moz-spam-score-explained) — How spam signals correlate with authority penalties.
+- [Domain Authority vs Page Authority](/blog/domain-authority-vs-page-authority) — Why individual page metrics often matter more than domain-wide scores.
+- [DAPA Metrics Calculation Methodology](/methodology) — How our engine queries Moz and Open PageRank APIs.
+
+---
+
+## The Big Picture: DA Is a Proxy, Not Your Ultimate Goal
+
+Remember: **Google does not use Moz Domain Authority to calculate search rankings**.
+
+DA is a third-party analytical metric designed to approximate backlink competitiveness. A drop in DA is an invitation to inspect your backlink profile, clean up technical errors, and benchmark against competitors — but it is never a reason to panic if your organic traffic and rankings remain healthy.
+
+To keep track of your site's ongoing performance, you can [check your domain authority free](/) using our [free bulk DA PA checker](/) to monitor your DA, PA, Spam Score, and Open PageRank in one clean dashboard. Cross-referencing Moz DA with independent Open PageRank metrics gives you the most balanced, reliable assessment of your domain's true standing on the web.
+    `,
   },
 ];
