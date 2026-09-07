@@ -973,7 +973,7 @@ Most importantly, don't build your SEO strategy around keywords in isolation. Bu
 
 Ready to evaluate your search competitors? You can [check your domain authority free](/) using our [free bulk DA PA checker](/) to compare up to 10 domains and URLs side by side using DA, PA, Spam Score, and Open PageRank before creating your next piece of content.
     `,
-  },,
+  },
 
   // ─── SEO ARTICLE 6 ────────────────────────────────────────────────────────
   {
