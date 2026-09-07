@@ -5,9 +5,9 @@ import Link from 'next/link';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dapametrics.vercel.app';
 
 export const metadata: Metadata = {
-  title: 'Editorial Standards — How DAPA Metrics Researches and Publishes Content',
+  title: 'Editorial Standards & Fact-Checking Policy',
   description:
-    'Understand how DAPA Metrics selects topics, researches sources, fact-checks claims, attributes information, updates articles, and handles corrections. Our editorial process is designed around accuracy and transparency.',
+    'Learn how DAPA Metrics researches, fact-checks claims, attributes sources, and maintains accuracy and transparency across all SEO publications.',
   keywords: [
     'dapa metrics editorial standards',
     'editorial policy',
@@ -19,9 +19,9 @@ export const metadata: Metadata = {
     canonical: `${SITE_URL}/editorial-standards`,
   },
   openGraph: {
-    title: 'Editorial Standards — DAPA Metrics',
+    title: 'Editorial Standards & Fact-Checking Policy | DAPA Metrics',
     description:
-      'How DAPA Metrics selects, researches, writes, fact-checks, and updates its SEO content.',
+      'Learn how DAPA Metrics researches, fact-checks claims, attributes sources, and maintains accuracy and transparency across all SEO publications.',
     url: `${SITE_URL}/editorial-standards`,
     type: 'website',
   },

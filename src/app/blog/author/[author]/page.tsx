@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: AuthorPageProps): Promise<Met
   const authorUrl = `${SITE_URL}/blog/author/author`;
 
   return {
-    title: 'Editorial Team — SEO Research & Engineering | DAPA Metrics',
+    title: 'Editorial Team — SEO Research & Engineering',
     description:
       'Technical guides, research analyses, and SEO methodology articles authored by the DAPA Metrics Editorial & Engineering Team.',
     keywords: [
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: AuthorPageProps): Promise<Met
       canonical: authorUrl,
     },
     openGraph: {
-      title: 'Editorial Team — DAPA Metrics',
+      title: 'Editorial Team — SEO Research & Engineering | DAPA Metrics',
       description:
         'Technical guides, research analyses, and SEO methodology articles authored by the DAPA Metrics Editorial & Engineering Team.',
       url: authorUrl,

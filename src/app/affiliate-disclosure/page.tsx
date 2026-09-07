@@ -4,13 +4,13 @@ import { Metadata } from 'next';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dapametrics.vercel.app';
 
 export const metadata: Metadata = {
-  title: 'Affiliate Disclosure — FTC Compliance & Transparency | DAPA Metrics',
+  title: 'Affiliate Disclosure — FTC Compliance',
   description: 'Full transparency regarding our affiliate partnerships, advertising, and editorial independence.',
   alternates: {
     canonical: `${SITE_URL}/affiliate-disclosure`,
   },
   openGraph: {
-    title: 'Affiliate Disclosure — DAPA Metrics FTC Compliance',
+    title: 'Affiliate Disclosure — FTC Compliance | DAPA Metrics',
     description: 'Learn about our affiliate relationships, monetization standards, and editorial independence.',
     url: `${SITE_URL}/affiliate-disclosure`,
     type: 'website',

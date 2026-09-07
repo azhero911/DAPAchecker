@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: '%s | DAPA Metrics',
   },
   description:
-    'Free bulk DA PA checker — analyze Domain Authority, Page Authority, Spam Score & Open PageRank for up to 10 domains instantly. No login required. CSV export included.',
+    'Free bulk DA PA checker — check Domain Authority, Page Authority, Spam Score & Open PageRank for up to 10 domains with no login. CSV export included.',
   keywords: [
     'bulk DA PA checker',
     'free bulk domain authority checker',
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Bulk DA PA Checker — Free Domain Authority Tool | DAPA Metrics',
     description:
-      'Free bulk DA PA checker — analyze Domain Authority, Page Authority, Spam Score & Open PageRank for up to 10 domains instantly. No login required. CSV export included.',
+      'Free bulk DA PA checker — check Domain Authority, Page Authority, Spam Score & Open PageRank for up to 10 domains with no login. CSV export included.',
     url: SITE_URL,
     siteName: 'DAPA Metrics',
     type: 'website',
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Bulk DA PA Checker — Free Domain Authority Tool | DAPA Metrics',
     description:
-      'Free bulk DA PA checker — analyze Domain Authority, Page Authority, Spam Score & Open PageRank for up to 10 domains instantly. No login required. CSV export included.',
+      'Free bulk DA PA checker — check Domain Authority, Page Authority, Spam Score & Open PageRank for up to 10 domains with no login. CSV export included.',
     images: [`${SITE_URL}/og-image.svg`],
   },
 };

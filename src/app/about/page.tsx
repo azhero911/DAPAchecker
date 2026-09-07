@@ -5,7 +5,7 @@ import Link from 'next/link';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dapametrics.vercel.app';
 
 export const metadata: Metadata = {
-  title: 'About Us — Mission, Team & Engineering Standards | DAPA Metrics',
+  title: 'About Us — Mission & Engineering Standards',
   description:
     'Learn about the technical engineering standards, data architecture, and mission behind DAPA Metrics free SEO tools.',
   keywords: [
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_URL}/about`,
   },
   openGraph: {
-    title: 'About Us — DAPA Metrics Mission & Standards',
+    title: 'About Us — Mission & Engineering Standards | DAPA Metrics',
     description:
       'Learn how DAPA Metrics provides fast, privacy-focused, paywall-free domain authority analysis.',
     url: `${SITE_URL}/about`,

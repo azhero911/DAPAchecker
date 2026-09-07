@@ -10,7 +10,9 @@ export interface CitationSource {
 export interface BlogPost {
   slug: string;
   title: string;
+  seoTitle?: string;
   excerpt: string;
+  metaDescription?: string;
   category: string;
   readTime: string;
   publishedAt: string;
@@ -29,7 +31,9 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'what-is-a-good-domain-authority-score',
     title: 'What Is a Good Domain Authority Score? Practical Reference Ranges and How to Benchmark',
+    seoTitle: 'What Is a Good Domain Authority Score?',
     excerpt: 'Not all DA scores mean the same thing. Learn practical reference ranges by site type and industry, and — more importantly — how to benchmark your Domain Authority against the pages that are actually ranking for your target keywords.',
+    metaDescription: 'Learn what constitutes a good Domain Authority score by industry and site age, and how to benchmark your DA against competing ranking pages.',
     category: 'SEO Fundamentals',
     readTime: '8 min read',
     publishedAt: '2026-09-04',
@@ -153,7 +157,9 @@ A "good" Domain Authority score is one that is **competitive against the pages a
   {
     slug: 'how-to-check-domain-authority-free',
     title: 'How to Check Domain Authority for Free (No Account Required)',
+    seoTitle: 'How to Check Domain Authority Free',
     excerpt: 'Step-by-step guide to checking Domain Authority, Page Authority, Spam Score, and Open PageRank for any domain — including bulk checking multiple sites simultaneously — entirely free and without creating an account.',
+    metaDescription: 'Step-by-step guide to checking Domain Authority, Page Authority, Spam Score, and Open PageRank for multiple domains for free with no account required.',
     category: 'SEO Fundamentals',
     readTime: '6 min read',
     publishedAt: '2026-09-04',
@@ -281,7 +287,9 @@ Yes — completely free for any individual or agency use. The tool is ad-support
   {
     slug: 'moz-spam-score-explained',
     title: 'Moz Spam Score Explained: What It Is, How It Works, and When to Worry',
+    seoTitle: 'Moz Spam Score Explained: Practical SEO Guide',
     excerpt: 'A plain-English breakdown of Moz Spam Score — what the percentage actually means, which thresholds signal real risk, how it differs from a Google penalty, and the specific situations where a high Spam Score should change your SEO decisions.',
+    metaDescription: 'Discover what Moz Spam Score means, how it is calculated, the difference between spam flags and Google penalties, and when you should take action.',
     category: 'Technical SEO',
     readTime: '9 min read',
     publishedAt: '2026-09-04',
@@ -410,7 +418,9 @@ For deeper backlink-level analysis, Moz Link Explorer provides per-link Spam Sco
   {
     slug: 'domain-authority-vs-page-authority',
     title: 'Domain Authority vs Page Authority: What\'s the Difference and Which Matters More?',
+    seoTitle: 'Domain Authority vs Page Authority Explained',
     excerpt: 'DA and PA are both Moz metrics on the same 1–100 scale, but they measure fundamentally different things. Learn exactly what each score represents, when to use DA vs PA, and why the distinction matters for competitor analysis and link building strategy.',
+    metaDescription: 'Understand the difference between Domain Authority (DA) and Page Authority (PA), how both metrics are calculated, and which matters more for ranking.',
     category: 'SEO Comparison',
     readTime: '7 min read',
     publishedAt: '2026-09-04',
@@ -536,7 +546,9 @@ For the most complete picture, always check DA, PA, Spam Score, and Open PageRan
   {
     slug: 'high-volume-low-competition-keywords',
     title: 'High-Volume, Low-Competition Keywords: How to Find Them in 2026',
+    seoTitle: 'High-Volume Low-Competition Keywords in 2026',
     excerpt: 'Learn how to find high-volume, low-competition keywords, evaluate search intent, analyze SERPs, and choose realistic SEO opportunities for your website.',
+    metaDescription: 'Learn how to find high-volume, low-competition keywords, evaluate search intent, analyze SERPs, and choose realistic SEO opportunities for your website.',
     category: 'SEO Fundamentals',
     readTime: '9 min read',
     publishedAt: '2026-09-05',
@@ -979,7 +991,9 @@ Ready to evaluate your search competitors? You can [check your domain authority 
   {
     slug: 'why-did-my-domain-authority-drop',
     title: 'Why Did My Domain Authority Drop? 7 Root Causes & Recovery Checklist',
+    seoTitle: 'Why Did My Domain Authority Drop? 7 Causes',
     excerpt: 'A sudden drop in Domain Authority is usually caused by Moz index recalibrations, lost high-authority backlinks, or crawl issues — not a Google penalty. Learn how to diagnose and recover your DA.',
+    metaDescription: 'Discover 7 reasons your Moz Domain Authority dropped — from algorithm recalibrations to crawl issues — and follow our step-by-step recovery checklist.',
     category: 'SEO Fundamentals',
     readTime: '8 min read',
     publishedAt: '2026-09-07',

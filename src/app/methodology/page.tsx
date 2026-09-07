@@ -4,14 +4,14 @@ import { Metadata } from 'next';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dapametrics.vercel.app';
 
 export const metadata: Metadata = {
-  title: 'Metric Methodology — How DA, PA, and Spam Scores Are Evaluated',
+  title: 'Metric Methodology — DA, PA & Spam Algorithms',
   description:
     'Technical whitepaper explaining the mathematical models and graph algorithms behind Moz Domain Authority, Page Authority, Spam Score, and Open PageRank.',
   alternates: {
     canonical: `${SITE_URL}/methodology`,
   },
   openGraph: {
-    title: 'Metric Methodology — DAPA Metrics Scoring Algorithms',
+    title: 'Metric Methodology — DA, PA & Spam Algorithms | DAPA Metrics',
     description:
       'Learn how Moz DA, PA, and Open PageRank calculate web authority using machine learning and eigenvector centrality.',
     url: `${SITE_URL}/methodology`,
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Metric Methodology — DAPA Metrics Scoring Algorithms',
+    title: 'Metric Methodology — DA, PA & Spam Algorithms | DAPA Metrics',
     description:
       'Technical explanation of how Domain Authority, Page Authority, and Spam Score are calculated.',
   },

@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dapametrics.vercel.app';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | DAPA Metrics',
+  title: 'Privacy Policy',
   description:
     'Understand how DAPA Metrics handles technical data, cookies, third-party infrastructure processors, and visitor privacy.',
   alternates: {

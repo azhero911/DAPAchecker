@@ -32,10 +32,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const postUrl = `${SITE_URL}/blog/${post.slug}`;
+  const pageTitle = post.seoTitle || post.title;
+  const pageDesc = post.metaDescription || post.excerpt;
 
   return {
-    title: post.title,
-    description: post.excerpt,
+    title: pageTitle,
+    description: pageDesc,
     keywords: [
       post.category.toLowerCase(),
       'domain authority',
@@ -48,8 +50,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       canonical: postUrl,
     },
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
+      title: `${pageTitle} | DAPA Metrics`,
+      description: pageDesc,
       url: postUrl,
       type: 'article',
       publishedTime: post.publishedAt,
@@ -60,14 +62,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           url: `${SITE_URL}/og-image.svg`,
           width: 1200,
           height: 630,
-          alt: post.title,
+          alt: `${pageTitle} — DAPA Metrics`,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
-      description: post.excerpt,
+      title: `${pageTitle} | DAPA Metrics`,
+      description: pageDesc,
       images: [`${SITE_URL}/og-image.svg`],
     },
   };

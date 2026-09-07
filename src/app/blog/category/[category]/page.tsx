@@ -72,7 +72,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   const categoryUrl = `${SITE_URL}/blog/category/${category}`;
 
   return {
-    title: `${catInfo.name} Guides & Tutorials | DAPA Metrics`,
+    title: `${catInfo.name} Guides & Tutorials`,
     description: catInfo.description,
     keywords: [
       catInfo.name.toLowerCase(),
@@ -85,7 +85,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
       canonical: categoryUrl,
     },
     openGraph: {
-      title: `${catInfo.name} Guides | DAPA Metrics`,
+      title: `${catInfo.name} Guides & Tutorials | DAPA Metrics`,
       description: catInfo.description,
       url: categoryUrl,
       type: 'website',

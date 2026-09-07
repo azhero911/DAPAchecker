@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dapametrics.vercel.app';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | DAPA Metrics',
+  title: 'Terms of Service',
   description: 'Terms of service, fair use API policy, metric accuracy disclaimers, and limitations of liability for DAPA Metrics.',
   alternates: {
     canonical: `${SITE_URL}/terms`,
