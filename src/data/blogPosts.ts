@@ -23,6 +23,7 @@ export interface BlogPost {
     avatar: string;
   };
   sources?: CitationSource[];
+  faqs?: { question: string; answer: string }[];
   content: string;
 }
 
@@ -61,6 +62,24 @@ export const BLOG_POSTS: BlogPost[] = [
         url: 'https://www.domcop.com/openpagerank/',
         publisher: 'DomCop / Open PageRank',
         note: 'Open-source PageRank dataset based on Common Crawl, used as a complement to DA for cross-referencing link authority.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is a good domain authority number?',
+        answer: 'A good domain authority number generally falls between 30 and 50 for established niche websites, while brand-new websites naturally start at 1. For highly competitive commercial niches (such as finance, software, or health), a score above 50–60 is considered strong. However, domain authority operates on a 1–100 logarithmic scale: a score is only truly good if it matches or exceeds the average DA of the competitors currently ranking on Page 1 of Google for your target search queries.',
+      },
+      {
+        question: 'What is good domain authority for a small business or blog?',
+        answer: 'For a local business, personal blog, or regional service website, a domain authority number between 20 and 40 is typically sufficient to rank for low-to-medium competition local search queries and long-tail keywords. You do not need an enterprise-level DA of 70+ to win local and niche searches.',
+      },
+      {
+        question: 'Can a site with a lower domain authority number outrank a higher DA site?',
+        answer: 'Yes. Google does not use Moz Domain Authority as an official ranking factor. A site with a DA of 25 can easily outrank a site with a DA of 70 if the lower-DA page provides superior search intent alignment, higher on-page content relevance, faster page speed, and deeper topical coverage.',
+      },
+      {
+        question: 'How do I check my domain authority number for free?',
+        answer: 'You can audit your domain authority number instantly using our free bulk domain authority checker with up to 10 URLs in a single batch — entirely free with no account or registration required.',
       },
     ],
     content: `
@@ -144,6 +163,24 @@ For ongoing link building strategy, cross-reference your DA reading with your Op
 2. **Track your DA trend** over time (monthly snapshots), not the absolute number.
 3. **Diagnose score drops** — a DA drop usually signals that referring domains have been lost, deindexed, or that high-authority sites in Moz's index updated their own link profiles.
 4. **Never buy links** to inflate DA. Moz's Spam Score algorithm flags unnatural link clusters, and Google's SpamBrain system targets manipulative link patterns algorithmically.
+
+---
+
+## Frequently Asked Questions: Good Domain Authority Scores
+
+### What is a good domain authority number?
+A **good domain authority number** generally falls between **30 and 50** for established niche websites, while brand-new websites naturally start at **1**. For highly competitive commercial niches (such as finance, software, or health), a score above **50–60** is considered strong. 
+
+However, domain authority operates on a 1–100 logarithmic scale: a score is only truly "good" if it matches or exceeds the average DA of the competitors currently ranking on Page 1 of Google for your target search queries.
+
+### What is good domain authority for a small business or blog?
+For a local business, personal blog, or regional service website, a domain authority number between **20 and 40** is typically sufficient to rank for low-to-medium competition local search queries and long-tail keywords. You do not need an enterprise-level DA of 70+ to win local and niche searches.
+
+### Can a site with a lower domain authority number outrank a higher DA site?
+**Yes.** Google does not use Moz Domain Authority as an official ranking factor. A site with a DA of 25 can easily outrank a site with a DA of 70 if the lower-DA page provides superior search intent alignment, higher on-page content relevance, faster page speed, and deeper topical coverage.
+
+### How do I check my domain authority number for free?
+You can audit your domain authority number instantly using our [free bulk domain authority checker](/) with up to 10 URLs in a single batch — entirely free with no account or registration required.
 
 ---
 

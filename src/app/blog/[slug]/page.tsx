@@ -144,6 +144,22 @@ export default async function BlogPostPage({ params }: PageProps) {
           },
         ],
       },
+      ...(post.faqs && post.faqs.length > 0
+        ? [
+            {
+              '@type': 'FAQPage',
+              '@id': `${SITE_URL}/blog/${post.slug}#faq`,
+              mainEntity: post.faqs.map((faq) => ({
+                '@type': 'Question',
+                name: faq.question,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: faq.answer,
+                },
+              })),
+            },
+          ]
+        : []),
     ],
   };
 
