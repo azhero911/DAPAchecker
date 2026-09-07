@@ -61,6 +61,13 @@ export default function CheckerTool() {
       }
 
       setResults(data.results || []);
+
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('event', 'check_domains', {
+          event_category: 'tool_usage',
+          domain_count: lines.length,
+        });
+      }
     } catch (err: any) {
       setErrorMessage(
         err.message || '⚠️ Server connection timeout. Please check your internet connection or try again in a moment.'

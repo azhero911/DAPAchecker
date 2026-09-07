@@ -1,11 +1,13 @@
 // src/app/layout.tsx
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dapametrics.vercel.app';
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-QVCYSEB9HP';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -139,6 +141,48 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph) }}
+        />
+        {/* Google Consent Mode v2 (Default: Denied until user accepts in CookieBanner) */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+
+              var initialConsent = 'denied';
+              try {
+                if (localStorage.getItem('dapa_cookie_consent') === 'accepted') {
+                  initialConsent = 'granted';
+                }
+              } catch(e) {}
+
+              gtag('consent', 'default', {
+                'analytics_storage': initialConsent,
+                'ad_storage': initialConsent,
+                'ad_user_data': initialConsent,
+                'ad_personalization': initialConsent
+              });
+            `,
+          }}
+        />
+        {/* Google Analytics Tag (gtag.js) */}
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+        />
+        <Script
+          id="google-analytics-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_MEASUREMENT_ID}', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
         />
       </head>
       <body className="bg-[#F0F2F5] text-gray-800 antialiased min-h-screen flex flex-col justify-between">

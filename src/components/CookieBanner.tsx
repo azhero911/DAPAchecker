@@ -21,6 +21,14 @@ export default function CookieBanner() {
   const handleAccept = () => {
     try {
       localStorage.setItem('dapa_cookie_consent', 'accepted');
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('consent', 'update', {
+          analytics_storage: 'granted',
+          ad_storage: 'granted',
+          ad_user_data: 'granted',
+          ad_personalization: 'granted',
+        });
+      }
     } catch {}
     setDismissed(true);
   };
@@ -28,6 +36,14 @@ export default function CookieBanner() {
   const handleDecline = () => {
     try {
       localStorage.setItem('dapa_cookie_consent', 'declined');
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('consent', 'update', {
+          analytics_storage: 'denied',
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+        });
+      }
     } catch {}
     setDismissed(true);
   };

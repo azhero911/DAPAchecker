@@ -174,6 +174,13 @@ export default function ResultsTable({ results, loading }: ResultsTableProps) {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'export_csv', {
+        event_category: 'tool_usage',
+        results_count: results.length,
+      });
+    }
   };
 
   return (

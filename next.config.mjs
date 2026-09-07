@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 const cspHeader = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://challenges.cloudflare.com https://pagead2.googlesyndication.com;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://challenges.cloudflare.com https://pagead2.googlesyndication.com https://www.googletagmanager.com;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     img-src 'self' blob: data: https:;
     font-src 'self' https://fonts.gstatic.com;
-    connect-src 'self' https://challenges.cloudflare.com https://openpagerank.com;
+    connect-src 'self' https://challenges.cloudflare.com https://openpagerank.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com;
     frame-src 'self' https://challenges.cloudflare.com https://googleads.g.doubleclick.net;
     object-src 'none';
     base-uri 'self';
