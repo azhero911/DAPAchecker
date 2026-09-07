@@ -25,11 +25,11 @@ export async function generateMetadata({ params }: AuthorPageProps): Promise<Met
   const authorUrl = `${SITE_URL}/blog/author/author`;
 
   return {
-    title: 'Author — Senior SEO Analyst & Engineer | DAPA Metrics',
+    title: 'Editorial Team — SEO Research & Engineering | DAPA Metrics',
     description:
-      'Technical guides, research analyses, and SEO methodology articles authored by Author and the DAPA Metrics Editorial Team.',
+      'Technical guides, research analyses, and SEO methodology articles authored by the DAPA Metrics Editorial & Engineering Team.',
     keywords: [
-      'dapa metrics author',
+      'dapa metrics editorial team',
       'seo analyst',
       'technical seo guides',
       'domain authority research',
@@ -38,9 +38,9 @@ export async function generateMetadata({ params }: AuthorPageProps): Promise<Met
       canonical: authorUrl,
     },
     openGraph: {
-      title: 'Author — DAPA Metrics Editorial Team',
+      title: 'Editorial Team — DAPA Metrics',
       description:
-        'Technical guides, research analyses, and SEO methodology articles authored by Author and the DAPA Metrics Editorial Team.',
+        'Technical guides, research analyses, and SEO methodology articles authored by the DAPA Metrics Editorial & Engineering Team.',
       url: authorUrl,
       type: 'profile',
     },
@@ -65,7 +65,7 @@ export default async function AuthorPage({ params }: AuthorPageProps) {
         <span>/</span>
         <Link href="/blog" className="hover:text-blue-600">Blog</Link>
         <span>/</span>
-        <span className="text-gray-800 font-medium">Author</span>
+        <span className="text-gray-800 font-medium">Editorial Team</span>
       </nav>
 
       {/* Author Bio Header Card */}
@@ -76,9 +76,9 @@ export default async function AuthorPage({ params }: AuthorPageProps) {
           </div>
           <div>
             <div className="flex flex-wrap items-center gap-3">
-              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Author</h1>
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">DAPA Metrics Editorial Team</h1>
               <span className="px-3 py-1 rounded-full bg-blue-50 text-[#1D4ED8] text-xs font-bold border border-blue-200">
-                Senior SEO Analyst &amp; Web Engineer
+                SEO Research &amp; Engineering
               </span>
               <span className="text-xs text-gray-500">📍 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UK</span>
             </div>
@@ -140,7 +140,7 @@ export default async function AuthorPage({ params }: AuthorPageProps) {
             </div>
 
             <div className="pt-3 border-t border-gray-100 flex items-center justify-between text-xs">
-              <span className="text-gray-400">By Author</span>
+              <span className="text-gray-500 font-medium">By {post.author.name}</span>
               <Link
                 href={`/blog/${post.slug}`}
                 className="font-bold text-[#1D4ED8] hover:underline inline-flex items-center gap-1"
